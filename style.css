@@ -7,12 +7,8 @@ html {
 }
 
 body {
-  height: 100%;
   margin: 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  /* background-image: linear-gradient(#EAEAEA, #FFFFFF); */
-  background-color: #FAFAFA;
+  background-color: #F8F8F8;
   font-family: 'Roboto', sans-serif;
   color: #333333;  
 }
@@ -46,9 +42,40 @@ b {
   float: left;
 }
 
+#topbar #navigation {
+  float: right;
+  text-align: right;
+  margin-right: 20px;
+}
+
+#topbar #navigation .navitem {
+  height: 26px;
+  margin: 13px 6px;
+  padding: 4px 14px;
+  border-radius: 3px;
+  line-height: 26px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+}
+
+#topbar #navigation .navitem:hover {
+  background: white;
+  box-shadow: 0px 0px 3px #333333;
+  color: #333333;
+}
+
+@media (max-width: 600px) {
+  #topbar #navigation .navitem {
+    font-size: 0.9em;
+    padding: 3px 6px;
+    margin: 14px 2px;
+  }
+}
+
 #content {
   max-width: 1000px;
-  padding: 20px 20px 60px 20px;
+  padding: 20px 30px 60px 30px;
   box-sizing: border-box;
   width: 100%;
   min-height: 300px;
@@ -161,6 +188,10 @@ button:active {
     width: calc(100% - 140px);
     margin-right: 0px;
   }
+
+  #topbar #navigation {
+    margin-right: 10px;
+  }
 }
 
 @media (max-width: 350px) {
@@ -235,11 +266,12 @@ form label.control-label {
   font-weight: 400;
   color: #333333;
   position: relative;
-  display: block;
+  display: inline-block;
   cursor: pointer;
   padding-left: 40px;
   margin-bottom: 2px;
   line-height: 32px;
+  vertical-align: top;
 }
 
 form label.control-label div.checkbox {
@@ -305,8 +337,19 @@ form div.label-group {
 form div.label-group label.control-label {
   display: inline-block;
   width: 25%;
-  max-width: 200px;
-  min-width: 150px;
+}
+
+@media (max-width: 800px) {
+  form div.label-group label.control-label {
+    width: 40%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 580px) {
+  form div.label-group label.control-label {
+    width: 100%;
+  }
 }
 
 #auth-container form label {
@@ -329,7 +372,7 @@ form div.label-group label.control-label {
   vertical-align: top;
   background-color: white;
   position: relative;
-  width: 295px;
+  width: 285px;
   height: 250px;
   padding: 10px 20px;
   box-sizing: border-box;
@@ -460,4 +503,56 @@ form.app-form div.label-group.review {
 form.app-form div.label-group.review label.control-label {
   cursor: default;
   color: #666666;  
+}
+
+/***********************************
+ ADMIN APPLICATIONS
+ ***********************************/
+
+table.app-list {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #EAEAEA;
+  box-shadow: 0px 0px 3px #E2E2E2;
+  margin: 5px 0px 40px 0px;
+}
+
+table.app-list thead tr td {
+  font-weight: 500;
+  font-size: 1.2em;
+  padding: 15px 20px;
+  border-bottom: 3px solid #EAEAEA;
+  cursor: default;
+}
+
+table.app-list thead tr:hover td {
+  background-color: white;
+}
+
+table.app-list tr td {
+  padding: 15px 20px;
+  border-collapse: collapse;
+  background-color: white;
+  border-bottom: 1px solid #F2F2F2;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+table.app-list tr:hover td {
+  background-color: #F6F6F6;
+}
+
+table.app-list i.fa-star {
+  color: #FDD835;
+}
+
+table.app-list i.fa-star-o {
+  color: #CCCCCC;
+}
+
+@media (max-width: 800px) {
+  table.app-list tr td,
+  table.app-list thead tr td {
+    padding: 10px 15px;
+  }
 }
