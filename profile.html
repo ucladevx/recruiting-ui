@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DevX | Profile</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Roboto:300,400,500" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript">
+      window.onscroll = createBarScroller('profile-bar');
+    </script>
+  </head>
+  <body>
+    <div id="topbar">
+      <div id="topbar-inner">
+        <div id="logo"></div>
+        <div id="progress-bar">
+          <div class="dot completed selected">
+            <p class="info">Profile</p>
+          </div>
+          <div class="bar"><div class="bar-inner" id="profile-bar"></div></div>
+          <div class="dot">
+            <p class="info">Essays</p>
+          </div>
+          <div class="bar"></div>
+          <div class="dot">
+            <p class="info">Challenges</p>
+          </div>
+          <div class="bar"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <div class="cards">
+        <div class="card card-wide profile-card">
+          <h1>Personal Information</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis. Maecenas eu aliquam lorem. Donec eleifend odio arcu, at fringilla purus pharetra vitae. Donec eleifend, erat sed cursus euismod, mauris magna tincidunt est, sed hendrerit sem tellus id ex. In varius ullamcorper dolor varius ultrices. In quis euismod massa, id faucibus lacus. Donec rutrum tempus mi, ac pellentesque arcu scelerisque in. Maecenas vehicula massa at neque pharetra, non semper risus fringilla. Nunc vulputate erat nec blandit pretium. Nulla ac fringilla nisi. Nam venenatis ultricies lacus, id ullamcorper neque accumsan vitae. Curabitur a odio eget arcu blandit pellentesque sit amet eu tortor.</p>
+          <form class="app-form">
+            <label class="input-title" for="firstName">First Name</label><br />
+            <input type="text" name="firstName" /><br />
+
+            <label class="input-title" for="lastName">Last Name</label><br />
+            <input type="text" name="lastName" /><br />
+
+            <label class="input-title" for="major">Major</label><br />
+            <input type="text" name="major" /><br />
+
+            <label class="input-title" for="year">Year</label><br />
+            <select name="year">
+              <option value="" selected disabled></option>
+              <option value="1">Freshman</option>
+              <option value="2">Sophomore</option>
+              <option value="3">Junior</option>
+              <option value="4">Senior</option>
+              <option value="5">Other</option>
+            </select><br />
+
+            <label class="input-title" for="gender">Gender</label><br />
+            <select name="gender">
+              <option value="" selected disabled></option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="nonbinary">Non-binary</option>
+              <option value="other">Other</option>
+            </select><br />
+
+            <label class="input-title" for="tshirt">T-Shirt Size</label><br />
+            <select name="tshirt">
+              <option value="" selected disabled></option>
+              <option value="youth-xs">Youth XS</option>
+              <option value="youth-xs">Youth S</option>
+              <option value="youth-xs">Youth M</option>
+              <option value="youth-xs">Youth L</option>
+              <option value="youth-xs">Youth XL</option>
+              <option value="adult-xs">Adult XS</option>
+              <option value="adult-xs">Adult S</option>
+              <option value="adult-xs">Adult M</option>
+              <option value="adult-xs">Adult L</option>
+              <option value="adult-xs">Adult XL</option>
+              <option value="adult-xs">Adult XXL</option>
+              <option value="adult-xs">Adult XXXL</option>
+            </select><br />
+          </form>
+        </div>
+
+        <div class="card card-wide profile-card">
+          <h1>Technical Information</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis. Maecenas eu aliquam lorem. Donec eleifend odio arcu, at fringilla purus pharetra vitae. Donec eleifend, erat sed cursus euismod, mauris magna tincidunt est, sed hendrerit sem tellus id ex. In varius ullamcorper dolor varius ultrices. In quis euismod massa, id faucibus lacus. Donec rutrum tempus mi, ac pellentesque arcu scelerisque in. Maecenas vehicula massa at neque pharetra, non semper risus fringilla. Nunc vulputate erat nec blandit pretium. Nulla ac fringilla nisi. Nam venenatis ultricies lacus, id ullamcorper neque accumsan vitae. Curabitur a odio eget arcu blandit pellentesque sit amet eu tortor.</p>
+          <form class="app-form">
+            <label class="input-title" for="role">Role Preference</label><br />
+            <p class="input-info">Which role are you most interested in applying for?</p>            
+            <select name="role">
+              <option value="" selected disabled></option>
+              <option value="backend">Backend</option>
+              <option value="frontend">Frontend</option>
+              <option value="fullstack">Full Stack</option>
+              <option value="design">Design</option>
+            </select><br />
+
+            <label class="input-title" for="lastName">Languages</label><br />
+            <p class="input-info">Select all languages that you're comfortable with</p>
+            <div class="label-group">
+              <label class="control-label">
+                Bash
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              
+              <label class="control-label">
+                Basic
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                C/C++
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                CoffeeScript
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Common Lisp
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Erlang
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Golang
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Java
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                JavaScript/ES6
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              
+              <label class="control-label">
+                Kotlin
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label> 
+
+              <label class="control-label">
+                Lua
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                MATLAB
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Objective-C
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Perl
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                PHP
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Python
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Ruby
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Rust
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Scala
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Swift
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+
+              <label class="control-label">
+                Other
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+            </div>
+
+            <label class="input-title" for="lastName">Backend Technologies</label><br />
+            <p class="input-info">Select all backend technologies that you've worked with (if applicable)</p>
+            <div class="label-group">
+              <label class="control-label">
+                Node.js
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Ruby on Rails
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Golang
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Python
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Java
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                PHP/Apache
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                NGINX
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Other
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+            </div>
+
+            <label class="input-title" for="lastName">Frontend Technologies</label><br />
+            <p class="input-info">Select all frontend technologies that you've worked with (if applicable)</p>            
+            <div class="label-group">
+              <label class="control-label">
+                HTML
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                CSS
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                SCSS/Sass
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Bootstap
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Semantic UI
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                JavaScript
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                React.js
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                AngularJS
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Vue.js
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                TodoMVC
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Polymer
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Ember.js
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Dojo
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Webpack
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Other
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+            </div>
+
+            <label class="input-title" for="lastName">Other Frameworks/Tools</label><br />
+            <p class="input-info">Select all other frameworks/tools that you've worked with (if any)</p>            
+            <div class="label-group">
+              <label class="control-label">
+                Meteor.js
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Gulp
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Grunt
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Mocha/Chai
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Other
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+            </div>
+
+            <label class="input-title" for="lastName">Mobile Technologies</label><br />
+            <p class="input-info">Select all mobile technologies that you've worked with (if any)</p>            
+            <div class="label-group">
+              <label class="control-label">
+                Android
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                iOS
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Windows Mobile
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Other
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+            </div>
+
+            <label class="input-title" for="lastName">Databases</label><br />
+            <p class="input-info">Select all databases that you've worked with (if any)</p>            
+            <div class="label-group">
+              <label class="control-label">
+                MySQL
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                PostgreSQL
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                SQLite
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                MariaDB
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                MemSQL
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                MongoDB
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                CouchDB
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Cassandra
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                HBase
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Amazon RDS
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Amazon DynamoDB
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Google BigTable
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Redis
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Memcached
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Other
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+            </div>
+
+            <label class="input-title" for="lastName">Deployment Platforms</label><br />
+            <p class="input-info">Select all platforms you've deployed on (if any)</p>            
+            <div class="label-group">
+              <label class="control-label">
+                AWS
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Azure
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Digital Ocean
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Firebase
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Google Cloud Platforn
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Heroku
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Linode
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Self-served
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Other
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+            </div>
+
+            <label class="input-title" for="lastName">Design</label><br />
+            <p class="input-info">Select all design tools you've used (if applicable)</p>            
+            <div class="label-group">
+              <label class="control-label">
+                Design
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Design
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Design
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Design
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Design
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+              <label class="control-label">
+                Design
+                <input type="checkbox" name="nodejs" value="nodejs" />
+                <div class="checkbox"></div>
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="button-section button-section-right">
+        <button>Save and Exit</button>
+        <button>Continue</button>
+      </div><br /><br /><br />
+    </div>
+  </body> 
+</html>

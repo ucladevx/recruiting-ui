@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DevX | Challenges</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Roboto:300,400,500|Roboto+Mono" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript">
+      window.onscroll = createBarScroller('challenges-bar');
+    </script>
+  </head>
+  <body>
+    <div id="topbar">
+      <div id="topbar-inner">
+        <div id="logo"></div>
+        <div id="progress-bar">
+          <div class="dot completed">
+            <p class="info">Profile</p>
+          </div>
+          <div class="bar completed"></div>
+          <div class="dot completed">
+            <p class="info">Essays</p>
+          </div>
+          <div class="bar completed"></div>
+          <div class="dot completed selected">
+            <p class="info">Challenges</p>
+          </div>
+          <div class="bar"><div class="bar-inner" id="challenges-bar"></div></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <div class="cards">
+        <div class="card card-wide profile-card">
+          <h1>Coding Challenges</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis. Maecenas eu aliquam lorem. Donec eleifend odio arcu, at fringilla purus pharetra vitae. Donec eleifend, erat sed cursus euismod, mauris magna tincidunt est, sed hendrerit sem tellus id ex. In varius ullamcorper dolor varius ultrices. In quis euismod massa, id faucibus lacus. Donec rutrum tempus mi, ac pellentesque arcu scelerisque in. Maecenas vehicula massa at neque pharetra, non semper risus fringilla. Nunc vulputate erat nec blandit pretium. Nulla ac fringilla nisi. Nam venenatis ultricies lacus, id ullamcorper neque accumsan vitae. Curabitur a odio eget arcu blandit pellentesque sit amet eu tortor.</p>
+          <p>Since you selected <b>Full Stack Developer</b>, we've modified your challenges to better suit your skills.</p>
+        </div>
+
+        <div class="card card-wide profile-card">
+          <h1>A creative title for the problem</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis. Maecenas eu aliquam lorem. Donec eleifend odio arcu, at fringilla purus pharetra vitae. Donec eleifend, erat sed cursus euismod, mauris magna tincidunt est, sed hendrerit sem tellus id ex. In varius ullamcorper dolor varius ultrices. In quis euismod massa, id faucibus lacus. Donec rutrum tempus mi, ac pellentesque arcu scelerisque in. Maecenas vehicula massa at neque pharetra, non semper risus fringilla. Nunc vulputate erat nec blandit pretium. Nulla ac fringilla nisi. Nam venenatis ultricies lacus, id ullamcorper neque accumsan vitae. Curabitur a odio eget arcu blandit pellentesque sit amet eu tortor.</p>
+
+          <pre>
+Example Input
+1
+2
+3
+
+Example Output
+4</pre>
+
+          <form class="app-form">
+            <textarea class="monospace-text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+            <select name="language">
+              <option value="" selected disabled>Language</option>
+              <option value="c">Bash</option>
+              <option value="c">C</option>
+              <option value="c">C++</option>
+              <option value="c">C#</option>
+              <option value="c">Kotlin</option>
+              <option value="c">Java</option>
+              <option value="c">JavaScript</option>
+              <option value="c">Python</option>
+              <option value="c">Ruby</option>
+              <option value="c">Swift</option>
+            </select>
+          </form>
+        </div>
+        <div class="card card-wide profile-card">
+          <h1>A creative title for the problem</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis. Maecenas eu aliquam lorem. Donec eleifend odio arcu, at fringilla purus pharetra vitae. Donec eleifend, erat sed cursus euismod, mauris magna tincidunt est, sed hendrerit sem tellus id ex. In varius ullamcorper dolor varius ultrices. In quis euismod massa, id faucibus lacus. Donec rutrum tempus mi, ac pellentesque arcu scelerisque in. Maecenas vehicula massa at neque pharetra, non semper risus fringilla. Nunc vulputate erat nec blandit pretium. Nulla ac fringilla nisi. Nam venenatis ultricies lacus, id ullamcorper neque accumsan vitae. Curabitur a odio eget arcu blandit pellentesque sit amet eu tortor.</p>
+
+          <pre>
+Function signature
+
+C       int func(int, char*);
+C++     int func(vector&lt;int&gt;);
+Java    public int func(ArrayList&lt;int&gt;);
+          </pre>
+  
+          <form class="app-form">
+            <textarea class="monospace-text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+            <select name="language">
+              <option value="" selected disabled>Language</option>
+              <option value="c">Bash</option>
+              <option value="c">C</option>
+              <option value="c">C++</option>
+              <option value="c">C#</option>
+              <option value="c">Kotlin</option>
+              <option value="c">Java</option>
+              <option value="c">JavaScript</option>
+              <option value="c">Python</option>
+              <option value="c">Ruby</option>
+              <option value="c">Swift</option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <div class="button-section button-section-right">
+        <button>Save and Exit</button>
+        <button>Continue</button>
+      </div><br /><br /><br />
+    </div>
+  </body>
+</html>

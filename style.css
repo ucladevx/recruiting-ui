@@ -1,0 +1,463 @@
+/***********************************
+ COMMON
+ ***********************************/
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* background-image: linear-gradient(#EAEAEA, #FFFFFF); */
+  background-color: #FAFAFA;
+  font-family: 'Roboto', sans-serif;
+  color: #333333;  
+}
+
+b {
+  font-weight: 500;
+}
+
+#topbar {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 10;
+  background: linear-gradient(to bottom right, rgb(25, 20, 57), rgb(44, 56, 88));
+  box-shadow: 0px 0px 6px #666666;
+}
+
+#topbar-inner {
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+}
+
+#topbar #logo {
+  height: 40px;
+  width: 90px;
+  margin: 10px 30px;
+  background: url('wordmark.png');
+  background-size: cover;
+  float: left;
+}
+
+#content {
+  max-width: 1000px;
+  padding: 20px 20px 60px 20px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 300px;
+  margin: 60px auto;
+}
+
+#content h1 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 400;
+}
+
+#content p {
+  line-height: 150%;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+#content .button-section-right {
+  text-align: right;
+  float: right;
+}
+
+button {
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  background-color: #5C6BC0;
+  border: 0;
+  border-radius: 3px;
+  border-bottom: 4px solid #303F9F;
+  -webkit-appearance: button;
+  cursor: pointer;
+  transition: 0.1s ease-in;
+  vertical-align: top;    
+}
+
+button.small {
+  padding: 8px;
+  margin: 8px;
+  font-size: 0.8em;
+}
+
+button:hover {
+  border-bottom-width: 1px;
+  margin-top: 12px;
+}
+
+button:active {
+  background-color: #303F9F;
+}
+
+/***********************************
+ PROGRESS
+ ***********************************/
+
+#topbar #progress-bar {
+  width: calc(100% - 160px);
+  height: 14px;
+  float: right;
+  display: flex;
+  margin: 0;
+  margin-right: 10px;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: 0.75em;
+  line-height: 200%;
+  padding: 30px 20px;
+  color: #E8EAF6;
+}
+#topbar #progress-bar .dot {
+  background-color: #5C6BC0;
+  max-width: 14px;
+  height: 14px;
+  flex-grow: 1;
+  border-radius: 50%;
+  font-weight: 400;
+}
+#topbar #progress-bar .bar {
+  background-color: #5C6BC0;
+  position: relative;
+  flex-grow: 1;
+  height: 2px;
+}
+#topbar #progress-bar .bar .bar-inner {
+  background-color: #E8EAF6;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 0;
+}
+#topbar #progress-bar .completed {
+  background-color: #E8EAF6;
+}
+#topbar #progress-bar .selected {
+  font-weight: 500;
+}
+
+@media (max-width: 450px) {
+  #topbar #logo {
+    margin: 10px 20px;
+  }
+
+  #topbar #progress-bar {
+    width: calc(100% - 140px);
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 350px) {
+  #topbar #logo {
+    display: none;
+  }
+
+  #topbar #progress-bar {
+    width: 100%;
+  }
+}
+
+/***********************************
+ MAIN PAGE
+ ***********************************/
+
+#splash {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background: url('logo.png');
+  background-size: cover;
+}
+
+#auth-container {
+  width: 300px;
+  margin: 50px auto;
+  box-shadow: 0px 0px 18px #CCCCCC;
+  border-radius: 3px;
+  background-color: white;
+}
+
+#auth-container form {
+  padding: 20px;
+}
+
+form input[type=text],
+form input[type=password],
+form textarea,
+form select {
+  font-family: 'Roboto';
+  font-size: 1.2em;
+  color: #333333;
+  border: 1px solid #CCCCCC;
+  outline: none;
+  width: 100%;
+  height: 40px;
+  border-radius: 0px;
+  box-sizing: border-box;  
+  padding: 5px 10px;
+  margin: 5px 0px 10px 0px
+}
+
+form select {
+  box-shadow: none;
+  background: url('arrow-down.png') 97% 50% / 15px auto no-repeat #ffffff;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+form textarea {
+  resize: none;
+  font-size: 1.0em;
+  padding: 10px;
+}
+
+form label.control-label {
+  font-size: 0.9em;
+  font-weight: 400;
+  color: #333333;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  padding-left: 40px;
+  margin-bottom: 2px;
+  line-height: 32px;
+}
+
+form label.control-label div.checkbox {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background: #FAFAFA;
+  border: 1px solid #E6E6E6;
+}
+
+form label.control-label input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+form label.control-label:hover input ~ .checkbox,
+form label.control-label input:focus ~ .checkbox {
+  background: #EEEEEE;
+  /* border: 1px solid #CCCCCC; */
+}
+
+form label.control-label input:checked ~ .checkbox {
+  background: #7986CB;
+  border: 1px solid #7986CB;
+}
+
+form label.control-label .checkbox:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+form label.control-label input:checked ~ .checkbox:after {
+  display: block;
+}
+
+form label.control-label .checkbox:after {
+  left: 11px;
+  top: 4px;
+  width: 7px;
+  height: 16px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+form input[type=text]:focus,
+form input[type=password]:focus,
+form input[type=checkbox]:focus,
+form textarea:focus,
+form select:focus {
+  border: 1px solid #90A4AE;
+}
+
+form div.label-group {
+  box-sizing: border-box;
+  padding: 0px 0px 25px 0px;
+}
+
+form div.label-group label.control-label {
+  display: inline-block;
+  width: 25%;
+  max-width: 200px;
+  min-width: 150px;
+}
+
+#auth-container form label {
+  font-weight: 500;
+  font-size: 0.7em;
+  color: #848484;
+}
+
+#auth-container #button-container {
+  text-align: center;
+  vertical-align: top;  
+}
+
+/***********************************
+ DASHBOARD
+ ***********************************/
+
+#content .card {
+  display: inline-block;
+  vertical-align: top;
+  background-color: white;
+  position: relative;
+  width: 295px;
+  height: 250px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 1px solid #E2E2E2;
+  box-shadow: 0px 0px 3px #EAEAEA;
+  margin: 10px;
+}
+
+#content .card h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  margin: 10px 0px 10px 0px;
+}
+
+#content .card p {
+  font-size: 0.9em;
+}
+
+#content .card .card-item {
+  margin: 8px 0px;
+}
+
+#content .card .card-item .item-icon {
+  color: white;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  line-height: 18px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#content .card .card-item .item-icon i {
+  font-size: 0.7em;
+}
+
+#content .card .card-item .item-text {
+  display: inline-block;
+  line-height: 20px;
+  padding: 0px 5px;
+}
+
+#content .card .card-item.completed .item-icon { background-color: #43A047; }
+#content .card .card-item.in-progress .item-icon { background-color: #FB8C00; }
+
+#content .card .button-section {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+/***********************************
+ PROFILE
+ ***********************************/
+
+#content .card-wide {
+  width: 100%;
+  height: auto;
+  padding: 20px 40px;
+  margin: 20px 0px;
+}
+
+#content .profile-card h1 i {
+  font-size: 0.9em;
+  margin-right: 10px;
+}
+
+form.app-form input[type=text],
+form.app-form input[type=password],
+form.app-form textarea,
+form.app-form select {
+  max-width: 300px;
+  margin: 5px 0px 15px 0px;
+}
+
+form.app-form textarea {
+  max-width: 500px;
+  min-height: 250px;
+  margin-bottom: 20px;
+}
+
+form.app-form label.input-title {
+  font-weight: 400;
+  font-size: 1.2em;
+  color: #333333;
+}
+
+form.app-form p.input-info {
+  margin: 0px;
+  padding: 0px 0px 5px 0px !important;
+  font-size: 0.8em !important;
+  color: #888888;
+}
+
+form.app-form textarea.monospace-text {
+  font-family: 'Roboto Monospace', 'Hack', 'Consolas', 'Courier', monospace;
+  font-size: 0.8em !important;
+  max-width: 600px;
+  min-height: 300px;
+}
+
+pre {
+  background-color: #F2F2F2;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Roboto Monospace', 'Hack', 'Consolas', 'Courier', monospace;
+  width: 100%;
+  max-width: 600px;
+}
+
+/***********************************
+ REVIEW & SUBMIT
+ ***********************************/
+
+p.review, ul.review {
+  color: #666666;
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0;
+}
+
+form.app-form div.label-group.review {
+  margin-top: 5px;
+}
+
+form.app-form div.label-group.review label.control-label {
+  cursor: default;
+  color: #666666;  
+}
