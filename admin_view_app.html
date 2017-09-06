@@ -1,41 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DevX | Review and Submit</title>
+    <title>DevX | Admin Dashboard | Applications</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Roboto:300,400,500|Roboto+Mono" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Roboto:300,400,500" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <div class="topbar">
+    <div class="topbar app-topbar">
       <div id="topbar-inner">
-        <div id="logo"></div>
-        <div id="progress-bar">
-          <div class="dot completed">
-            <p class="info">Profile</p>
-          </div>
-          <div class="bar completed"></div>
-          <div class="dot completed">
-            <p class="info">Essays</p>
-          </div>
-          <div class="bar completed"></div>
-          <div class="dot completed">
-            <p class="info">Challenges</p>
-          </div>
-          <div class="bar completed"></div>
-          <div class="dot completed selected"></div>
+        <div id="profile-name">Nikhil Kansal</div>
+        <div id="navigation">
+          <div id="close-button"><i class="fa fa-times-thin"></i></div>
         </div>
       </div>
     </div>
     <div id="content">
       <div class="cards">
-        <div class="card card-wide profile-card">
-          <h1>Review & Submit</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis. Maecenas eu aliquam lorem. Donec eleifend odio arcu, at fringilla purus pharetra vitae. Donec eleifend, erat sed cursus euismod, mauris magna tincidunt est, sed hendrerit sem tellus id ex. In varius ullamcorper dolor varius ultrices. In quis euismod massa, id faucibus lacus. Donec rutrum tempus mi, ac pellentesque arcu scelerisque in. Maecenas vehicula massa at neque pharetra, non semper risus fringilla. Nunc vulputate erat nec blandit pretium. Nulla ac fringilla nisi. Nam venenatis ultricies lacus, id ullamcorper neque accumsan vitae. Curabitur a odio eget arcu blandit pellentesque sit amet eu tortor.</p>          
-        </div>
-
         <div class="card card-wide profile-card">
           <h1>Personal Information</h1>
           <form class="app-form">
@@ -300,42 +283,80 @@
             <label class="input-title">Challenge Question 1</label><br />
             <p class="review">C++</p>            
             <textarea class="monospace-text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" disabled>
-#include <iostream>
-
-uint64_t factorial(int n) {
-  if (n <= 1)
-    return 1;
-  return n * factorial(n - 1);
-}
-
-int main(int argc, char** argv) {
-  std::cout << factorial(10) << std::endl;
-  return 0;
-}
+  #include <iostream>
+  
+  uint64_t factorial(int n) {
+    if (n <= 1)
+      return 1;
+    return n * factorial(n - 1);
+  }
+  
+  int main(int argc, char** argv) {
+    std::cout << factorial(10) << std::endl;
+    return 0;
+  }
             </textarea><br />
 
 
             <label class="input-title">Challenge Question 2</label><br />
             <p class="review">C++</p>            
             <textarea class="monospace-text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" disabled>
-#include <iostream>
-
-bool isPowerOfTwo(int n) {
-  return (n & (n - 1)) == 0;
-}
-
-int main(int argc, char** argv) {
-  std::cout << isPowerOfTwo(32) << std::endl;
-  return 0;
-}
+  #include <iostream>
+  
+  bool isPowerOfTwo(int n) {
+    return (n & (n - 1)) == 0;
+  }
+  
+  int main(int argc, char** argv) {
+    std::cout << isPowerOfTwo(32) << std::endl;
+    return 0;
+  }
             </textarea><br />
           </form>
         </div>
+        <hr />
+        <div class="card card-wide profile-card">
+          <h1>Admin Information</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis. Maecenas eu aliquam lorem. Donec eleifend odio arcu, at fringilla purus pharetra vitae. Donec eleifend, erat sed cursus euismod, mauris magna tincidunt est, sed hendrerit sem tellus id ex. In varius ullamcorper dolor varius ultrices. In quis euismod massa, id faucibus lacus. Donec rutrum tempus mi, ac pellentesque arcu scelerisque in. Maecenas vehicula massa at neque pharetra, non semper risus fringilla. Nunc vulputate erat nec blandit pretium. Nulla ac fringilla nisi. Nam venenatis ultricies lacus, id ullamcorper neque accumsan vitae. Curabitur a odio eget arcu blandit pellentesque sit amet eu tortor.</p>
+          <form class="app-form">
+            <label class="input-title" for="q1">Notes</label><br />
+            <textarea></textarea><br />
+            <label class="input-title" for="rating">Rating</label><br />
+            <div class="rating">
+              <i class="fa fa-star-o fa-2x" id="star-1"></i>
+              <i class="fa fa-star-o fa-2x" id="star-2"></i>
+              <i class="fa fa-star-o fa-2x" id="star-3"></i>
+              <i class="fa fa-star-o fa-2x" id="star-4"></i>
+              <i class="fa fa-star-o fa-2x" id="star-5"></i>
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="button-section button-section-right">
-        <button>Continue Editing</button>
-        <button>Submit Application</button>
+      <div class="button-section button-section-right" id="profile-view-buttons">
+        <button>Save</button>
+        <button>Discard</button>
+        <button class="red">Reject</button>
+        <button class="green">Accept</button>
       </div><br /><br /><br />
     </div>
   </body>
+  <script>
+    var stars = document.querySelector('.rating').getElementsByTagName('i');
+    for (var i = 0; i < stars.length; i++) {
+      stars[i].addEventListener('mouseover', function(e) {
+        var starNum = parseInt(e.target.id.split('-')[1]);
+        for (var j = 0; j < starNum; j++) {
+          stars[j].classList.add('fa-star');
+          stars[j].classList.remove('fa-star-o');
+        }
+      });
+      stars[i].addEventListener('mouseout', function(e) {
+        var starNum = parseInt(e.target.id.split('-')[1]);
+        for (var j = 0; j < starNum; j++) {
+          stars[j].classList.add('fa-star-o');
+          stars[j].classList.remove('fa-star');
+        }
+      });
+    }
+  </script>
 </html>

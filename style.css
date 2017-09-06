@@ -17,7 +17,11 @@ b {
   font-weight: 500;
 }
 
-#topbar {
+.fa-times-thin:before {
+	content: '\00d7';
+}
+
+.topbar {
   height: 60px;
   width: 100%;
   position: fixed;
@@ -27,13 +31,13 @@ b {
   box-shadow: 0px 0px 6px #666666;
 }
 
-#topbar-inner {
+.topbar #topbar-inner {
   max-width: 1000px;
   width: 100%;
   margin: auto;
 }
 
-#topbar #logo {
+.topbar #logo {
   height: 40px;
   width: 90px;
   margin: 10px 30px;
@@ -42,13 +46,13 @@ b {
   float: left;
 }
 
-#topbar #navigation {
+.topbar #navigation {
   float: right;
   text-align: right;
   margin-right: 20px;
 }
 
-#topbar #navigation .navitem {
+.topbar #navigation .navitem {
   height: 26px;
   margin: 13px 6px;
   padding: 4px 14px;
@@ -59,14 +63,14 @@ b {
   display: inline-block;
 }
 
-#topbar #navigation .navitem:hover {
+.topbar #navigation .navitem:hover {
   background: white;
   box-shadow: 0px 0px 3px #333333;
   color: #333333;
 }
 
 @media (max-width: 600px) {
-  #topbar #navigation .navitem {
+  .topbar #navigation .navitem {
     font-size: 0.9em;
     padding: 3px 6px;
     margin: 14px 2px;
@@ -123,6 +127,16 @@ button.small {
   font-size: 0.8em;
 }
 
+button.red {
+  background-color: #EF5350;
+  border-bottom: 4px solid #D32F2F;
+}
+
+button.green {
+  background-color: #66BB6A;
+  border-bottom: 4px solid #388E3C;
+}
+
 button:hover {
   border-bottom-width: 1px;
   margin-top: 12px;
@@ -132,11 +146,19 @@ button:active {
   background-color: #303F9F;
 }
 
+button.red:active {
+  background-color: #D32F2F;
+}
+
+button.green:active {
+  background-color: #388E3C;
+}
+
 /***********************************
  PROGRESS
  ***********************************/
 
-#topbar #progress-bar {
+.topbar #progress-bar {
   width: calc(100% - 160px);
   height: 14px;
   float: right;
@@ -150,7 +172,7 @@ button:active {
   padding: 30px 20px;
   color: #E8EAF6;
 }
-#topbar #progress-bar .dot {
+.topbar #progress-bar .dot {
   background-color: #5C6BC0;
   max-width: 14px;
   height: 14px;
@@ -158,13 +180,13 @@ button:active {
   border-radius: 50%;
   font-weight: 400;
 }
-#topbar #progress-bar .bar {
+.topbar #progress-bar .bar {
   background-color: #5C6BC0;
   position: relative;
   flex-grow: 1;
   height: 2px;
 }
-#topbar #progress-bar .bar .bar-inner {
+.topbar #progress-bar .bar .bar-inner {
   background-color: #E8EAF6;
   position: absolute;
   height: 100%;
@@ -172,34 +194,34 @@ button:active {
   left: 0;
   width: 0;
 }
-#topbar #progress-bar .completed {
+.topbar #progress-bar .completed {
   background-color: #E8EAF6;
 }
-#topbar #progress-bar .selected {
+.topbar #progress-bar .selected {
   font-weight: 500;
 }
 
 @media (max-width: 450px) {
-  #topbar #logo {
+  .topbar #logo {
     margin: 10px 20px;
   }
 
-  #topbar #progress-bar {
+  .topbar #progress-bar {
     width: calc(100% - 140px);
     margin-right: 0px;
   }
 
-  #topbar #navigation {
+  .topbar #navigation {
     margin-right: 10px;
   }
 }
 
 @media (max-width: 350px) {
-  #topbar #logo {
+  .topbar #logo {
     display: none;
   }
 
-  #topbar #progress-bar {
+  .topbar #progress-bar {
     width: 100%;
   }
 }
@@ -555,4 +577,63 @@ table.app-list i.fa-star-o {
   table.app-list thead tr td {
     padding: 10px 15px;
   }
+}
+
+/***********************************
+ ADMIN VIEW APP
+ ***********************************/
+
+.topbar.app-topbar {
+  background: white;
+}
+
+.app-topbar #profile-name {
+  line-height: 60px;
+  font-weight: 500;
+  font-size: 1.5em;
+  margin-left: 30px;
+  display: inline-block;
+}
+
+.app-topbar #close-button {
+  color: #333333;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  font-size: 1.4em;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.app-topbar #close-button:hover {
+  color: white;
+  background: #333333;
+  box-shadow: 0px 0px 3px #999999;
+  cursor: pointer;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #E2E2E2;
+}
+
+div.rating {
+  margin: 10px 0px 20px 0px;
+}
+
+div.rating i.fa-star {
+  color: #FDD835;
+  cursor: pointer;
+}
+
+div.rating i.fa-star-o {
+  color: #CCCCCC;
+  cursor: pointer;
+}
+
+div#profile-view-buttons button {
+  margin-left: 5px;
+  margin-right: 5px;
 }
