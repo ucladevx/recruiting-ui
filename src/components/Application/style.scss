@@ -1,0 +1,71 @@
+/***********************************
+ PROFILE
+ ***********************************/
+
+form.app-form input[type=text],
+form.app-form input[type=password],
+form.app-form textarea,
+form.app-form select {
+  max-width: 300px;
+  margin: 5px 0px 15px 0px;
+}
+
+form.app-form textarea {
+  max-width: 500px;
+  min-height: 250px;
+  margin-bottom: 20px;
+}
+
+form.app-form label.input-title {
+  font-weight: 400;
+  font-size: 1.2em;
+  color: #333333;
+}
+
+form.app-form p.input-info {
+  margin: 0px;
+  padding: 0px 0px 5px 0px !important;
+  font-size: 0.8em !important;
+  color: #888888;
+}
+
+form.app-form textarea.monospace-text {
+  font-family: 'Roboto Monospace', 'Hack', 'Consolas', 'Courier', monospace;
+  font-size: 0.8em !important;
+  max-width: 600px;
+  min-height: 300px;
+}
+
+pre {
+  background-color: #F2F2F2;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Roboto Monospace', 'Hack', 'Consolas', 'Courier', monospace;
+  width: 100%;
+  max-width: 600px;
+}
+
+#content .button-section-right {
+  text-align: right;
+  float: right;
+}
+
+/***********************************
+ REVIEW & SUBMIT
+ ***********************************/
+
+p.review, ul.review {
+  color: #666666;
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0;
+}
+
+form.app-form div.label-group.review {
+  margin-top: 5px;
+}
+
+form.app-form div.label-group.review label.control-label {
+  cursor: default;
+  color: #666666;  
+}

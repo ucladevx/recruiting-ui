@@ -1,0 +1,51 @@
+button {
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  background-color: #5C6BC0;
+  border: 0;
+  border-radius: 3px;
+  border-bottom: 4px solid #303F9F;
+  -webkit-appearance: button;
+  cursor: pointer;
+  transition: 0.1s ease-in;
+  vertical-align: top;    
+}
+
+button.small {
+  padding: 8px;
+  margin: 8px;
+  font-size: 0.8em;
+}
+
+button.red {
+  background-color: #EF5350;
+  border-bottom: 4px solid #D32F2F;
+}
+
+button.green {
+  background-color: #66BB6A;
+  border-bottom: 4px solid #388E3C;
+}
+
+button:hover {
+  border-bottom-width: 1px;
+  margin-top: 12px;
+}
+
+button:active {
+  background-color: #303F9F;
+}
+
+button.red:active {
+  background-color: #D32F2F;
+}
+
+button.green:active {
+  background-color: #388E3C;
+}

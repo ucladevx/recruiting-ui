@@ -11,6 +11,7 @@ const routing = routerMiddleware(history);
 const store = createStore(
   combineReducers({
     Auth,
+    router: routerReducer,
   }),
   applyMiddleware(routing, thunk)
 );

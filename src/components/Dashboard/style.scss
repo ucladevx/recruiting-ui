@@ -1,0 +1,33 @@
+#content .card .card-item {
+  margin: 8px 0px;
+}
+
+#content .card .card-item .item-icon {
+  color: white;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  line-height: 18px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#content .card .card-item .item-icon i {
+  font-size: 0.7em;
+}
+
+#content .card .card-item .item-text {
+  display: inline-block;
+  line-height: 20px;
+  padding: 0px 5px;
+}
+
+#content .card .card-item.completed .item-icon { background-color: #43A047; }
+#content .card .card-item.in-progress .item-icon { background-color: #FB8C00; }
+
+#content .card .button-section {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}

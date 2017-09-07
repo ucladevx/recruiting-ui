@@ -1,0 +1,123 @@
+.topbar {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 10;
+  background: linear-gradient(to bottom right, rgb(25, 20, 57), rgb(44, 56, 88));
+  box-shadow: 0px 0px 6px #666666;
+
+  #topbar-inner {
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+  }
+
+  #logo {
+    height: 40px;
+    width: 90px;
+    margin: 10px 30px;
+    background: url('/images/wordmark.png');
+    background-size: cover;
+    float: left;
+  }
+
+  #navigation {
+    float: right;
+    text-align: right;
+    margin-right: 20px;
+  }
+
+  #navigation .navitem {
+    height: 26px;
+    margin: 13px 6px;
+    padding: 4px 14px;
+    border-radius: 3px;
+    line-height: 26px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  #navigation .navitem:hover {
+    background: white;
+    box-shadow: 0px 0px 3px #333333;
+    color: #333333;
+  }
+
+  @media (max-width: 600px) {
+    #navigation .navitem {
+      font-size: 0.9em;
+      padding: 3px 6px;
+      margin: 14px 2px;
+    }
+  }
+
+  #progress-bar {
+    width: calc(100% - 160px);
+    height: 14px;
+    float: right;
+    display: flex;
+    margin: 0;
+    margin-right: 10px;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 0.75em;
+    line-height: 200%;
+    padding: 30px 20px;
+    color: #E8EAF6;
+  }
+  #progress-bar .dot {
+    background-color: #5C6BC0;
+    max-width: 14px;
+    height: 14px;
+    flex-grow: 1;
+    border-radius: 50%;
+    font-weight: 400;
+  }
+  #progress-bar .bar {
+    background-color: #5C6BC0;
+    position: relative;
+    flex-grow: 1;
+    height: 2px;
+  }
+  #progress-bar .bar .bar-inner {
+    background-color: #E8EAF6;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 0;
+  }
+  #progress-bar .completed {
+    background-color: #E8EAF6;
+  }
+  #progress-bar .selected {
+    font-weight: 500;
+  }
+
+  @media (max-width: 450px) {
+    #logo {
+      margin: 10px 20px;
+    }
+
+    #progress-bar {
+      width: calc(100% - 140px);
+      margin-right: 0px;
+    }
+
+    #navigation {
+      margin-right: 10px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    #logo {
+      display: none;
+    }
+
+    #progress-bar {
+      width: 100%;
+    }
+  }
+}

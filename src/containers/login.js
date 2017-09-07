@@ -19,7 +19,7 @@ class Login extends React.Component {
   }
 
   render() {
-    return <LoginComponent />;
+    return <LoginComponent logIn={this.props.logIn} />;
   }
 }
 
@@ -33,6 +33,9 @@ const mapDispatchToProps = dispatch => {
   return {
     redirectHome: () => {
       dispatch(replace('/'));
+    },
+    logIn: () => {
+      dispatch(replace('/dashboard'));
     },
   };
 };
