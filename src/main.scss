@@ -58,6 +58,11 @@ b {
 #content .button-section-right {
   text-align: right;
   float: right;
+
+  button {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 
 #content .card {

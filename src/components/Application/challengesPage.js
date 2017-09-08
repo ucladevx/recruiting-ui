@@ -14,7 +14,6 @@ export default class ProfilePage extends React.Component {
 
   componentDidMount() {
     window.scroll(0, 0);
-    document.title = "DevX | Challenges";
   }
 
   render() {
@@ -31,8 +30,8 @@ export default class ProfilePage extends React.Component {
             <p>{challenge.desc}</p>
             
             <form className="app-form">
-              <CodeInput name={challenge.name} example={challenge.example} />
-              <SelectInput name={challenge.name + 'Language'} title="Language" options={Config.challenges.languages} />
+              <CodeInput originalValue={this.props.profile[challenge.name]} name={challenge.name} example={challenge.example} onChange={this.props.setValue} />
+              <SelectInput originalValue={this.props.profile[challenge.name + 'Language']} name={challenge.name + 'Language'} title="Language" options={Config.challenges.languages} onChange={this.props.setValue} />
             </form>
           </div>
         )}
