@@ -59,7 +59,7 @@ export default class ProfilePage extends React.Component {
             <CheckboxInput name="otherFrameworksTools" title="Other Frameworks/Tools" options={this.props.profile.otherFrameworksTools} originalValue={this.props.profile.otherFrameworksTools} review />
 
             <CheckboxInput name="mobileTechnologies" title="Mobile Technologies" options={this.props.profile.mobileTechnologies} originalValue={this.props.profile.mobileTechnologies} review />
-            <CheckboxInput name="deploymentPlatforms" title="Deployment Platforms" options={this.props.profile.deplotmentPlatforms} originalValue={this.props.profile.deplotmentPlatforms} review />
+            <CheckboxInput name="deploymentPlatforms" title="Deployment Platforms" options={this.props.profile.deploymentPlatforms} originalValue={this.props.profile.deploymentPlatforms} review />
             <CheckboxInput name="databases" title="Databases" options={this.props.profile.databases} originalValue={this.props.profile.databases} review />
             
             <CheckboxInput name="designTypes" title="Design Types" options={this.props.profile.designTypes} originalValue={this.props.profile.designTypes} review />
@@ -89,9 +89,7 @@ export default class ProfilePage extends React.Component {
               { this.props.profile[challenge.name] && <p className="review">{this.props.profile[challenge.name+'Language']}</p> }          
               { !this.props.profile[challenge.name] && <p className="review"><i>No response</i></p> }          
               { this.props.profile[challenge.name] &&
-                <textarea className="monospace-text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" disabled>
-                  {this.props.profile[challenge.name]}
-                </textarea>
+                <textarea className="monospace-text" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" value={this.props.profile[challenge.name]} disabled></textarea>
               }
             </div>
           )}

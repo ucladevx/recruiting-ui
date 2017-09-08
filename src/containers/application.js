@@ -11,7 +11,7 @@ class Application extends React.Component {
     this.saveAndExit = this.saveAndExit.bind(this);
   }
 
-  saveAndExit() {
+  saveAndExit(profile) {
     // TODO: save profile
     this.props.history.push('/dashboard');
   }

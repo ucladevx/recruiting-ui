@@ -1,7 +1,9 @@
 import React from 'react';
+import Config from 'config';
 
 import Button from 'components/Button';
 import Topbar from 'components/Topbar';
+import Notification from 'components/Notification';
 
 import ProfilePage from './profilePage';
 import EssaysPage from './essaysPage';
@@ -39,6 +41,8 @@ export default class Application extends React.Component {
     this.saveAndExit = this.saveAndExit.bind(this);
     this.setValue = this.setValue.bind(this);
     this.continue = this.continue.bind(this);
+    this.validate = this.validate.bind(this);
+    this.submit = this.submit.bind(this);
     this.back = this.back.bind(this);
   }
 
@@ -58,15 +62,58 @@ export default class Application extends React.Component {
     }
   }
 
+  submit() {
+    this.props.submitApplication(this.profile);
+  }
+
   saveAndExit() {
-    this.props.saveAndExit();
+    this.props.saveAndExit(this.profile);
   }
 
   setValue(key, value) {
     this.profile[key] = value;
   }
 
+  validate() {
+    if (this.state.currentPage === PAGE_PROFILE) {
+      if (!this.profile.firstName)
+        return 'First name cannot be empty';
+      if (!this.profile.lastName)
+        return 'Last name cannot be empty';
+      if (!this.profile.major)
+        return 'Major cannot be empty';
+      if (!this.profile.year)
+        return 'You must select your year';
+      if (!this.profile.gender)
+        return 'You must select your gender';
+      if (!this.profile.tshirt)
+        return 'You must select your T-shirt size';
+      if (!this.profile.rolePreference)
+        return 'You must select your role preference';
+    }
+    if (this.state.currentPage === PAGE_ESSAYS) {
+      for (const essay of Config.essays.essays) {
+        if (!this.profile[essay.name] || !this.profile[essay.name].trim())
+          return 'You must respond to all of the essays';
+      }
+    }
+    if (this.state.currentPage === PAGE_CHALLENGES) {
+      for (const challenge of Config.challenges.challenges) {
+        if (!this.profile[challenge.name] || !this.profile[challenge.name].trim())
+          return 'You must respond to all of the challenges';
+        if (!this.profile[challenge.name+'Language'])
+          return 'You must select the language for your response';
+      }
+    }
+    return null;
+  }
+
   continue() {
+    const error = this.validate();
+    if (error) {
+      this.notification.showNotification('Validation Error', error, 'error', 5000);
+      return;
+    }
     switch (this.state.currentPage) {
       case PAGE_PROFILE:
         return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_ESSAYS }));
@@ -95,6 +142,7 @@ export default class Application extends React.Component {
   render() {
     return (
       <div id="content">
+        <Notification ref={n => this.notification = n} />
         <Topbar application pages={this.pages} currentPage={this.symbolToPageIndex[this.state.currentPage]} />
         { this.getCurrentPage() }
 
@@ -102,7 +150,10 @@ export default class Application extends React.Component {
           <Button text="Save and Exit" onClick={ this.saveAndExit } />
           { !(this.state.currentPage === PAGE_PROFILE) &&
               <Button text="Back" onClick={ this.back } /> }
-          <Button text="Continue" onClick={ this.continue } />
+          { !(this.state.currentPage === PAGE_REVIEW) && 
+              <Button text="Continue" onClick={ this.continue } /> }
+          { (this.state.currentPage === PAGE_REVIEW) &&
+              <Button text="Submit Application" onClick={ this.submit } /> }
         </div><br /><br /><br />
       </div>
     );
