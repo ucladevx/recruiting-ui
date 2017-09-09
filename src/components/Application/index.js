@@ -111,7 +111,7 @@ export default class Application extends React.Component {
   continue() {
     const error = this.validate();
     if (error) {
-      this.notification.showNotification('Validation Error', error, 'error', 5000);
+      this.notification.show('Validation Error', error, 'error', 5000);
       return;
     }
     switch (this.state.currentPage) {

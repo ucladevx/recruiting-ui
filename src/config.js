@@ -1,4 +1,11 @@
 export default {
+  apiHost: process.env.WEBPACK ? 'http://localhost:8080' : '',
+  routes: {
+    auth: {
+      login: '/app/api/v1/auth/login',
+      register: '/app/api/v1/auth/register',
+    }
+  },
   profile: {
     years: [
       'Freshman',

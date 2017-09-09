@@ -9,7 +9,7 @@ export default class Notification extends React.Component {
     this.timeout = null;
   }
 
-  showNotification(title, message, type, timeout=4000) {
+  show(title, message, type, timeout=4000) {
     if (this.timeout)
       clearTimeout(this.timeout);
     this.setState({ title, message, type, showing: true });

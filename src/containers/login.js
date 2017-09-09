@@ -19,23 +19,28 @@ class Login extends React.Component {
   }
 
   render() {
-    return <LoginComponent logIn={this.props.logIn} />;
+    return <LoginComponent
+             logIn={this.props.logIn}
+             lastActionAt={this.props.timestamp}
+             error={this.props.error} />;
   }
 }
 
 const mapStateToProps = state => {
   return {
-    test: 'test'
+    error: state.Auth.get('error'),
+    timestamp: state.Auth.get('timestamp'),
+    authenticated: state.Auth.get('authenticated'),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     redirectHome: () => {
-      dispatch(replace('/'));
-    },
-    logIn: () => {
       dispatch(replace('/dashboard'));
+    },
+    logIn: (email, password) => {
+      dispatch(Action.LoginUser(email, password));
     },
   };
 };

@@ -21,8 +21,8 @@ class App extends React.Component {
         <ConnectedRouter onUpdate={() => window.scrollTo(0, 0)} history={history}>
           <Switch>
             <Route path="/login" component={Login} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/application" component={withRouter(({history}) => <Application history={history} />)} />
+            <Route path="/dashboard" component={requireAuth(Dashboard)} />
+            <Route path="/application" component={requireAuth(withRouter(({history}) => <Application history={history} />))} />
             <Redirect to="/login" />
           </Switch>
         </ConnectedRouter>
