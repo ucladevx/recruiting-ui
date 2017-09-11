@@ -22,6 +22,7 @@ const initState = () => {
 		application: {},
     applications: [],
 		applicationCreated: false,
+		applicationUpdated: false,
 	});
 }
 
@@ -47,6 +48,12 @@ class State {
 	static CreateApplication(error) {
 		return {
 			type         : error ? APPLICATION_ERROR : CREATE_APPLICATION,
+			error        : error || undefined,
+		};
+	}
+	static UpdateApplication(error) {
+		return {
+			type         : error ? APPLICATION_ERROR : UPDATE_APPLICATION,
 			error        : error || undefined,
 		};
 	}
@@ -138,6 +145,34 @@ const CreateApplication = () => {
 	};
 }
 
+const UpdateApplicationProfile = (id, profile) => {
+	return async (dispatch) => {
+		try {
+			const response = await fetch(Config.apiHost + Config.routes.application.update + id, {
+				method: 'PUT',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+          'Authorization': `Bearer ${Storage.get('token')}`,
+				},
+				body: JSON.stringify({ profile })
+			});
+
+			const status = await response.status;
+			const data = await response.json();
+
+			if (!data)
+				throw new Error('Empty response from server');
+			if (data.error)
+				throw new Error(data.error.message);
+
+			dispatch(State.UpdateApplication(null));
+		} catch (err) {
+			dispatch(State.UpdateApplication(err.message));
+		}
+	};
+}
+
 /**********************************************
  ** Applications Reducer                     **
  *********************************************/
@@ -149,6 +184,7 @@ const Applications = (state=initState(), action) => {
 				val.set('error', null);
 				val.set('timestamp', Date.now());
 				val.set('applications', action.applications);
+				val.set('applicationUpdated', false);
 				val.set('applicationCreated', false);
 			});
 
@@ -157,6 +193,7 @@ const Applications = (state=initState(), action) => {
 				val.set('error', null);
 				val.set('timestamp', Date.now());
 				val.set('application', action.application);
+				val.set('applicationUpdated', false);
 				val.set('applicationCreated', false);
 			});
 		
@@ -164,13 +201,23 @@ const Applications = (state=initState(), action) => {
 			return state.withMutations(val => {
 				val.set('error', null);
 				val.set('timestamp', Date.now());
+				val.set('applicationUpdated', false);
 				val.set('applicationCreated', true);
+			});
+
+		case UPDATE_APPLICATION:
+			return state.withMutations(val => {
+				val.set('error', null);
+				val.set('timestamp', Date.now());
+				val.set('applicationUpdated', true);
+				val.set('applicationCreated', false);
 			});
 
 		case APPLICATION_ERROR:
 			return state.withMutations(val => {
 				val.set('error', action.error);
 				val.set('timestamp', Date.now());
+				val.set('applicationUpdated', false);
 				val.set('applicationCreated', false);
 			});
 
@@ -180,5 +227,5 @@ const Applications = (state=initState(), action) => {
 }
 
 export {
-	Applications, GetApplications, GetApplication, CreateApplication
+	Applications, GetApplications, GetApplication, CreateApplication, UpdateApplicationProfile
 }

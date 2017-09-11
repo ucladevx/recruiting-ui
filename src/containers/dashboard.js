@@ -18,6 +18,8 @@ class Dashboard extends React.Component {
   }
 
   componentWillMount() {
+    if (!this.props.authenticated)
+      return this.props.logOut();
     this.props.getApplications();
     if (this.props.admin) {
       this.props.getSeasons();
@@ -50,6 +52,7 @@ class Dashboard extends React.Component {
 const mapStateToProps = state => {
   return {
     admin: state.Auth.get('isAdmin'),
+    authenticated: state.Auth.get('authenticated'),
 
     applications: state.Applications.get('applications'),
     applicationsError: state.Applications.get('error'),
@@ -69,6 +72,9 @@ const mapDispatchToProps = dispatch => {
   return {
     logOut: () => {
       dispatch(Action.LogoutUser());
+    },
+    redirectHome: () => {
+      dispatch(replace('/'));
     },
     createApplication: () => {
       dispatch(Action.CreateApplication());

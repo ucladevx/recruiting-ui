@@ -4,7 +4,7 @@ export default class SelectInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.originalValue || "",
+      value: props.originalValue || '',
     }
   }
 
@@ -12,6 +12,12 @@ export default class SelectInput extends React.Component {
     const { name, value } = e.target;
     this.props.onChange(name, value);
     this.setState(prev => Object.assign({}, prev, { value }));
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.state.value) {
+      this.setState({ value: nextProps.originalValue || '' });
+    }
   }
 
   render() {

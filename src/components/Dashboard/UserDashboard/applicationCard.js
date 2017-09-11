@@ -1,10 +1,11 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 import Button from 'components/Button';
 
 export default class ApplicationCard extends React.Component {
   render() {
-    const { seasonName, status } = this.props.application;
+    const { seasonName, status, id } = this.props.application;
     const inProgress = status === 'IN_PROGRESS';
     const submitted = status === 'SUBMITTED';
     const rejected = status === 'REJECTED';
@@ -28,7 +29,7 @@ export default class ApplicationCard extends React.Component {
         <div className="button-section">
           { rejected && <Button small text="View Feedback" /> }
           { accepted && <Button small text="View Feedback" /> }
-          { inProgress && <Button small text="Continue Application" /> }
+          { inProgress && <NavLink to={`/application/${id}`}><Button small text="Continue Application" /></NavLink> }
         </div>
       </div>
     );

@@ -16,7 +16,7 @@ export default class UserDashboard extends React.Component {
     if (props.applicationsError && (Date.now() - props.applicationsLastAction < 1000))
       return this.notification.show('Applications Error', props.applicationsError, 'error', 4000);
     if (props.applicationCreated && (Date.now() - props.applicationsLastAction < 1000))
-      return this.notification.show('Application Created', 'Application created successfully. You can now edit it.', 'success', 4000);
+      return this.notification.show('Application Created', 'Application created successfully. You can now edit it.', 'success', 3000);
   }
 
   componentDidMount() {

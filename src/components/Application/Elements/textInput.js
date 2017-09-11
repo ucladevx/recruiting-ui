@@ -14,6 +14,12 @@ export default class TextInput extends React.Component {
     this.setState(prev => Object.assign({}, prev, { value }));
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!this.state.value) {
+      this.setState({ value: nextProps.originalValue || '' });
+    }
+  }
+
   render() {
     return (
       <div>
