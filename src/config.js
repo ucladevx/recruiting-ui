@@ -4,6 +4,15 @@ export default {
     auth: {
       login: '/app/api/v1/auth/login',
       register: '/app/api/v1/auth/register',
+    },
+    season: {
+      get: '/app/api/v1/season',
+      delete: '/app/api/v1/season/',
+    },
+    application: {
+      get: '/app/api/v1/application',
+      getOne: '/app/api/v1/application/',
+      create: '/app/api/v1/application/create',
     }
   },
   profile: {

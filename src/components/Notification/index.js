@@ -9,13 +9,13 @@ export default class Notification extends React.Component {
     this.timeout = null;
   }
 
-  show(title, message, type, timeout=4000) {
+  show(title, message, type, duration=4000) {
     if (this.timeout)
       clearTimeout(this.timeout);
     this.setState({ title, message, type, showing: true });
     setTimeout(() => {
-      this.setState({ showing: false })
-    }, timeout);
+      this.setState({ showing: false });
+    }, duration);
   }
 
   render() {

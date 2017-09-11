@@ -32,7 +32,6 @@ export default class CheckboxInput extends React.Component {
   }
 
   render() {
-    console.log(this.props.name, this.state.checked, this.props.options);
     return (
       <div>
         <label htmlFor={this.props.name} className="input-title">{this.props.title}</label><br />

@@ -31,3 +31,75 @@
   bottom: 10px;
   left: 10px;
 }
+
+/***********************************
+ ADMIN APPLICATIONS
+ ***********************************/
+
+h1 span.app-count {
+  font-weight: 300;
+}
+
+table.app-list {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #EAEAEA;
+  box-shadow: 0px 0px 3px #E2E2E2;
+  margin: 5px 0px 40px 0px;
+}
+
+table.app-list thead tr td {
+  font-weight: 500;
+  font-size: 1.2em;
+  padding: 15px 20px;
+  border-bottom: 3px solid #EAEAEA;
+  cursor: default;
+}
+
+table.app-list.interactive thead tr:hover td {
+  background-color: white;
+}
+
+table.app-list tr td {
+  padding: 15px 20px;
+  border-collapse: collapse;
+  background-color: white;
+  border-bottom: 1px solid #F2F2F2;
+  transition: background 0.2s;
+}
+
+table.app-list.interactive tr:hover td {
+  background-color: #F6F6F6;
+  cursor: pointer;
+}
+
+table.app-list i.fa-star {
+  color: #FDD835;
+}
+
+table.app-list i.fa-star-o {
+  color: #CCCCCC;
+}
+
+table.app-list button {
+  height: 36px;
+  width: 36px;
+  padding: 0px;
+  margin: 0px 5px;
+}
+
+table.app-list button:hover {
+  margin-top: 2px;
+  margin-bottom: -2px;
+}
+
+table.app-list button.loading {
+  margin: 0px;
+}
+
+@media (max-width: 800px) {
+  table.app-list tr td,
+  table.app-list thead tr td {
+    padding: 10px 15px;
+  }
+}

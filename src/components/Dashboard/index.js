@@ -1,6 +1,7 @@
 import React from 'react';
 
-import UserDashboard from './userDashboard';
+import UserDashboard from 'components/Dashboard/UserDashboard';
+import AdminDashboard from 'components/Dashboard/AdminDashboard';
 
 export default class Dashboard extends React.Component {
   componentDidMount() {
@@ -8,9 +9,9 @@ export default class Dashboard extends React.Component {
   }
   
   render() {
-    const admin = this.props.admin;
-    if (!admin)
-      return <UserDashboard createApplication={this.props.createApplication} />
-    return null;
+    if (this.props.admin) {
+      return <AdminDashboard {...this.props} />
+    }
+    return <UserDashboard {...this.props} />
   }
 }
