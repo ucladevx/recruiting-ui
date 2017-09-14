@@ -40,7 +40,7 @@ form.app-form span.required-field {
   color: #D32F2F;
 }
 
-pre {
+pre.code-example {
   background-color: #F2F2F2;
   padding: 20px;
   box-sizing: border-box;
@@ -63,6 +63,7 @@ p.review, ul.review {
   font-size: 0.8em;
   padding: 0;
   margin: 0;
+  white-space: pre-wrap;
 }
 
 form.app-form div.label-group.review {

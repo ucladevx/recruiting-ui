@@ -50,6 +50,10 @@ export default class ViewApplication extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		if (nextProps.showing) {
+			setTimeout(() => window.scrollTo(0, 0), 100);
+		}
+
 		this.setState({
 			notes: nextProps.application.notes || '',
 			rating: nextProps.application.rating || 0,

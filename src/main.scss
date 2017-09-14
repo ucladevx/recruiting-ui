@@ -132,6 +132,7 @@ form textarea {
 	resize: none;
 	font-size: 1.0em;
 	padding: 10px;
+	line-height: 135%;
 }
 
 form label.control-label {
@@ -230,6 +231,7 @@ form div.label-group label.control-label {
  ************************************/
 
 pre {
-	padding: 2px;
+	padding: 5px;
+	border: 2px solid #F2F2F2;
 	margin: 5px 0px 30px 0px;
 }

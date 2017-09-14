@@ -19,13 +19,18 @@ export default class Applications extends React.Component {
   }
 
   showApplication(application) {
+    const top  = window.pageYOffset || document.documentElement.scrollTop,
+          left = window.pageXOffset || document.documentElement.scrollLeft;
     this.setState({
       showing: true,
       application: application,
+      scrollPos: { top, left },
     });
   }
 
   hideApplication() {
+    console.log(this.state.scrollPos);
+    window.scrollTo(this.state.scrollPos.left, this.state.scrollPos.top);
     this.setState({ showing: false });
   }
 
