@@ -29,6 +29,7 @@ export default class ApplicationCard extends React.Component {
         <div className="button-section">
           { rejected && <Button small text="View Feedback" /> }
           { accepted && <Button small text="View Feedback" /> }
+          { submitted && <NavLink to={`/review/${id}`}><Button small text="View Application" /></NavLink> }
           { inProgress && <NavLink to={`/application/${id}`}><Button small text="Continue Application" /></NavLink> }
         </div>
       </div>

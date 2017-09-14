@@ -5,9 +5,9 @@ import Button from 'components/Button';
 import Topbar from 'components/Topbar';
 import Notification from 'components/Notification';
 
-import ProfilePage from './profilePage';
-import EssaysPage from './essaysPage';
-import ChallengesPage from './challengesPage';
+import ProfilePage from './pages/profilePage';
+import EssaysPage from './pages/essaysPage';
+import ChallengesPage from './pages/challengesPage';
 import ReviewPage from './review';
 
 const PAGE_PROFILE = Symbol();
@@ -33,7 +33,7 @@ export default class Application extends React.Component {
       [PAGE_REVIEW]: 'Review and Submit',
     };
     this.state = {
-      currentPage: PAGE_PROFILE,
+      currentPage: this.props.review ? PAGE_REVIEW : PAGE_PROFILE,
       profile: this.props.profile
     };
 
@@ -57,14 +57,14 @@ export default class Application extends React.Component {
       case PAGE_CHALLENGES:
         return <ChallengesPage profile={this.state.profile} setValue={this.setValue} />;
       case PAGE_REVIEW:
-        return <ReviewPage profile={this.state.profile} />
+        return <ReviewPage profile={this.state.profile} submitted={this.props.review} />
       default:
         return null;
     }
   }
 
   submit() {
-    this.props.submitApplication(this.state.profile);
+    this.props.submitApplication(this.props.applicationId);
   }
 
   saveProfile() {
@@ -143,11 +143,18 @@ export default class Application extends React.Component {
   }
 
   handleError(props) {
-    if (props.applicationsError && (Date.now() - props.applicationsLastAction < 1000))
-      return this.props.redirectHome();
-    if (props.applicationUpdated && (Date.now() - props.applicationsLastAction < 1000))
+    if ((Date.now() - props.lastAction) > 1000)
+      return;
+
+    if (props.applicationUpdateFailure)
+      return this.notification.show('Application Save Failed', props.error, 'error', 4000);
+    if (props.applicationUpdateSuccess)
       return this.notification.show('Application Saved', 'Application saved successfully', 'success', 3000);
-  }
+    if (props.applicationSubmitFailure)
+      return this.notification.show('Application Submit Failed', props.error, 'error', 4000);
+    if (props.applicationSubmitSuccess)
+      return this.props.redirectHome();
+    }
 
   componentWillReceiveProps(nextProps) {
     this.handleError(nextProps);
@@ -168,15 +175,18 @@ export default class Application extends React.Component {
         <Topbar application pages={this.pages} currentPage={this.symbolToPageIndex[this.state.currentPage]} />
         { this.getCurrentPage() }
 
-        <div className="button-section button-section-right">
-          <Button text="Save Application" onClick={ this.saveProfile } />
-          { !(this.state.currentPage === PAGE_PROFILE) &&
-              <Button text="Back" onClick={ this.back } /> }
-          { !(this.state.currentPage === PAGE_REVIEW) && 
-              <Button text="Continue" onClick={ this.continue } /> }
-          { (this.state.currentPage === PAGE_REVIEW) &&
-              <Button text="Submit Application" style="green" onClick={ this.submit } /> }
-        </div><br /><br /><br />
+        { !this.props.review && 
+          <div className="button-section button-section-right">
+            <Button text="Save Application" onClick={ this.saveProfile } loading={this.props.applicationUpdating} />
+            { !(this.state.currentPage === PAGE_PROFILE) &&
+                <Button text="Back" onClick={ this.back } /> }
+            { !(this.state.currentPage === PAGE_REVIEW) && 
+                <Button text="Continue" onClick={ this.continue } /> }
+            { (this.state.currentPage === PAGE_REVIEW) &&
+                <Button text="Submit Application" style="green" onClick={ this.submit } loading={this.props.applicationSubmitting}/> }
+          </div>
+        }
+        <br /><br /><br />
       </div>
     );
   }

@@ -13,11 +13,18 @@ export default class UserDashboard extends React.Component {
   }
 
   handleError(props) {
-    if (props.applicationsError && (Date.now() - props.applicationsLastAction < 1000))
-      return this.notification.show('Applications Error', props.applicationsError, 'error', 4000);
-    if (props.applicationCreated && (Date.now() - props.applicationsLastAction < 1000))
+    if ((Date.now() - props.applicationsLastAction) > 1000)
+      return;
+    
+    if (props.applicationCreateSuccess)
       return this.notification.show('Application Created', 'Application created successfully. You can now edit it.', 'success', 3000);
-  }
+    if (props.applicationCreateFailure)
+      return this.notification.show('Application Creation Failed', props.applicationsError, 'error', 4000);
+    if (props.applicationSubmitSuccess)
+      return this.notification.show('Application Submitted', 'Application submitted successfully', 'success', 3000);
+    if (props.applicationsError)
+      return this.notification.show('Applications Error', props.applicationsError, 'error', 4000);
+   }
 
   componentDidMount() {
     this.handleError(this.props);

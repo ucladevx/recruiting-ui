@@ -43,7 +43,7 @@ export default class CheckboxInput extends React.Component {
         <label htmlFor={this.props.name} className="input-title">{this.props.title}</label><br />
         { this.props.desc && <p className="input-info">{this.props.desc}</p> }
         
-        { (this.props.options && this.props.options.length)&&
+        { (this.props.options && this.props.options.length) &&
           <div className={`label-group${this.props.review ? ' review' : ''}`}>
           { this.props.options.map(option =>
             <label className="control-label" key={option}>

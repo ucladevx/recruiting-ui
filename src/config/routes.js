@@ -11,6 +11,8 @@ export default {
 		get: '/app/api/v1/application',
 		getOne: '/app/api/v1/application/',
 		create: '/app/api/v1/application/create',
-		update: '/app/api/v1/application/',
+		update: id => `/app/api/v1/application/${id}`,
+		submit: id => `/app/api/v1/application/${id}/submit`,
+		review: id => `/app/api/v1/application/${id}/review`,
 	}
 }

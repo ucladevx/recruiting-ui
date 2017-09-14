@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 
 import {Auth, LoginUser, LogoutUser} from './auth';
 import {Seasons, GetSeasons, DeleteSeason} from './seasons';
-import {Applications, GetApplications, GetApplication, CreateApplication, UpdateApplicationProfile} from './applications';
+import {Applications, GetApplications, GetApplication, CreateApplication, UpdateApplicationProfile, SubmitApplication, RejectApplication, AcceptApplication, ReviewApplication} from './applications';
 
 const history = createHistory();
 const routing = routerMiddleware(history);
@@ -23,7 +23,7 @@ const store = createStore(
 const Action = {
 	LoginUser, LogoutUser,
 	GetSeasons, DeleteSeason,
-	GetApplications, GetApplication, CreateApplication, UpdateApplicationProfile
+	GetApplications, GetApplication, CreateApplication, UpdateApplicationProfile, SubmitApplication, RejectApplication, ReviewApplication, AcceptApplication,
 };
 
 export {

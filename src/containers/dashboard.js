@@ -8,44 +8,19 @@ import DashboardComponent from 'components/Dashboard';
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.createApplication = this.createApplication.bind(this);
-  }
-
-  createApplication() {
-    // TODO: actually do something to create an application
-    // this.props.history.push('/application');
-    // this.props.
   }
 
   componentWillMount() {
     if (!this.props.authenticated)
       return this.props.logOut();
-    this.props.getApplications();
+    this.props.getApplications(this.props.admin);
     if (this.props.admin) {
       this.props.getSeasons();
     }
   }
 
   render() {
-    return <DashboardComponent
-             match={this.props.match}
-             admin={this.props.admin}
-             logOut={this.props.logOut}
-
-             deleteSeason={this.props.deleteSeason}
-             createApplication={this.props.createApplication} 
-
-             applications={this.props.applications}
-             applicationsError={this.props.applicationsError}
-             applicationsLastAction={this.props.applicationsLastAction}
-
-             seasons={this.props.seasons}
-             seasonsError={this.props.seasonsError}
-             seasonsLastAction={this.props.seasonsLastAction}
-
-             seasonDeleted={this.props.seasonDeleted} 
-             seasonCreated={this.props.seasonCreated}
-             applicationCreated={this.props.applicationCreated} />;
+    return <DashboardComponent {...this.props} />;
   }
 }
 
@@ -62,9 +37,23 @@ const mapStateToProps = state => {
     seasonsError: state.Seasons.get('error'),
     seasonsLastAction: state.Seasons.get('timestamp'),
 
-    seasonDeleted: state.Seasons.get('seasonDeleted'),
-    seasonCreated: state.Seasons.get('seasonCreated'),
-    applicationCreated: state.Applications.get('applicationCreated'),
+    seasonsGetting: state.Seasons.get('seasonsGetting'),
+    seasonsGetSuccess: state.Seasons.get('seasonsGetSuccess'),
+    seasonsGetFailure: state.Seasons.get('seasonsGetFailure'),
+
+    seasonDeleting: state.Seasons.get('seasonDeleting'),
+    seasonDeleteSuccess: state.Seasons.get('seasonDeleteSuccess'),
+    seasonDeleteFailure: state.Seasons.get('seasonDeleteFailure'),
+
+    applicationSubmitSuccess: state.Applications.get('applicationSubmitSuccess'),
+
+    applicationCreating: state.Applications.get('applicationCreating'),
+    applicationCreateSuccess: state.Applications.get('applicationCreateSuccess'),
+    applicationCreateFailure: state.Applications.get('applicationCreateFailure'),
+    
+    applicationReviewing: state.Applications.get('applicationReviewing'),
+    applicationReviewSuccess: state.Applications.get('applicationReviewSuccess'),
+    applicationReviewFailure: state.Applications.get('applicationReviewFailure'),
   };
 };
 
@@ -79,8 +68,17 @@ const mapDispatchToProps = dispatch => {
     createApplication: () => {
       dispatch(Action.CreateApplication());
     },
-    getApplications: () => {
-      dispatch(Action.GetApplications());
+    reviewApplication: (id, application) => {
+      dispatch(Action.ReviewApplication(id, application));
+    },
+    acceptApplication: (id, application) => {
+      dispatch(Action.AcceptApplication(id, application));
+    },
+    rejectApplication: (id, application) => {
+      dispatch(Action.RejectApplication(id, application));
+    },
+    getApplications: (extended) => {
+      dispatch(Action.GetApplications(extended));
     },
     getSeasons: () => {
       dispatch(Action.GetSeasons());

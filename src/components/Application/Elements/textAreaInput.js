@@ -24,6 +24,7 @@ export default class TextAreaInput extends React.Component {
     return (
       <div>
         <label htmlFor={this.props.name} className="input-title">{this.props.title}</label>
+        { !this.props.desc && <br /> }
         { this.props.desc && <p className="input-info">{this.props.desc}</p> }
         <textarea name={this.props.name} value={this.state.value} onChange={this.changeHandler.bind(this)}></textarea>
       </div>

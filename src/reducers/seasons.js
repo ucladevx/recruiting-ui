@@ -9,18 +9,51 @@ import { replace } from 'react-router-redux';
  ** Constants                                **
  *********************************************/
 
-const GET_SEASONS = Symbol();
-const PUT_SEASON = Symbol();
-const DELETE_SEASON = Symbol();
-const SEASONS_ERROR = Symbol();
+const GET_SEASONS_INIT = Symbol();
+const GET_SEASONS_SUCCESS = Symbol();
+const GET_SEASONS_FAILURE = Symbol();
+
+const PUT_SEASON_INIT = Symbol();
+const PUT_SEASON_SUCCESS = Symbol();
+const PUT_SEASON_FAILURE = Symbol();
+
+const DELETE_SEASON_INIT = Symbol();
+const DELETE_SEASON_SUCCESS = Symbol();
+const DELETE_SEASON_FAILURE = Symbol();
 
 const initState = () => {
 	return Immutable.fromJS({
 		error: null,
 		timestamp: null,
-    seasonDeleted: false,
 		seasons: [],
+
+		seasonsGetting: false,
+		seasonsGetSuccess: false,
+		seasonsGetFailure: false,
+
+		seasonPutting: false,
+		seasonPutSuccess: false,
+		seasonPutFailure: false,
+
+		seasonDeleting: false,
+		seasonDeleteSuccess: false,
+		seasonDeleteFailure: false,
 	});
+}
+
+const resetFlags = (val) => {
+	const flags = [
+		'seasonsGetting',
+		'seasonsGetSuccess',
+		'seasonsGetFailure',
+		'seasonPutting',
+		'seasonPutSuccess',
+		'seasonPutFailure',
+		'seasonDeleting',
+		'seasonDeleteSuccess',
+		'seasonDeleteFailure',
+	];
+	flags.forEach(flag => val.set(flag, false));
 }
 
 /**********************************************
@@ -28,16 +61,19 @@ const initState = () => {
  *********************************************/
 
 class State {
+	static InitAction(type) {
+		return { type };
+	}
 	static GetSeasons(error, seasons) {
 		return {
-			type    : error ? SEASONS_ERROR : GET_SEASONS,
+			type    : error ? GET_SEASONS_FAILURE : GET_SEASONS_SUCCESS,
       seasons : error ? [] : seasons,
 			error   : error || undefined,
 		};
 	}
   static DeleteSeason(error) {
     return {
-			type    : error ? SEASONS_ERROR : DELETE_SEASON,
+			type    : error ? DELETE_SEASON_FAILURE : DELETE_SEASON_SUCCESS,
 			error   : error || undefined,
 		};
   }
@@ -49,6 +85,8 @@ class State {
 
 const GetSeasons = () => {
 	return async (dispatch) => {
+		dispatch(State.InitAction(GET_SEASONS_INIT));
+
 		try {
 			const response = await fetch(Config.apiHost + Config.routes.season.get, {
 				method: 'GET',
@@ -82,6 +120,8 @@ const GetSeasons = () => {
 
 const DeleteSeason = (id) => {
 	return async (dispatch) => {
+		dispatch(State.InitAction(DELETE_SEASON_INIT));
+
 		try {
 			const response = await fetch(Config.apiHost + Config.routes.season.delete + id, {
 				method: 'DELETE',
@@ -114,24 +154,58 @@ const DeleteSeason = (id) => {
 
 const Seasons = (state=initState(), action) => {
 	switch (action.type) {
-		case GET_SEASONS:
+		/**
+		 * Init actions
+		 */
+		case GET_SEASONS_INIT:
 			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', null);
+				val.set('seasonsGetting', true);
+			});
+		case DELETE_SEASON_INIT:
+			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', null);
+				val.set('seasonDeleting', true);
+			});
+
+		/**
+		 * Failure actions
+		 */
+		case GET_SEASONS_FAILURE:
+			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', action.error);
+				val.set('timestamp', Date.now());
+				val.set('seasonsGetFailure', true);
+			});
+		case DELETE_SEASON_FAILURE:
+			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', action.error);
+				val.set('timestamp', Date.now());
+				val.set('seasonDeleteFailure', true);
+			});
+
+		/**
+		 * Success actions
+		 */
+		case GET_SEASONS_SUCCESS:
+			return state.withMutations(val => {
+				resetFlags(val);
 				val.set('error', null);
 				val.set('timestamp', Date.now());
 				val.set('seasons', action.seasons);
+				val.set('seasonsGetSuccess', true);
 			});
 
-		case DELETE_SEASON:
+		case DELETE_SEASON_SUCCESS:
 			return state.withMutations(val => {
 				val.set('error', null);
         val.set('seasonDeleted', true);
 				val.set('timestamp', Date.now());
-			});
-
-		case SEASONS_ERROR:
-			return state.withMutations(val => {
-				val.set('error', action.error);
-				val.set('timestamp', Date.now());
+				val.set('seasonDeleteSuccess', false);
 			});
 
 		default:

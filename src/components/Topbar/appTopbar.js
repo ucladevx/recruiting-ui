@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Topbar extends React.Component {
+export default class AppTopbar extends React.Component {
   constructor(props) {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);

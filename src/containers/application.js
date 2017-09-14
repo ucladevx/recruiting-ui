@@ -19,16 +19,11 @@ class Application extends React.Component {
 	}
 
 	render() { 
+		const isReview = this.props.match.path.startsWith("/review");
 		return <ApplicationComponent
-		         redirectHome={this.props.redirectHome}
-		         updateApplicationProfile={this.props.updateApplicationProfile}
-
-		         profile={this.props.profile}
+		         review={isReview}
 						 applicationId={this.props.match.params.id}
-						 applicationsError={this.props.applicationsError}
-						 applicationsLastAction={this.props.applicationsLastAction} 
-						 
-						 applicationUpdated={this.props.applicationUpdated} />;
+						 {...this.props} />;
 	}
 }
 
@@ -37,11 +32,17 @@ const mapStateToProps = state => {
 		admin: state.Auth.get('isAdmin'),
 		authenticated: state.Auth.get('authenticated'),
 		
+		error: state.Applications.get('error'),
 		profile: state.Applications.get('application').profile || {},
-		applicationsError: state.Applications.get('error'),
-		applicationsLastAction: state.Applications.get('timestamp'),
+		lastAction: state.Applications.get('timestamp'),
 
-		applicationUpdated: state.Applications.get('applicationUpdated')
+		applicationUpdating: state.Applications.get('applicationUpdating'),
+		applicationUpdateSuccess: state.Applications.get('applicationUpdateSuccess'),
+		applicationUpdateFailure: state.Applications.get('applicationUpdateFailure'),
+
+		applicationSubmitting: state.Applications.get('applicationSubmitting'),
+		applicationSubmitSuccess: state.Applications.get('applicationSubmitSuccess'),
+		applicationSubmitFailure: state.Applications.get('applicationSubmitFailure'),
 	};
 };
 
@@ -59,6 +60,9 @@ const mapDispatchToProps = dispatch => {
 		updateApplicationProfile: (id, profile) => {
 			dispatch(Action.UpdateApplicationProfile(id, profile));
 		},
+		submitApplication: (id) => {
+			dispatch(Action.SubmitApplication(id));
+		}
 	};
 };
 

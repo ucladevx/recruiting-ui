@@ -2,10 +2,9 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 
 import Topbar from 'components/Topbar';
-import Button from 'components/Button';
 
-import Applications from './applications';
-import Settings from './settings';
+import Applications from './Applications';
+import Settings from './Settings';
 
 export default class AdminDashboard extends React.Component {
   render() {

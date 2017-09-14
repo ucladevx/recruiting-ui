@@ -4,9 +4,9 @@ import Config from 'config';
 import Button from 'components/Button';
 import Topbar from 'components/Topbar';
 
-import TextInput from './elements/textInput';
-import SelectInput from './elements/selectInput';
-import CheckboxInput from './elements/checkboxInput';
+import TextInput from '../elements/textInput';
+import SelectInput from '../elements/selectInput';
+import CheckboxInput from '../elements/checkboxInput';
 
 export default class ProfilePage extends React.Component {
   constructor(props) {

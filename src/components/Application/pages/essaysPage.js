@@ -4,7 +4,7 @@ import Config from 'config';
 import Button from 'components/Button';
 import Topbar from 'components/Topbar';
 
-import TextAreaInput from './elements/textAreaInput';
+import TextAreaInput from '../elements/textAreaInput';
 
 export default class ProfilePage extends React.Component {
   constructor(props) {

@@ -1,3 +1,7 @@
+/************************************
+ MAIN DASHBOARD STYLES
+ ************************************/
+
 #content .card .card-item {
   margin: 8px 0px;
 }
@@ -53,7 +57,7 @@ table.app-list thead tr td {
   font-size: 1.2em;
   padding: 15px 20px;
   border-bottom: 3px solid #EAEAEA;
-  cursor: default;
+  cursor: default !important;
 }
 
 table.app-list.interactive thead tr:hover td {
@@ -102,4 +106,79 @@ table.app-list button.loading {
   table.app-list thead tr td {
     padding: 10px 15px;
   }
+}
+
+/************************************
+ ADMIN VIEW APPLICATION
+ ************************************/
+
+.view-application {
+  position: absolute;
+  width: 100%;
+  z-index: 13;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  display: none;
+  transition: 0.2s ease-in-out;
+  background-color: #F8F8F8;
+}
+
+.view-application .topbar {
+  top: -60px;
+  transition: 0.2s ease-in-out;  
+}
+
+.view-application #content {
+  margin-top: 120px;
+  transition: 0.2s ease-in-out;  
+}
+
+.view-application.showing {
+  display: block;
+  opacity: 1;
+}
+
+.view-application.showing .topbar {
+  top: 0px;
+}
+
+.view-application.showing #content {
+  margin-top: 60px;
+}
+
+.view-application hr {
+  border: none;
+  height: 1px;
+  background-color: #E2E2E2;
+}
+
+.button-section-right {
+  text-align: right;
+  float: right;
+}
+
+/************************************
+ RATING STYLES
+ ************************************/
+
+div.rating {
+  margin: 10px 0px 20px 0px;
+  width: max-content;
+  cursor: pointer;
+}
+
+div.rating i.fa-star {
+  color: #FDD835;
+  margin-right: 5px;
+}
+
+div.rating i.fa-star-o {
+  color: #CCCCCC;
+  margin-right: 5px;
+}
+
+div#profile-view-buttons button {
+  margin-left: 5px;
+  margin-right: 5px;
 }
