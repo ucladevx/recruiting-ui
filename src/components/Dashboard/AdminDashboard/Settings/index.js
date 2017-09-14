@@ -10,7 +10,6 @@ export default class Settings extends React.Component {
   }
 
   handleError(props) {
-    console.log(props);
     if ((Date.now() - props.seasonsLastAction) > 1000)
       return;
     if (props.seasonsGetFailure)

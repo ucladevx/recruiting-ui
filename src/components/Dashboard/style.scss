@@ -108,6 +108,29 @@ table.app-list button.loading {
   }
 }
 
+/***********************************
+ ADMIN STATS
+ ***********************************/
+
+.app-stats-container {
+  width: 100%;
+  max-height: 300px;
+  text-align: center;
+  padding-bottom: 40px;
+
+  .app-stats {
+    max-width: 300px;
+    width: 30%;
+    display: inline-block;
+  }
+
+  .app-stats-long{
+    width: 90%;
+    max-width: 900px;
+    display: inline-block;
+  }
+}
+
 /************************************
  ADMIN VIEW APPLICATION
  ************************************/

@@ -51,64 +51,6 @@ export default class UserDashboard extends React.Component {
             {applications.length > 0 && applications.map(application => 
               <ApplicationCard application={application} key={application.id} />
             )}
-            {/*<div className="card">
-              <h2>Winter 2017</h2>
-              <div className="card-item completed">
-                <div className="item-icon"><i className="fa fa-check"></i></div>
-                <div className="item-text">Profile completed</div>
-              </div>
-              <div className="card-item completed">
-                <div className="item-icon"><i className="fa fa-check"></i></div>
-                <div className="item-text">Challenges completed</div>
-              </div>
-              <div className="card-item completed">
-                <div className="item-icon"><i className="fa fa-check"></i></div>
-                <div className="item-text">Application submitted</div>
-              </div>
-              <div className="card-item in-progress">
-                <div className="item-icon"><i className="fa fa-warning"></i></div>
-                <div className="item-text">Feedback Received</div>
-              </div>
-              <div className="button-section">
-                <Button small text="View Feedback" />
-              </div>
-            </div>
-            <div className="card">
-              <h2>Spring 2017</h2>
-              <div className="card-item completed">
-                <div className="item-icon"><i className="fa fa-check"></i></div>
-                <div className="item-text">Profile completed</div>
-              </div>
-              <div className="card-item completed">
-                <div className="item-icon"><i className="fa fa-check"></i></div>
-                <div className="item-text">Challenges completed</div>
-              </div>
-              <div className="card-item completed">
-                <div className="item-icon"><i className="fa fa-check"></i></div>
-                <div className="item-text">Application submitted</div>
-              </div>
-              <div className="card-item completed">
-                <div className="item-icon"><i className="fa fa-thumbs-up"></i></div>
-                <div className="item-text">Accepted!</div>
-              </div>
-              <div className="button-section">
-                <Button small text="View Acceptance" />
-              </div>
-            </div>
-            <div className="card">
-              <h2>Fall 2017</h2>
-              <div className="card-item completed">
-                <div className="item-icon"><i className="fa fa-check"></i></div>
-                <div className="item-text">Profile completed</div>
-              </div>
-              <div className="card-item in-progress">
-                <div className="item-icon"><i className="fa fa-warning"></i></div>
-                <div className="item-text">3/5 Challenges completed</div>
-              </div>
-              <div className="button-section">
-                <Button small text="Continue Application" onClick={this.props.createApplication} />
-              </div>
-            </div>*/}
           </div>
         </div>
       </div>

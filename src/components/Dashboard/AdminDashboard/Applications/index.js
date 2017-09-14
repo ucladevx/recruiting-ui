@@ -1,4 +1,5 @@
 import React from 'react';
+import {Pie, Line, defaults} from 'react-chartjs-2';
 
 import Notification from 'components/Notification';
 import ViewApplication from './viewApplication';
@@ -51,6 +52,122 @@ export default class Applications extends React.Component {
     const acceptedApplications = this.props.applications.filter(a => a.status === 'ACCEPTED');
     const rejectedApplications = this.props.applications.filter(a => a.status === 'REJECTED');
 
+    const data = {
+      datasets: [{
+        data: [15, 12, 2, 1],
+        backgroundColor: ['#80D8FF', '#B9F6CA', '#FF9E80', '#FFE57F'],
+      }],
+      labels: [
+        'Male',
+        'Female',
+        'Non-binary',
+        'Other',
+      ]
+    };
+
+    const data2 = {
+      datasets: [{
+        data: [10, 15, 15, 5],
+        backgroundColor: ['#80D8FF', '#B9F6CA', '#FF9E80', '#FFE57F'],
+      }],
+      labels: [
+        'Freshman',
+        'Sophomore',
+        'Junior',
+        'Senior'
+      ]
+    };
+
+    const data3 = {
+      datasets: [{
+        data: [5, 10, 20, 5],
+        backgroundColor: ['#80D8FF', '#B9F6CA', '#FF9E80', '#FFE57F'],
+      }],
+      labels: [
+        'Full Stack',
+        'Frontend',
+        'Backend',
+        'Design',
+      ]
+    };
+
+    const data4 = {
+      labels: ['9/15', '9/16', '9/17', '9/18', '9/19', '9/20', '9/21'],
+      datasets: [{
+        label: 'Applications Submitted',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(75,192,192,0.4)',
+        borderColor: 'rgba(75,192,192,1)',
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgba(75,192,192,1)',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 2,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+        pointHoverBorderColor: 'rgba(75,192,192,1)',
+        pointHoverBorderWidth: 3,
+        pointRadius: 3,
+        pointHitRadius: 10,
+        data: [35, 23, 8, 16, 4, 6, 18],
+      }]
+    };
+
+    const options = {
+      title: {
+        display: true,
+        text: 'Gender',
+        fontFamily: '"Roboto"',
+      },
+      legend: {
+        display: false,
+        position: 'bottom',
+      },
+      responsive: true,
+    };
+
+    const options2 = {
+      title: {
+        display: true,
+        text: 'Year',
+        fontFamily: '"Roboto"',
+      },
+      legend: {
+        display: false,
+        position: 'bottom',
+      },
+      responsive: true,
+    };
+
+    const options3 = {
+      title: {
+        display: true,
+        text: 'Stack Preference',
+        fontFamily: '"Roboto"',
+      },
+      legend: {
+        display: false,
+        position: 'bottom',
+      },
+      responsive: true,
+    };
+
+    const options4 = {
+      title: {
+        display: true,
+        text: 'Applications Submitted',
+        fontFamily: '"Roboto"',
+      },
+      legend: {
+        display: false,
+        position: 'bottom',
+      },
+      responsive: true,
+    }
+
     return (
       <div id="content">
         <Notification ref={n => this.notification = n} />
@@ -62,6 +179,24 @@ export default class Applications extends React.Component {
           reviewApplication={this.props.reviewApplication}
           rejectApplication={this.props.rejectApplication}
           acceptApplication={this.props.acceptApplication} />
+
+        <h1>Application Statistics</h1>
+        <div className="app-stats-container">
+          <div className="app-stats">
+            <Pie data={data} options={options} height={300} />
+          </div>
+          <div className="app-stats">
+            <Pie data={data2} options={options2} height={300} />
+          </div>
+          <div className="app-stats">
+            <Pie data={data3} options={options3} height={300} />
+          </div>
+        </div>
+        <div className="app-stats-container">
+          <div className="app-stats-long">
+            <Line data={data4} options={options4} height={300} width={900}/>
+          </div>
+        </div>
 
         <ApplicationList
           title="Pending Applications"
