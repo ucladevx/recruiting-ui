@@ -23,6 +23,10 @@ export default class RecruitmentSeasons extends React.Component {
         {
 
         }
+        
+        {(!this.props.seasons || this.props.seasons.length === 0) && 
+          <p className="info">No seasons</p>
+        }
 
         { (this.props.seasons && this.props.seasons.length > 0) &&
           <table className="app-list">

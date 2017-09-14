@@ -46,11 +46,16 @@ export default class UserDashboard extends React.Component {
           <p>Nulla eu orci lobortis, fermentum neque et, interdum nisl. Cras interdum iaculis est, eu aliquet libero viverra nec. Donec venenatis, dui bibendum varius dapibus, felis lectus eleifend risus, sed elementum tortor odio a leo. Morbi nisl metus, luctus ut porta eget, lobortis at lacus. Cras varius quam ipsum, gravida vulputate urna auctor vitae. Nullam egestas cursus ipsum luctus efficitur. Donec at augue sapien. Mauris a dui lobortis, aliquet est ac, faucibus nibh. Etiam lobortis sem in nisi tincidunt luctus.</p>                    
           <Button text="Create Application" onClick={this.props.createApplication} />
 
-          <h1>Your Applications</h1>
           <div className="cards">
-            {applications.length > 0 && applications.map(application => 
-              <ApplicationCard application={application} key={application.id} />
-            )}
+            {(!applications || applications.length === 0) && 
+              <p className="info">No applications</p>
+            }
+            {(applications && applications.length > 0) && 
+              <div>
+                <h1>Your Applications</h1>
+                {applications.map(application => <ApplicationCard application={application} key={application.id} />)}
+              </div>
+            }
           </div>
         </div>
       </div>

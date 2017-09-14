@@ -180,38 +180,46 @@ export default class Applications extends React.Component {
           rejectApplication={this.props.rejectApplication}
           acceptApplication={this.props.acceptApplication} />
 
-        <h1>Application Statistics</h1>
-        <div className="app-stats-container">
-          <div className="app-stats">
-            <Pie data={data} options={options} height={300} />
-          </div>
-          <div className="app-stats">
-            <Pie data={data2} options={options2} height={300} />
-          </div>
-          <div className="app-stats">
-            <Pie data={data3} options={options3} height={300} />
-          </div>
-        </div>
-        <div className="app-stats-container">
-          <div className="app-stats-long">
-            <Line data={data4} options={options4} height={300} width={900}/>
-          </div>
-        </div>
+        {(!this.props.applications || this.props.applications.length === 0) && 
+          <p className="info">No applications</p>
+        }
 
-        <ApplicationList
-          title="Pending Applications"
-          applications={pendingApplications}
-          showApplication={this.showApplication} />
+        {(this.props.applications && this.props.applications.length > 0) && 
+          <div>
+            <h1>Application Statistics</h1>
+            <div className="app-stats-container">
+              <div className="app-stats">
+                <Pie data={data} options={options} height={300} />
+              </div>
+              <div className="app-stats">
+                <Pie data={data2} options={options2} height={300} />
+              </div>
+              <div className="app-stats">
+                <Pie data={data3} options={options3} height={300} />
+              </div>
+            </div>
+            <div className="app-stats-container">
+              <div className="app-stats-long">
+                <Line data={data4} options={options4} height={300} width={900}/>
+              </div>
+            </div>
 
-        <ApplicationList
-          title="Accepted Applications"
-          applications={acceptedApplications}
-          showApplication={this.showApplication} />
+            <ApplicationList
+              title="Pending Applications"
+              applications={pendingApplications}
+              showApplication={this.showApplication} />
 
-        <ApplicationList
-          title="Rejected Applications"
-          applications={rejectedApplications}
-          showApplication={this.showApplication} />        
+            <ApplicationList
+              title="Accepted Applications"
+              applications={acceptedApplications}
+              showApplication={this.showApplication} />
+
+            <ApplicationList
+              title="Rejected Applications"
+              applications={rejectedApplications}
+              showApplication={this.showApplication} />        
+          </div>
+        }
       </div>
     );
   }
