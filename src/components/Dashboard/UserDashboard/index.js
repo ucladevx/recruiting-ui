@@ -38,7 +38,7 @@ export default class UserDashboard extends React.Component {
     const applications = this.props.applications;
     return (
       <div>
-        <Topbar />
+        <Topbar logOut={this.props.logOut} />
         <div id="content">
           <Notification ref={n => this.notification = n} />
           <h1>Welcome to the DevX Recruitment Portal!</h1>

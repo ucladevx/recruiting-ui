@@ -3,7 +3,7 @@ import {routerReducer, routerMiddleware, push} from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import thunk from 'redux-thunk';
 
-import {Auth, LoginUser, LogoutUser} from './auth';
+import {Auth, LoginUser, LogoutUser, RegisterUser} from './auth';
 import {Seasons, GetSeasons, DeleteSeason} from './seasons';
 import {Applications, GetApplications, GetApplication, CreateApplication, UpdateApplicationProfile, SubmitApplication, RejectApplication, AcceptApplication, ReviewApplication} from './applications';
 
@@ -21,7 +21,7 @@ const store = createStore(
 );
 
 const Action = {
-	LoginUser, LogoutUser,
+	LoginUser, LogoutUser, RegisterUser,
 	GetSeasons, DeleteSeason,
 	GetApplications, GetApplication, CreateApplication, UpdateApplicationProfile, SubmitApplication, RejectApplication, ReviewApplication, AcceptApplication,
 };

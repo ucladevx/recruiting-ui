@@ -8,8 +8,14 @@ import { replace } from 'react-router-redux';
  ** Constants                                **
  *********************************************/
 
-const AUTH_USER = Symbol();
-const AUTH_ERROR = Symbol();
+const AUTH_INIT = Symbol();
+const AUTH_SUCCESS = Symbol();
+const AUTH_FAILURE = Symbol();
+
+const REGISTER_INIT = Symbol();
+const REGISTER_SUCCESS = Symbol();
+const REGISTER_FAILURE = Symbol();
+
 const UNAUTH_USER = Symbol();
 
 const initState = () => {
@@ -19,7 +25,27 @@ const initState = () => {
 		timestamp: null,
 		authenticated: !!token,
 		isAdmin: !!token && tokenIsAdmin(token),
+
+		authing: false,
+		authSuccess: false,
+		authFailure: false,
+
+		registering: false,
+		registerSuccess: false,
+		registerFailure: false,
 	});
+}
+
+const resetFlags = (val) => {
+	const flags = [
+		'authing',
+		'authSuccess',
+		'authFailure',
+		'registering',
+		'registerSuccess',
+		'registerFailure',
+	];
+	flags.forEach(flag => val.set(flag, false));
 }
 
 /**********************************************
@@ -42,10 +68,19 @@ const tokenIsAdmin = token => !!tokenGetClaims(token).admin;
  *********************************************/
 
 class State {
+	static InitAction(type) {
+		return { type };
+	}
 	static Auth(error, token) {
 		return {
-			type    : error ? AUTH_ERROR : AUTH_USER,
+			type    : error ? AUTH_FAILURE : AUTH_SUCCESS,
 			isAdmin : error ? undefined : tokenIsAdmin(token),
+			error   : error || undefined,
+		};
+	}
+	static Register(error) {
+		return {
+			type    : error ? REGISTER_FAILURE : REGISTER_SUCCESS,
 			error   : error || undefined,
 		};
 	}
@@ -62,6 +97,8 @@ class State {
 
 const LoginUser = (email, password) => {
 	return async (dispatch) => {
+		dispatch(State.InitAction(AUTH_INIT));
+
 		try {
 			const response = await fetch(Config.apiHost + Config.routes.auth.login, {
 				method: 'POST',
@@ -88,6 +125,35 @@ const LoginUser = (email, password) => {
 	};
 }
 
+const RegisterUser = (user) => {
+	return async (dispatch) => {
+		dispatch(State.InitAction(REGISTER_INIT));
+		
+		try {
+			const response = await fetch(Config.apiHost + Config.routes.auth.register, {
+				method: 'POST',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ user }),
+			});
+
+			const status = await response.status;
+			const data = await response.json();
+
+			if (!data)
+				throw new Error('Empty response from server');
+			if (data.error)
+				throw new Error(data.error.message);
+
+			dispatch(State.Register(null));
+		} catch (err) {
+			dispatch(State.Register(err.message));
+		}
+	};
+}
+
 const LogoutUser = (error) => {
 	return async (dispatch) => {
 		dispatch(State.UnAuth());
@@ -102,24 +168,63 @@ const LogoutUser = (error) => {
 
 const Auth = (state=initState(), action) => {
 	switch (action.type) {
-		case AUTH_USER:
+		/**
+		 * Init actions
+		 */
+		case AUTH_INIT:
 			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', null);
+				val.set('authing', true);
+			});
+		case REGISTER_INIT:
+			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', null);
+				val.set('registering', true);
+			});
+
+		/**
+		 * Failure actions
+		 */
+		case AUTH_FAILURE:
+			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', action.error);
+				val.set('timestamp', Date.now());
+				val.set('authFailure', true);
+			});
+		case REGISTER_FAILURE:
+			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', action.error);
+				val.set('timestamp', Date.now());
+				val.set('registerFailure', true);
+			});
+
+		/**
+		 * Success actions
+		 */
+		case AUTH_SUCCESS:
+			return state.withMutations(val => {
+				resetFlags(val);
 				val.set('error', null);
 				val.set('timestamp', Date.now());
 				val.set('authenticated', true);
+				val.set('authSuccess', true);
 				val.set('isAdmin', action.isAdmin);
 			});
-
+		case REGISTER_SUCCESS:
+			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', null);
+				val.set('timestamp', Date.now());
+				val.set('registerSuccess', true);
+			});
 		case UNAUTH_USER:
 			return state.withMutations(val => {
 				val.set('authenticated', false);
 				val.set('isAdmin', false);
-			});
-
-		case AUTH_ERROR:
-			return state.withMutations(val => {
-				val.set('error', action.error);
-				val.set('timestamp', Date.now());
 			});
 
 		default:
@@ -128,5 +233,5 @@ const Auth = (state=initState(), action) => {
 }
 
 export {
-	Auth, LoginUser, LogoutUser,
+	Auth, LoginUser, LogoutUser, RegisterUser
 }

@@ -40,7 +40,7 @@ export default class AppTopbar extends React.Component {
     for (let i = 0; i < this.props.pages.length; i++) {
       const page = this.props.pages[i];
       const className = `dot ${i === currentPage ? 'selected' : ''} ${i <= currentPage ? 'completed' : ''}`;
-      pages.push(<div className={className} key={`dot-${i}`}><p className="info">{page}</p></div>);
+      pages.push(<div className={className} key={`dot-${i}`}><p>{page}</p></div>);
       pages.push(<div className="bar" key={`bar-${i}`}><div className="bar-inner" id={`page-${i}`}></div></div>);
     }
     const className = `dot ${currentPage >= this.props.pages.length ? 'completed' : ''}`;

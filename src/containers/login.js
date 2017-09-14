@@ -19,10 +19,7 @@ class Login extends React.Component {
 	}
 
 	render() {
-		return <LoginComponent
-		         logIn={this.props.logIn}
-		         lastActionAt={this.props.timestamp}
-		         error={this.props.error} />;
+		return <LoginComponent {...this.props} />;
 	}
 }
 
@@ -31,6 +28,9 @@ const mapStateToProps = state => {
 		error: state.Auth.get('error'),
 		timestamp: state.Auth.get('timestamp'),
 		authenticated: state.Auth.get('authenticated'),
+
+		authing: state.Auth.get('authing'),
+		authFailure: state.Auth.get('authFailure'),
 	};
 };
 

@@ -14,6 +14,12 @@ export default class Topbar extends React.Component {
               <div className="navitem" onClick={this.props.logOut}>Logout</div>
             </div>
           }
+
+          { !this.props.admin &&
+            <div id="navigation">
+              <div className="navitem" onClick={this.props.logOut}>Logout</div>
+            </div>
+          }
         </div>
       </div>
     );

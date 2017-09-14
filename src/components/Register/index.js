@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
 import Config from 'config';
 
 import Button from 'components/Button';
@@ -10,27 +9,36 @@ export default class LoginComponent extends React.Component {
 		super(props);
 		this.user = {};
 		this.handleChange = this.handleChange.bind(this);
-		this.logIn = this.logIn.bind(this);
+		this.goBack = this.goBack.bind(this);
+		this.register = this.register.bind(this);
 	}
 
 	componentDidMount() {
-		document.title = "DevX | Login";
+		document.title = "DevX | Register";
 	}
 
 	handleChange(e) {
 		this.user[e.target.name] = e.target.value;
 	}
 
-	logIn(e) {
+	register(e) {
 		e.preventDefault();
-		this.props.logIn(this.user.email, this.user.password);
+		this.props.register(this.user);
+	}
+
+	goBack(e) {
+		e.preventDefault();
+		this.props.goBack();
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if ((Date.now() - nextProps.lastActionAt) > 1000)
 			return;
-		if (nextProps.authFailure)
-			return this.notification.show('Authentication Error', nextProps.error, 'error', 4000);
+
+		if (nextProps.registerFailure)
+			return this.notification.show('Registration Error', nextProps.error, 'error', 4000);
+		if (nextProps.registerSuccess)
+			return this.notification.show('Registration Successful', 'You may now log in.', 'success', 3000);
 	}
 
 	render() {
@@ -44,9 +52,11 @@ export default class LoginComponent extends React.Component {
 						<input type="text" name="email" onChange={this.handleChange} />
 						<label htmlFor="password">Password</label>
 						<input type="password" name="password" onChange={this.handleChange} />
+						<label htmlFor="password">Confirm Password</label>
+						<input type="password" name="confPassword" onChange={this.handleChange} />
 						<div id="button-container">
-							<Button text="Sign In" onClick={this.logIn} loading={this.props.authing} />
-							<NavLink to="/register"><Button text="Register" /></NavLink>
+							<Button text="Back" onClick={this.goBack} />
+							<Button text="Create Account" onClick={this.register} loading={this.props.registering} />
 						</div>
 					</form>
 				</div>

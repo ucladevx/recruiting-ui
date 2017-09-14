@@ -12,6 +12,7 @@ import {render} from 'react-dom';
 import {store, history} from 'reducers';
 
 import Login from 'containers/login'
+import Register from 'containers/register';
 import Dashboard from 'containers/dashboard';
 import Application from 'containers/application';
 import requireAuth from 'containers/requireAuth';
@@ -38,6 +39,7 @@ class App extends React.Component {
 				<ConnectedRouter onUpdate={() => window.scrollTo(0, 0)} history={history}>
 					<Switch>
 						<Route path="/login" component={Login} />
+						<Route path="/register" component={Register} />
 						<Route path="/dashboard" component={requireAuth(Dashboard)} />
 						<Route path="/review/:id" component={requireAuth(Application)} />
 						<Route path="/application/:id" component={requireAuth(Application)} />
