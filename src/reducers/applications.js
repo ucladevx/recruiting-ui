@@ -93,14 +93,14 @@ class State {
 	static GetApplications(error, applications) {
 		return {
 			type         : error ? GET_APPLICATIONS_FAILURE : GET_APPLICATIONS_SUCCESS,
-      applications : error ? [] : applications,
+			applications : error ? [] : applications,
 			error        : error || undefined,
 		};
 	}
 	static GetApplication(error, application) {
 		return {
 			type         : error ? GET_APPLICATION_FAILURE : GET_APPLICATION_SUCCESS,
-      application  : error ? {} : application,
+			application  : error ? {} : application,
 			error        : error || undefined,
 		};
 	}
@@ -145,7 +145,7 @@ const GetApplications = (extended) => {
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Storage.get('token')}`,
+					'Authorization': `Bearer ${Storage.get('token')}`,
 				},
 			});
 
@@ -177,7 +177,7 @@ const GetApplication = (id) => {
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Storage.get('token')}`,
+					'Authorization': `Bearer ${Storage.get('token')}`,
 				},
 			});
 
@@ -209,7 +209,7 @@ const CreateApplication = () => {
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Storage.get('token')}`,
+					'Authorization': `Bearer ${Storage.get('token')}`,
 				},
 			});
 
@@ -242,7 +242,7 @@ const UpdateApplicationProfile = (id, profile) => {
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Storage.get('token')}`,
+					'Authorization': `Bearer ${Storage.get('token')}`,
 				},
 				body: JSON.stringify({ profile })
 			});
@@ -275,7 +275,7 @@ const SubmitApplication = (id) => {
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Storage.get('token')}`,
+					'Authorization': `Bearer ${Storage.get('token')}`,
 				},
 				body: JSON.stringify()
 			});
@@ -308,7 +308,7 @@ const ReviewApplication = (id, application) => {
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Storage.get('token')}`,
+					'Authorization': `Bearer ${Storage.get('token')}`,
 				},
 				body: JSON.stringify({ application })
 			});
