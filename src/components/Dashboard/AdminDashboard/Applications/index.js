@@ -51,6 +51,7 @@ export default class Applications extends React.Component {
     const pendingApplications = this.props.applications.filter(a => a.status === 'SUBMITTED');
     const acceptedApplications = this.props.applications.filter(a => a.status === 'ACCEPTED');
     const rejectedApplications = this.props.applications.filter(a => a.status === 'REJECTED');
+    const applicationsAvailable = (pendingApplications.length > 0 || acceptedApplications.length > 0 || rejectedApplications.length > 0);
 
     const data = {
       datasets: [{
@@ -180,11 +181,11 @@ export default class Applications extends React.Component {
           rejectApplication={this.props.rejectApplication}
           acceptApplication={this.props.acceptApplication} />
 
-        {(!this.props.applications || this.props.applications.length === 0) && 
+        {!applicationsAvailable && 
           <p className="info">No applications</p>
         }
 
-        {(this.props.applications && this.props.applications.length > 0) && 
+        {applicationsAvailable && 
           <div>
             <h1>Application Statistics</h1>
             <div className="app-stats-container">
