@@ -15,9 +15,7 @@ export default class CodeInput extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.state.value) {
-      this.setState({ value: nextProps.originalValue || '' });
-    }
+    this.setState({ value: nextProps.originalValue || '' });
   }
 
   render() {

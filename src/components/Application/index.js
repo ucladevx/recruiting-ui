@@ -158,9 +158,11 @@ export default class Application extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.handleError(nextProps);
-    if (Object.keys(this.state.profile).length === 0) {
-      this.setState(prev => Object.assign({}, prev, { profile: nextProps.profile }));
-    }
+    this.setState(prev => {
+      const newState = Object.assign({}, prev);
+      newState.profile = nextProps.profile;
+      return newState;
+    });
   }
 
   componentDidMount() {

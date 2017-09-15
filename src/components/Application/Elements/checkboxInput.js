@@ -9,9 +9,7 @@ export default class CheckboxInput extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.state.checked.length) {
-      this.setState({ checked: nextProps.originalValue || [] });
-    }
+    this.setState({ checked: nextProps.originalValue || [] });
   }
 
   changeHandler(e) {
