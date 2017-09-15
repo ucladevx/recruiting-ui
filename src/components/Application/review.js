@@ -21,6 +21,13 @@ export default class ReviewApplication extends React.Component {
   render() {
     return (
       <div className="cards">
+        { (!this.props.admin && this.props.submitted && this.props.notes) &&
+          <div className="card card-wide profile-card">
+            <h1>Application Feedback</h1>
+            <p className="review">{this.props.notes}</p>
+        </div>
+        }
+
         { (!this.props.admin && !this.props.submitted) && 
           <div className="card card-wide profile-card">
             <h1>Review & Submit</h1>

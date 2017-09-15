@@ -33,6 +33,7 @@ const mapStateToProps = state => {
 		authenticated: state.Auth.get('authenticated'),
 		
 		error: state.Applications.get('error'),
+		application: state.Applications.get('application'),
 		profile: state.Applications.get('application').profile || {},
 		lastAction: state.Applications.get('timestamp'),
 

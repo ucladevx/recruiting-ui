@@ -57,7 +57,7 @@ export default class Application extends React.Component {
       case PAGE_CHALLENGES:
         return <ChallengesPage profile={this.state.profile} setValue={this.setValue} />;
       case PAGE_REVIEW:
-        return <ReviewPage profile={this.state.profile} submitted={this.props.review} />
+        return <ReviewPage profile={this.state.profile} notes={this.props.application.notes} submitted={this.props.review} />
       default:
         return null;
     }
@@ -186,7 +186,6 @@ export default class Application extends React.Component {
                 <Button text="Submit Application" style="green" onClick={ this.submit } loading={this.props.applicationSubmitting}/> }
           </div>
         }
-        <br /><br /><br />
       </div>
     );
   }

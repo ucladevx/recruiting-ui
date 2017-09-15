@@ -27,8 +27,8 @@ export default class ApplicationCard extends React.Component {
           <div className="item-text">Application {(inProgress || submitted) ? 'not reviewed' : 'reviewed'}</div>
         </div>
         <div className="button-section">
-          { rejected && <Button small text="View Feedback" /> }
-          { accepted && <Button small text="View Feedback" /> }
+          { rejected && <NavLink to={`/review/${id}`}><Button small text="View Feedback" /></NavLink> }
+          { accepted && <NavLink to={`/review/${id}`}><Button small text="View Feedback" /></NavLink> }
           { submitted && <NavLink to={`/review/${id}`}><Button small text="View Application" /></NavLink> }
           { inProgress && <NavLink to={`/application/${id}`}><Button small text="Continue Application" /></NavLink> }
         </div>
