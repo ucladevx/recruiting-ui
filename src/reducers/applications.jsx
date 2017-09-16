@@ -139,7 +139,7 @@ const GetApplications = () => {
 		dispatch(State.InitAction(GET_APPLICATIONS_INIT));
 
 		try {
-			const response = await fetch(url, Config.apiHost + Config.routes.application.get, {
+			const response = await fetch(Config.apiHost + Config.routes.application.get, {
 				method: 'GET',
 				headers: {
 					'Accept': 'application/json',

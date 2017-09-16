@@ -170,6 +170,14 @@ export default class Application extends React.Component {
 		this.handleError(this.props);
 	}
 
+	componentWillUnmount() {
+		this.setState(prev => {
+			const newState = Object.assign({}, prev);
+			newState.profile = {};
+			return newState;
+		})
+	}
+
 	render() {
 		return (
 			<div id="content">
