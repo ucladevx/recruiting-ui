@@ -11,17 +11,17 @@ class Application extends React.Component {
 	}
 
 	componentWillMount() {
-    if (!this.props.authenticated)
-      return this.props.logOut();
-    if (this.props.admin)
-      return this.props.redirectHome();
+		if (!this.props.authenticated)
+			return this.props.logOut();
+		if (this.props.admin)
+			return this.props.redirectHome();
 		this.props.getApplication(this.props.match.params.id);
 	}
 
-	render() { 
+	render() {
 		const isReview = this.props.match.path.startsWith("/review");
 		return <ApplicationComponent
-		         review={isReview}
+						 review={isReview}
 						 applicationId={this.props.match.params.id}
 						 {...this.props} />;
 	}
@@ -31,7 +31,7 @@ const mapStateToProps = state => {
 	return {
 		admin: state.Auth.get('isAdmin'),
 		authenticated: state.Auth.get('authenticated'),
-		
+
 		error: state.Applications.get('error'),
 		application: state.Applications.get('application'),
 		profile: state.Applications.get('application').profile || {},
@@ -49,15 +49,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-    logOut: () => {
-      dispatch(Action.LogoutUser());
-    },
-    redirectHome: () => {
-      dispatch(replace('/'));
-    },
-    getApplication: (id) => {
-      dispatch(Action.GetApplication(id));
-    },
+		logOut: () => {
+			dispatch(Action.LogoutUser());
+		},
+		redirectHome: () => {
+			dispatch(replace('/'));
+		},
+		getApplication: (id) => {
+			dispatch(Action.GetApplication(id));
+		},
 		updateApplicationProfile: (id, profile) => {
 			dispatch(Action.UpdateApplicationProfile(id, profile));
 		},

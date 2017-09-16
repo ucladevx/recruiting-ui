@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    main: 'main.js',
+    main: 'main.jsx',
   },
   output: {
     path: path.resolve(__dirname, 'lib'),
@@ -31,6 +31,7 @@ module.exports = {
   },
   resolve: {
     modules: [path.resolve(__dirname, "src"), "node_modules"],
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new webpack.DefinePlugin({

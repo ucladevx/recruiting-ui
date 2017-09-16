@@ -67,16 +67,16 @@ class State {
 	static GetSeasons(error, seasons) {
 		return {
 			type    : error ? GET_SEASONS_FAILURE : GET_SEASONS_SUCCESS,
-      seasons : error ? [] : seasons,
+			seasons : error ? [] : seasons,
 			error   : error || undefined,
 		};
 	}
-  static DeleteSeason(error) {
-    return {
+	static DeleteSeason(error) {
+		return {
 			type    : error ? DELETE_SEASON_FAILURE : DELETE_SEASON_SUCCESS,
 			error   : error || undefined,
 		};
-  }
+	}
 }
 
 /**********************************************
@@ -93,7 +93,7 @@ const GetSeasons = () => {
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Storage.get('token')}`,
+					'Authorization': `Bearer ${Storage.get('token')}`,
 				},
 			});
 
@@ -104,12 +104,12 @@ const GetSeasons = () => {
 				throw new Error('Empty response from server');
 			if (data.error)
 				throw new Error(data.error.message);
-      
-      const seasons = data.seasons.map(season => {
-        season.startDate = moment(season.startDate);
-        season.endDate = moment(season.endDate);
-        return season;
-      });
+
+			const seasons = data.seasons.map(season => {
+				season.startDate = moment(season.startDate);
+				season.endDate = moment(season.endDate);
+				return season;
+			});
 
 			dispatch(State.GetSeasons(null, seasons));
 		} catch (err) {
@@ -128,7 +128,7 @@ const DeleteSeason = (id) => {
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Storage.get('token')}`,
+					'Authorization': `Bearer ${Storage.get('token')}`,
 				},
 			});
 
@@ -141,7 +141,7 @@ const DeleteSeason = (id) => {
 				throw new Error(data.error.message);
 
 			dispatch(State.DeleteSeason());
-      dispatch(GetSeasons());
+			dispatch(GetSeasons());
 		} catch (err) {
 			dispatch(State.GetSeasons(err.message));
 		}
@@ -203,7 +203,7 @@ const Seasons = (state=initState(), action) => {
 		case DELETE_SEASON_SUCCESS:
 			return state.withMutations(val => {
 				val.set('error', null);
-        val.set('seasonDeleted', true);
+				val.set('seasonDeleted', true);
 				val.set('timestamp', Date.now());
 				val.set('seasonDeleteSuccess', false);
 			});

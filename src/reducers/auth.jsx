@@ -128,7 +128,7 @@ const LoginUser = (email, password) => {
 const RegisterUser = (user) => {
 	return async (dispatch) => {
 		dispatch(State.InitAction(REGISTER_INIT));
-		
+
 		try {
 			const response = await fetch(Config.apiHost + Config.routes.auth.register, {
 				method: 'POST',

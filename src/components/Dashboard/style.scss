@@ -3,45 +3,45 @@
  ************************************/
 
 #content .card .card-item {
-  margin: 8px 0px;
+	margin: 8px 0px;
 }
 
 #content .card .card-item .item-icon {
-  color: white;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  line-height: 18px;
-  text-align: center;
-  display: inline-block;
-  vertical-align: top;
+	color: white;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	line-height: 18px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: top;
 }
 
 #content .card .card-item .item-icon i {
-  font-size: 0.7em;
+	font-size: 0.7em;
 }
 
 #content .card .card-item .item-text {
-  display: inline-block;
-  line-height: 20px;
-  padding: 0px 5px;
+	display: inline-block;
+	line-height: 20px;
+	padding: 0px 5px;
 }
 
 #content .card .card-item.completed .item-icon { background-color: #43A047; }
 #content .card .card-item.in-progress .item-icon { background-color: #FB8C00; }
 
 #content .card .button-section {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
 }
 
 #content p.info {
-  text-align: center;
-  font-style: italic;
-  color: #999999;
-  font-size: 1.3em;
-  font-weight: 500;
+	text-align: center;
+	font-style: italic;
+	color: #999999;
+	font-size: 1.3em;
+	font-weight: 500;
 }
 
 /***********************************
@@ -49,71 +49,71 @@
  ***********************************/
 
 h1 span.app-count {
-  font-weight: 300;
+	font-weight: 300;
 }
 
 table.app-list {
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid #EAEAEA;
-  box-shadow: 0px 0px 3px #E2E2E2;
-  margin: 5px 0px 40px 0px;
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #EAEAEA;
+	box-shadow: 0px 0px 3px #E2E2E2;
+	margin: 5px 0px 40px 0px;
 }
 
 table.app-list thead tr td {
-  font-weight: 500;
-  font-size: 1.2em;
-  padding: 15px 20px;
-  border-bottom: 3px solid #EAEAEA;
-  cursor: default !important;
+	font-weight: 500;
+	font-size: 1.2em;
+	padding: 15px 20px;
+	border-bottom: 3px solid #EAEAEA;
+	cursor: default !important;
 }
 
 table.app-list.interactive thead tr:hover td {
-  background-color: white;
+	background-color: white;
 }
 
 table.app-list tr td {
-  padding: 15px 20px;
-  border-collapse: collapse;
-  background-color: white;
-  border-bottom: 1px solid #F2F2F2;
-  transition: background 0.2s;
+	padding: 15px 20px;
+	border-collapse: collapse;
+	background-color: white;
+	border-bottom: 1px solid #F2F2F2;
+	transition: background 0.2s;
 }
 
 table.app-list.interactive tr:hover td {
-  background-color: #F6F6F6;
-  cursor: pointer;
+	background-color: #F6F6F6;
+	cursor: pointer;
 }
 
 table.app-list i.fa-star {
-  color: #FDD835;
+	color: #FDD835;
 }
 
 table.app-list i.fa-star-o {
-  color: #CCCCCC;
+	color: #CCCCCC;
 }
 
 table.app-list button {
-  height: 36px;
-  width: 36px;
-  padding: 0px;
-  margin: 0px 5px;
+	height: 36px;
+	width: 36px;
+	padding: 0px;
+	margin: 0px 5px;
 }
 
 table.app-list button:hover {
-  margin-top: 2px;
-  margin-bottom: -2px;
+	margin-top: 2px;
+	margin-bottom: -2px;
 }
 
 table.app-list button.loading {
-  margin: 0px;
+	margin: 0px;
 }
 
 @media (max-width: 800px) {
-  table.app-list tr td,
-  table.app-list thead tr td {
-    padding: 10px 15px;
-  }
+	table.app-list tr td,
+	table.app-list thead tr td {
+		padding: 10px 15px;
+	}
 }
 
 /***********************************
@@ -121,22 +121,22 @@ table.app-list button.loading {
  ***********************************/
 
 .app-stats-container {
-  width: 100%;
-  max-height: 300px;
-  text-align: center;
-  padding-bottom: 40px;
+	width: 100%;
+	max-height: 300px;
+	text-align: center;
+	padding-bottom: 40px;
 
-  .app-stats {
-    max-width: 300px;
-    width: 30%;
-    display: inline-block;
-  }
+	.app-stats {
+		max-width: 300px;
+		width: 30%;
+		display: inline-block;
+	}
 
-  .app-stats-long{
-    width: 90%;
-    max-width: 900px;
-    display: inline-block;
-  }
+	.app-stats-long{
+		width: 90%;
+		max-width: 900px;
+		display: inline-block;
+	}
 }
 
 /************************************
@@ -144,49 +144,49 @@ table.app-list button.loading {
  ************************************/
 
 .view-application {
-  position: absolute;
-  width: 100%;
-  z-index: 13;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  display: none;
-  transition: 0.2s ease-in-out;
-  background-color: #F8F8F8;
+	position: absolute;
+	width: 100%;
+	z-index: 13;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	display: none;
+	transition: 0.2s ease-in-out;
+	background-color: #F8F8F8;
 }
 
 .view-application .topbar {
-  top: -60px;
-  transition: 0.2s ease-in-out;  
+	top: -60px;
+	transition: 0.2s ease-in-out;
 }
 
 .view-application #content {
-  margin-top: 120px;
-  transition: 0.2s ease-in-out;  
+	margin-top: 120px;
+	transition: 0.2s ease-in-out;
 }
 
 .view-application.showing {
-  display: block;
-  opacity: 1;
+	display: block;
+	opacity: 1;
 }
 
 .view-application.showing .topbar {
-  top: 0px;
+	top: 0px;
 }
 
 .view-application.showing #content {
-  margin-top: 60px;
+	margin-top: 60px;
 }
 
 .view-application hr {
-  border: none;
-  height: 1px;
-  background-color: #E2E2E2;
+	border: none;
+	height: 1px;
+	background-color: #E2E2E2;
 }
 
 .button-section-right {
-  text-align: right;
-  float: right;
+	text-align: right;
+	float: right;
 }
 
 /************************************
@@ -194,22 +194,22 @@ table.app-list button.loading {
  ************************************/
 
 div.rating {
-  margin: 10px 0px 20px 0px;
-  width: max-content;
-  cursor: pointer;
+	margin: 10px 0px 20px 0px;
+	width: max-content;
+	cursor: pointer;
 }
 
 div.rating i.fa-star {
-  color: #FDD835;
-  margin-right: 5px;
+	color: #FDD835;
+	margin-right: 5px;
 }
 
 div.rating i.fa-star-o {
-  color: #CCCCCC;
-  margin-right: 5px;
+	color: #CCCCCC;
+	margin-right: 5px;
 }
 
 div#profile-view-buttons button {
-  margin-left: 5px;
-  margin-right: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 }

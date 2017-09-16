@@ -1,32 +1,32 @@
 #auth-container {
-  width: 300px;
-  margin: 50px auto;
-  box-shadow: 0px 0px 18px #CCCCCC;
-  border-radius: 3px;
-  background-color: white;
+	width: 300px;
+	margin: 50px auto;
+	box-shadow: 0px 0px 18px #CCCCCC;
+	border-radius: 3px;
+	background-color: white;
 
-  #splash {
-    width: 300px;
-    height: 300px;
-    margin: auto;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    background: url('/images/logo.png');
-    background-size: cover;
-  }
+	#splash {
+		width: 300px;
+		height: 300px;
+		margin: auto;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		background: url('/images/logo.png');
+		background-size: cover;
+	}
 
-  form {
-    padding: 20px;
+	form {
+		padding: 20px;
 
-    label {
-      font-weight: 500;
-      font-size: 0.7em;
-      color: #848484;
-    }
-  }
+		label {
+			font-weight: 500;
+			font-size: 0.7em;
+			color: #848484;
+		}
+	}
 
-  #button-container {
-    text-align: center;
-    vertical-align: top;  
-  }
+	#button-container {
+		text-align: center;
+		vertical-align: top;
+	}
 }

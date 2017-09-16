@@ -1,45 +1,45 @@
 .notification {
-  position: fixed;
-  z-index: 15;
-  bottom: 30px;
-  left: -300px;
-  opacity: 0;
+	position: fixed;
+	z-index: 15;
+	bottom: 30px;
+	left: -300px;
+	opacity: 0;
 
-  padding: 20px;
-  width: 250px;
-  border-radius: 3px;
-  box-shadow: 0px 0px 9px #DDDDDD;
-  background-color: #FFFFFF;
-  border: 1px solid #E0E0E0;
-  transition: left 0.2s, opacity 0.3s, height 0.2s;
+	padding: 20px;
+	width: 250px;
+	border-radius: 3px;
+	box-shadow: 0px 0px 9px #DDDDDD;
+	background-color: #FFFFFF;
+	border: 1px solid #E0E0E0;
+	transition: left 0.2s, opacity 0.3s, height 0.2s;
 
-  &.notification-error {
-    background-color: #FFCDD2;
-    border: 1px solid #EF9A9A;
-  }
+	&.notification-error {
+		background-color: #FFCDD2;
+		border: 1px solid #EF9A9A;
+	}
 
-  &.notification-warn {
-    background-color: #FFECB3;
-    border: 1px solid #FFE082;
-  }
+	&.notification-warn {
+		background-color: #FFECB3;
+		border: 1px solid #FFE082;
+	}
 
-  &.notification-success {
-    background-color: #C8E6C9;
-    border: 1px solid #A5D6A7;
-  }
+	&.notification-success {
+		background-color: #C8E6C9;
+		border: 1px solid #A5D6A7;
+	}
 
-  &.showing {
-    left: 30px;
-    opacity: 1.0;
-  }
+	&.showing {
+		left: 30px;
+		opacity: 1.0;
+	}
 
-  span.notification-title {
-    font-size: 1.1em;
-    font-weight: 500;
-  }
+	span.notification-title {
+		font-size: 1.1em;
+		font-weight: 500;
+	}
 
-  p.notification-text {
-    padding: 5px 0px;
-    margin: 0px;
-  }
+	p.notification-text {
+		padding: 5px 0px;
+		margin: 0px;
+	}
 }

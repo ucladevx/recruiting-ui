@@ -16,11 +16,11 @@ class Register extends React.Component {
 	}
 
 	componentWillMount() {
-    if (this.props.authenticated)
-      return this.props.redirectHome();
+		if (this.props.authenticated)
+			return this.props.redirectHome();
 	}
 
-	render() { 
+	render() {
 		return <RegisterComponent goBack={this.goBack} {...this.props} />;
 	}
 }
@@ -39,8 +39,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-    redirectHome: () => {
-      dispatch(replace('/'));
+		redirectHome: () => {
+			dispatch(replace('/'));
 		},
 		register: (user) => {
 			dispatch(Action.RegisterUser(user));

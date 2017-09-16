@@ -17,15 +17,15 @@ import Dashboard from 'containers/dashboard';
 import Application from 'containers/application';
 import requireAuth from 'containers/requireAuth';
 
-/** 
+/**
  * WARNING: begin hack
  */
 
 Number.prototype.map = function(fn) {
-  const results = [];
-  for (let i = 0; i < this.valueOf(); i++)
-    results.push(fn(i + 1));
-  return results;
+	const results = [];
+	for (let i = 0; i < this.valueOf(); i++)
+		results.push(fn(i + 1));
+	return results;
 }
 
 /**

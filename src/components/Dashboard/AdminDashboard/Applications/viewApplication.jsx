@@ -13,7 +13,7 @@ export default class ViewApplication extends React.Component {
 			notes: '',
 			rating: 0,
 		};
-		
+
 		this.setValue = this.setValue.bind(this);
 		this.reviewApplication = this.reviewApplication.bind(this);
 		this.rejectApplication = this.rejectApplication.bind(this);

@@ -42,7 +42,7 @@ const initState = () => {
 		applicationGetting: false,
 		applicationGetSuccess: false,
 		applicationGetFailure: false,
-		
+
 		applicationCreating: false,
 		applicationCreateSuccess: false,
 		applicationCreateFailure: false,
@@ -63,20 +63,20 @@ const initState = () => {
 
 const resetFlags = val => {
 	const flags = [
-		'applicationGetting', 
-		'applicationGetSuccess', 
-		'applicationGetFailure', 
-		'applicationCreating', 
-		'applicationCreateSuccess', 
-		'applicationCreateFailure', 
-		'applicationUpdating', 
-		'applicationUpdateSuccess', 
-		'applicationUpdateFailure', 
-		'applicationReviewing', 
-		'applicationReviewSuccess', 
-		'applicationReviewFailure', 
-		'applicationSubmitting', 
-		'applicationSubmitSuccess', 
+		'applicationGetting',
+		'applicationGetSuccess',
+		'applicationGetFailure',
+		'applicationCreating',
+		'applicationCreateSuccess',
+		'applicationCreateFailure',
+		'applicationUpdating',
+		'applicationUpdateSuccess',
+		'applicationUpdateFailure',
+		'applicationReviewing',
+		'applicationReviewSuccess',
+		'applicationReviewFailure',
+		'applicationSubmitting',
+		'applicationSubmitSuccess',
 		'applicationSubmitFailure'
 	];
 	flags.forEach(flag => val.set(flag, false));
@@ -134,13 +134,12 @@ class State {
  ** Actions                                  **
  *********************************************/
 
-const GetApplications = (extended) => {
+const GetApplications = () => {
 	return async (dispatch) => {
 		dispatch(State.InitAction(GET_APPLICATIONS_INIT));
 
-		const url = `${Config.apiHost}${Config.routes.application.get}${extended ? '?extended=true' : ''}`
 		try {
-			const response = await fetch(url, {
+			const response = await fetch(url, Config.apiHost + Config.routes.application.get, {
 				method: 'GET',
 				headers: {
 					'Accept': 'application/json',
@@ -170,7 +169,7 @@ const GetApplications = (extended) => {
 const GetApplication = (id) => {
 	return async (dispatch) => {
 		dispatch(State.InitAction(GET_APPLICATION_INIT));
-		
+
 		try {
 			const response = await fetch(Config.apiHost + Config.routes.application.getOne + id, {
 				method: 'GET',
@@ -202,7 +201,7 @@ const GetApplication = (id) => {
 const CreateApplication = () => {
 	return async (dispatch) => {
 		dispatch(State.InitAction(CREATE_APPLICATION_INIT));
-		
+
 		try {
 			const response = await fetch(Config.apiHost + Config.routes.application.create, {
 				method: 'POST',
@@ -235,7 +234,7 @@ const CreateApplication = () => {
 const UpdateApplicationProfile = (id, profile) => {
 	return async (dispatch) => {
 		dispatch(State.InitAction(UPDATE_APPLICATION_INIT));
-		
+
 		try {
 			const response = await fetch(Config.apiHost + Config.routes.application.update(id), {
 				method: 'PUT',
@@ -268,7 +267,7 @@ const UpdateApplicationProfile = (id, profile) => {
 const SubmitApplication = (id) => {
 	return async (dispatch) => {
 		dispatch(State.InitAction(SUBMIT_APPLICATION_INIT));
-		
+
 		try {
 			const response = await fetch(Config.apiHost + Config.routes.application.submit(id), {
 				method: 'POST',
@@ -301,7 +300,7 @@ const SubmitApplication = (id) => {
 const ReviewApplication = (id, application) => {
 	return async (dispatch) => {
 		dispatch(State.InitAction(REVIEW_APPLICATION_INIT));
-		
+
 		try {
 			const response = await fetch(Config.apiHost + Config.routes.application.review(id), {
 				method: 'POST',
@@ -325,7 +324,7 @@ const ReviewApplication = (id, application) => {
 				throw new Error(data.error.message);
 
 			dispatch(State.ReviewApplication(null));
-			dispatch(GetApplications(true));
+			dispatch(GetApplications());
 		} catch (err) {
 			dispatch(State.ReviewApplication(err.message));
 		}
@@ -382,7 +381,7 @@ const Applications = (state=initState(), action) => {
 				val.set('error', null);
 				val.set('applicationReviewing', true);
 			});
-		
+
 		/**
 		 * Failure actions
 		 */
@@ -470,7 +469,7 @@ const Applications = (state=initState(), action) => {
 				val.set('timestamp', Date.now());
 				val.set('applicationReviewSuccess', true);
 			})
-	
+
 		/**
 		 * Fall through for actions not related to applications
 		 */

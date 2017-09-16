@@ -6,52 +6,52 @@ form.app-form input[type=text],
 form.app-form input[type=password],
 form.app-form textarea,
 form.app-form select {
-  max-width: 300px;
-  margin: 5px 0px 15px 0px;
+	max-width: 300px;
+	margin: 5px 0px 15px 0px;
 }
 
 form.app-form textarea {
-  max-width: 500px;
-  min-height: 250px;
-  margin-bottom: 20px;
+	max-width: 500px;
+	min-height: 250px;
+	margin-bottom: 20px;
 }
 
 form.app-form label.input-title {
-  font-weight: 400;
-  font-size: 1.2em;
-  color: #333333;
+	font-weight: 400;
+	font-size: 1.2em;
+	color: #333333;
 }
 
 form.app-form p.input-info {
-  margin: 0px;
-  padding: 0px 0px 5px 0px !important;
-  font-size: 0.8em !important;
-  color: #888888;
+	margin: 0px;
+	padding: 0px 0px 5px 0px !important;
+	font-size: 0.8em !important;
+	color: #888888;
 }
 
 form.app-form textarea.monospace-text {
-  font-family: 'Roboto Monospace', 'Hack', 'Consolas', 'Courier', monospace;
-  font-size: 0.8em !important;
-  max-width: 600px;
-  min-height: 300px;
+	font-family: 'Roboto Monospace', 'Hack', 'Consolas', 'Courier', monospace;
+	font-size: 0.8em !important;
+	max-width: 600px;
+	min-height: 300px;
 }
 
 form.app-form span.required-field {
-  color: #D32F2F;
+	color: #D32F2F;
 }
 
 pre.code-example {
-  background-color: #F2F2F2;
-  padding: 20px;
-  box-sizing: border-box;
-  font-family: 'Roboto Monospace', 'Hack', 'Consolas', 'Courier', monospace;
-  width: 100%;
-  max-width: 600px;
+	background-color: #F2F2F2;
+	padding: 20px;
+	box-sizing: border-box;
+	font-family: 'Roboto Monospace', 'Hack', 'Consolas', 'Courier', monospace;
+	width: 100%;
+	max-width: 600px;
 }
 
 #content .button-section-right {
-  text-align: right;
-  float: right;
+	text-align: right;
+	float: right;
 }
 
 /***********************************
@@ -59,18 +59,18 @@ pre.code-example {
  ***********************************/
 
 p.review, ul.review {
-  color: #666666;
-  font-size: 0.8em;
-  padding: 0;
-  margin: 0;
-  white-space: pre-wrap;
+	color: #666666;
+	font-size: 0.8em;
+	padding: 0;
+	margin: 0;
+	white-space: pre-wrap;
 }
 
 form.app-form div.label-group.review {
-  margin-top: 5px;
+	margin-top: 5px;
 }
 
 form.app-form div.label-group.review label.control-label {
-  cursor: default;
-  color: #666666;  
+	cursor: default;
+	color: #666666;
 }
