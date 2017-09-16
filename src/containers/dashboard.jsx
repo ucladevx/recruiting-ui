@@ -13,14 +13,18 @@ class Dashboard extends React.Component {
 	componentWillMount() {
 		if (!this.props.authenticated)
 			return this.props.logOut();
-		this.props.getApplications();
-		if (this.props.admin) {
+		if (this.props.admin)
 			this.props.getSeasons();
-		}
+
+		if (this.props.match.params.id)
+			this.props.getApplication(this.props.match.params.id);
+		else
+			this.props.getApplications();
 	}
 
 	render() {
-		return <DashboardComponent {...this.props} />;
+		const isReview = this.props.match.path.startsWith("/review");
+		return <DashboardComponent {...this.props} review={isReview} />;
 	}
 }
 
@@ -79,6 +83,7 @@ const mapDispatchToProps = dispatch => {
 			dispatch(Action.RejectApplication(id, application));
 		},
 		getApplication: (id) => {
+			console.log("blah");
 			dispatch(Action.GetApplication(id));
 		},
 		getApplications: () => {

@@ -15,11 +15,12 @@ class Application extends React.Component {
 			return this.props.logOut();
 		if (this.props.admin)
 			return this.props.redirectHome();
-		this.props.getApplication(this.props.match.params.id);
+		if (this.props.match.params.id)
+			this.props.getApplication(this.props.match.params.id);
 	}
 
 	render() {
-		const isReview = this.props.match.path.startsWith("/review");
+		const isReview = this.props.match.path.startsWith("/view");
 		return <ApplicationComponent
 						 review={isReview}
 						 applicationId={this.props.match.params.id}

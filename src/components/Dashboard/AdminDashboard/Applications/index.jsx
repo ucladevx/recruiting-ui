@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment';
 
 import Notification from 'components/Notification';
-import ViewApplication from './viewApplication';
 import ApplicationList from './applicationList';
 import PieChart from './pieChart';
 import LineChart from './lineChart';
@@ -10,29 +9,7 @@ import LineChart from './lineChart';
 export default class Applications extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			showing: false,
-			application: {},
-		};
-
-		this.showApplication = this.showApplication.bind(this);
-		this.hideApplication = this.hideApplication.bind(this);
 		this.handleError = this.handleError.bind(this);
-	}
-
-	showApplication(application) {
-		const top  = window.pageYOffset || document.documentElement.scrollTop,
-					left = window.pageXOffset || document.documentElement.scrollLeft;
-		this.setState({
-			showing: true,
-			application: application,
-			scrollPos: { top, left },
-		});
-	}
-
-	hideApplication() {
-		window.scrollTo(this.state.scrollPos.left, this.state.scrollPos.top);
-		this.setState({ showing: false });
 	}
 
 	handleError(props) {
@@ -41,8 +18,6 @@ export default class Applications extends React.Component {
 
 		if (props.applicationsError)
 			return this.notification.show('Application Error', props.applicationsError, 'error', 4000);
-		if (props.applicationReviewSuccess)
-			return this.notification.show('Application Updated', 'Application updated successfully', 'success', 3000);
 	}
 
 	componentDidMount() {
@@ -107,14 +82,6 @@ export default class Applications extends React.Component {
 			<div id="content">
 				<Notification ref={n => this.notification = n} />
 
-				<ViewApplication
-					showing={this.state.showing}
-					application={this.state.application}
-					hideApplication={this.hideApplication}
-					reviewApplication={this.props.reviewApplication}
-					rejectApplication={this.props.rejectApplication}
-					acceptApplication={this.props.acceptApplication} />
-
 				{!hasApplications && <p className="info">No applications</p>}
 
 				{hasApplications &&
@@ -131,18 +98,18 @@ export default class Applications extends React.Component {
 
 						<ApplicationList
 							title="Pending Applications"
-							applications={pendingApplications}
-							showApplication={this.showApplication} />
+							history={this.props.history}
+							applications={pendingApplications} />
 
 						<ApplicationList
 							title="Accepted Applications"
-							applications={acceptedApplications}
-							showApplication={this.showApplication} />
+							history={this.props.history}
+							applications={acceptedApplications} />
 
 						<ApplicationList
 							title="Rejected Applications"
-							applications={rejectedApplications}
-							showApplication={this.showApplication} />
+							history={this.props.history}
+							applications={rejectedApplications} />
 					</div>
 				}
 			</div>

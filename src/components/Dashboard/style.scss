@@ -144,38 +144,7 @@ table.app-list button.loading {
  ************************************/
 
 .view-application {
-	position: absolute;
-	width: 100%;
-	z-index: 13;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	display: none;
-	transition: 0.2s ease-in-out;
-	background-color: #F8F8F8;
-}
 
-.view-application .topbar {
-	top: -60px;
-	transition: 0.2s ease-in-out;
-}
-
-.view-application #content {
-	margin-top: 120px;
-	transition: 0.2s ease-in-out;
-}
-
-.view-application.showing {
-	display: block;
-	opacity: 1;
-}
-
-.view-application.showing .topbar {
-	top: 0px;
-}
-
-.view-application.showing #content {
-	margin-top: 60px;
 }
 
 .view-application hr {

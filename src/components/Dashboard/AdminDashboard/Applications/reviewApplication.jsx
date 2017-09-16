@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from 'components/Button';
+import Notification from 'components/Notification';
 import ReviewTopbar from 'components/Topbar/reviewTopbar';
 import ReviewApplication from 'components/Application/review';
 import TextAreaInput from 'components/Application/elements/textAreaInput';
@@ -10,11 +11,13 @@ export default class ViewApplication extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			notes: '',
-			rating: 0,
+			notes: this.props.application.notes || '',
+			rating: this.props.application.rating || 0,
 		};
 
 		this.setValue = this.setValue.bind(this);
+		this.handleError = this.handleError.bind(this);
+		this.hideApplication = this.hideApplication.bind(this);
 		this.reviewApplication = this.reviewApplication.bind(this);
 		this.rejectApplication = this.rejectApplication.bind(this);
 		this.acceptApplication = this.acceptApplication.bind(this);
@@ -41,6 +44,11 @@ export default class ViewApplication extends React.Component {
 		});
 	}
 
+	hideApplication(e) {
+		e.preventDefault();
+		this.props.history.goBack();
+	}
+
 	setValue(name, value) {
 		this.setState(prev => {
 			const newState = Object.assign({}, prev);
@@ -49,14 +57,27 @@ export default class ViewApplication extends React.Component {
 		})
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.showing) {
-			setTimeout(() => window.scrollTo(0, 0), 100);
-		}
+	handleError(props) {
+		if ((Date.now() - props.applicationsLastAction) > 1000)
+			return;
 
-		this.setState({
-			notes: nextProps.application.notes || '',
-			rating: nextProps.application.rating || 0,
+		if (props.applicationsError)
+			return this.notification.show('Application Error', props.applicationsError, 'error', 4000);
+		if (props.applicationReviewSuccess)
+			return this.notification.show('Application Updated', 'Application updated successfully', 'success', 3000);
+	}
+
+	componentDidMount() {
+		this.handleError(this.props);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.handleError(nextProps);
+		this.setState(prev => {
+			const newState = Object.assign({}, prev);
+			newState.notes = nextProps.application.notes;
+			newState.rating = nextProps.application.rating;
+			return newState;
 		});
 	}
 
@@ -66,9 +87,10 @@ export default class ViewApplication extends React.Component {
 			application = { profile:{} };
 
 		return (
-			<div className={`view-application ${ this.props.showing ? 'showing' : ''}`}>
-				<ReviewTopbar name={application.profile.firstName + ' ' + application.profile.lastName} closeHandler={this.props.hideApplication}/>
+			<div className="view-application">
+				<ReviewTopbar name={application.profile.firstName + ' ' + application.profile.lastName} closeHandler={this.hideApplication}/>
 				<div id="content">
+					<Notification ref={n => this.notification = n} />
 					<ReviewApplication admin profile={application.profile} />
 					<hr />
 					<div className="cards">
@@ -83,10 +105,10 @@ export default class ViewApplication extends React.Component {
 					</div>
 					<div className="button-section button-section-right" id="profile-view-buttons">
 						<Button text="Save" onClick={this.reviewApplication} />
-						<Button text="Discard" onClick={this.props.hideApplication} />
+						<Button text="Discard" onClick={this.hideApplication} />
 						<Button text="Reject" style="red" onClick={this.rejectApplication} />
 						<Button text="Accept" style="green" onClick={this.acceptApplication} />
-					</div><br /><br /><br />
+					</div>
 				</div>
 			</div>
 		);

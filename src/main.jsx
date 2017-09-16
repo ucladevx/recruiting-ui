@@ -41,7 +41,8 @@ class App extends React.Component {
 						<Route path="/login" component={Login} />
 						<Route path="/register" component={Register} />
 						<Route path="/dashboard" component={requireAuth(Dashboard)} />
-						<Route path="/review/:id" component={requireAuth(Application)} />
+						<Route path="/review/:id" component={requireAuth(Dashboard)} />
+						<Route path="/view/:id" component={requireAuth(Application)} />
 						<Route path="/application/:id" component={requireAuth(Application)} />
 						<Redirect to="/login" />
 					</Switch>

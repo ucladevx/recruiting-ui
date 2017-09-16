@@ -9,7 +9,7 @@ export default class ApplicationList extends React.Component {
 					<thead><tr><td>Name</td><td>Role</td><td>Rating</td></tr></thead>
 					<tbody>
 						{this.props.applications.map(application =>
-							<tr key={application.id} onClick={() => this.props.showApplication(application)}>
+							<tr key={application.id} onClick={() => this.props.history.push(`/review/${application.id}`)}>
 								<td>{application.profile.firstName} {application.profile.lastName}</td>
 								<td>{application.profile.rolePreference}</td>
 								<td>
