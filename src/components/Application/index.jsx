@@ -8,12 +8,12 @@ import Notification from 'components/Notification';
 import ProfilePage from './pages/profilePage';
 import EssaysPage from './pages/essaysPage';
 import ChallengesPage from './pages/challengesPage';
-import ReviewPage from './review';
+import ViewPage from './viewApplication';
 
 const PAGE_PROFILE = Symbol();
 const PAGE_ESSAYS = Symbol();
 const PAGE_CHALLENGES = Symbol();
-const PAGE_REVIEW = Symbol();
+const PAGE_VIEW = Symbol();
 
 export default class Application extends React.Component {
 	constructor(props) {
@@ -24,16 +24,16 @@ export default class Application extends React.Component {
 			[PAGE_PROFILE]: 0,
 			[PAGE_ESSAYS]: 1,
 			[PAGE_CHALLENGES]: 2,
-			[PAGE_REVIEW]: 3,
+			[PAGE_VIEW]: 3,
 		};
 		this.symbolToPageTitle = {
 			[PAGE_PROFILE]: 'Profile',
 			[PAGE_ESSAYS]: 'Essays',
 			[PAGE_CHALLENGES]: 'Challenges',
-			[PAGE_REVIEW]: 'Review and Submit',
+			[PAGE_VIEW]: 'Review',
 		};
 		this.state = {
-			currentPage: this.props.review ? PAGE_REVIEW : PAGE_PROFILE,
+			currentPage: this.props.review ? PAGE_VIEW : PAGE_PROFILE,
 			profile: this.props.profile
 		};
 
@@ -56,8 +56,8 @@ export default class Application extends React.Component {
 				return <EssaysPage profile={this.state.profile} setValue={this.setValue} />;
 			case PAGE_CHALLENGES:
 				return <ChallengesPage profile={this.state.profile} setValue={this.setValue} />;
-			case PAGE_REVIEW:
-				return <ReviewPage profile={this.state.profile} notes={this.props.application.notes} submitted={this.props.review} />
+			case PAGE_VIEW:
+				return <ViewPage profile={this.state.profile} submitted={this.props.review} {...this.props} />
 			default:
 				return null;
 		}
@@ -126,7 +126,7 @@ export default class Application extends React.Component {
 			case PAGE_ESSAYS:
 				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_CHALLENGES }));
 			case PAGE_CHALLENGES:
-				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_REVIEW }));
+				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_VIEW }));
 		}
 	}
 
@@ -137,7 +137,7 @@ export default class Application extends React.Component {
 				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_PROFILE }));
 			case PAGE_CHALLENGES:
 				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_ESSAYS }));
-			case PAGE_REVIEW:
+			case PAGE_VIEW:
 				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_CHALLENGES }));
 		}
 	}
@@ -190,9 +190,9 @@ export default class Application extends React.Component {
 						<Button text="Save Application" onClick={ this.saveProfile } loading={this.props.applicationUpdating} />
 						{ !(this.state.currentPage === PAGE_PROFILE) &&
 								<Button text="Back" onClick={ this.back } /> }
-						{ !(this.state.currentPage === PAGE_REVIEW) &&
+						{ !(this.state.currentPage === PAGE_VIEW) &&
 								<Button text="Continue" onClick={ this.continue } /> }
-						{ (this.state.currentPage === PAGE_REVIEW) &&
+						{ (this.state.currentPage === PAGE_VIEW) &&
 								<Button text="Submit Application" style="green" onClick={ this.submit } loading={this.props.applicationSubmitting}/> }
 					</div>
 				}

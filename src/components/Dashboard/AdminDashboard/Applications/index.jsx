@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
+import Loader from 'components/Loader';
 import Notification from 'components/Notification';
 import ApplicationList from './applicationList';
 import PieChart from './pieChart';
@@ -82,7 +83,8 @@ export default class Applications extends React.Component {
 			<div id="content">
 				<Notification ref={n => this.notification = n} />
 
-				{!hasApplications && <p className="info">No applications</p>}
+				{ this.props.applicationGetting && <Loader style="dark" /> }
+				{(!hasApplications && !this.props.applicationGetting) && <p className="info">No applications</p>}
 
 				{hasApplications &&
 					<div>

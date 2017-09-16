@@ -4,12 +4,13 @@ import Highlight from 'react-highlight';
 import Config from 'config';
 import Button from 'components/Button';
 import Topbar from 'components/Topbar';
+import Loader from 'components/Loader';
 
 import TextInput from './elements/textInput';
 import SelectInput from './elements/selectInput';
 import CheckboxInput from './elements/checkboxInput';
 
-export default class ReviewApplication extends React.Component {
+export default class ViewApplication extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -19,12 +20,19 @@ export default class ReviewApplication extends React.Component {
 	}
 
 	render() {
+		console.log(this.props);
+		if (this.props.applicationGetting)
+			return <div style={{margin:'auto'}}><Loader style="dark" /></div>;
+
+		const notes = this.props.application.notes;
+
 		return (
 			<div className="cards">
-				{ (!this.props.admin && this.props.submitted && this.props.notes) &&
+				{ (!this.props.admin && this.props.submitted) &&
 					<div className="card card-wide profile-card">
 						<h1>Application Feedback</h1>
-						<p className="review">{this.props.notes}</p>
+						{ !notes && <p className="review">None</p> }
+						{ notes && <p className="review">{notes}</p> }
 				</div>
 				}
 

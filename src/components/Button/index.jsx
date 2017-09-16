@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from 'components/Loader';
 
 export default class Button extends React.Component {
 	render() {
@@ -11,13 +12,7 @@ export default class Button extends React.Component {
 			<button className={`${style || ''} ${small ? 'small' : ''} ${loading ? 'loading' : ''}`} onClick={this.props.onClick}>
 				{(!loading && text) && text}
 				{(!loading && this.props.children) && this.props.children}
-				{(loading) &&
-					<div className="spinner">
-						<div className="bounce1"></div>
-						<div className="bounce2"></div>
-						<div className="bounce3"></div>
-					</div>
-				}
+				{(loading) && <Loader /> }
 			</button>
 		);
 	}

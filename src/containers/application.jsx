@@ -38,6 +38,10 @@ const mapStateToProps = state => {
 		profile: state.Applications.get('application').profile || {},
 		lastAction: state.Applications.get('timestamp'),
 
+		applicationGetting: state.Applications.get('applicationGetting'),
+		applicationGetSuccess: state.Applications.get('applicationGetSuccess'),
+		applicationGetFailure: state.Applications.get('applicationGetFailure'),
+
 		applicationUpdating: state.Applications.get('applicationUpdating'),
 		applicationUpdateSuccess: state.Applications.get('applicationUpdateSuccess'),
 		applicationUpdateFailure: state.Applications.get('applicationUpdateFailure'),

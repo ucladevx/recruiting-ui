@@ -50,6 +50,10 @@ const mapStateToProps = state => {
 		seasonDeleteSuccess: state.Seasons.get('seasonDeleteSuccess'),
 		seasonDeleteFailure: state.Seasons.get('seasonDeleteFailure'),
 
+		applicationGetting: state.Applications.get('applicationGetting'),
+		applicationGetSuccess: state.Applications.get('applicationGetSuccess'),
+		applicationGetFailure: state.Applications.get('applicationGetFailure'),
+
 		applicationSubmitSuccess: state.Applications.get('applicationSubmitSuccess'),
 
 		applicationCreating: state.Applications.get('applicationCreating'),
