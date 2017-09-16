@@ -3,7 +3,7 @@ import {Line} from 'react-chartjs-2';
 
 export default class LineChart extends React.Component {
 	render() {
-		const keys = Object.keys(this.props.data);
+		const keys = Object.keys(this.props.data).sort();
 
 		const data = {
 			labels: keys,

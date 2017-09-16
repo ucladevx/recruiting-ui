@@ -71,7 +71,7 @@ export default class Applications extends React.Component {
 			applicationsByRolePreference[application.profile.rolePreference]++;
 
 			// sort application by date
-			const date = moment(application.dateSubmitted).format('M/DD');
+			const date = moment(application.dateSubmitted).format('MM/DD');
 			if (!applicationsByDate[date])
 				applicationsByDate[date] = 0;
 			applicationsByDate[date]++;

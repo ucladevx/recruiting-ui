@@ -87,7 +87,6 @@ const mapDispatchToProps = dispatch => {
 			dispatch(Action.RejectApplication(id, application));
 		},
 		getApplication: (id) => {
-			console.log("blah");
 			dispatch(Action.GetApplication(id));
 		},
 		getApplications: () => {

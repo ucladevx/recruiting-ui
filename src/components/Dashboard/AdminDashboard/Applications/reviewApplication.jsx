@@ -73,13 +73,15 @@ export default class ReviewApplication extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		this.handleError(nextProps);
-		this.setState(prev => {
-			const newState = Object.assign({}, prev);
-			newState.notes = nextProps.application.notes;
-			newState.rating = nextProps.application.rating;
-			newState.applicationId = nextProps.application.id;
-			return newState;
-		});
+		if (nextProps.applicationGetSuccess) {
+			this.setState(prev => {
+				const newState = Object.assign({}, prev);
+				newState.notes = nextProps.application.notes;
+				newState.rating = nextProps.application.rating;
+				newState.applicationId = nextProps.application.id;
+				return newState;
+			});
+		}
 	}
 
 	render() {

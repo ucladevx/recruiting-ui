@@ -47,7 +47,7 @@ export default class LoginComponent extends React.Component {
 				<Notification ref={n => this.notification = n}/>
 				<div id="auth-container">
 					<div id="splash"></div>
-					<form>
+					<form onSubmit={this.register}>
 						<label htmlFor="email">Email Address</label>
 						<input type="text" name="email" onChange={this.handleChange} />
 						<label htmlFor="password">Password</label>
@@ -55,8 +55,8 @@ export default class LoginComponent extends React.Component {
 						<label htmlFor="password">Confirm Password</label>
 						<input type="password" name="confPassword" onChange={this.handleChange} />
 						<div id="button-container">
-							<Button text="Back" onClick={this.goBack} />
 							<Button text="Create Account" onClick={this.register} loading={this.props.registering} />
+							<Button text="Back" onClick={this.goBack} />
 						</div>
 					</form>
 				</div>

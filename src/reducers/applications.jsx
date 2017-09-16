@@ -122,9 +122,10 @@ class State {
 			error        : error || undefined,
 		};
 	}
-	static ReviewApplication(error) {
+	static ReviewApplication(error, application) {
 		return {
 			type         : error ? REVIEW_APPLICATION_FAILURE : REVIEW_APPLICATION_SUCCESS,
+			application  : error ? {} : application,
 			error        : error || undefined,
 		};
 	}
@@ -323,8 +324,7 @@ const ReviewApplication = (id, application) => {
 			if (data.error)
 				throw new Error(data.error.message);
 
-			dispatch(State.ReviewApplication(null));
-			dispatch(GetApplications());
+			dispatch(State.ReviewApplication(null, data.application));
 		} catch (err) {
 			dispatch(State.ReviewApplication(err.message));
 		}
@@ -467,6 +467,7 @@ const Applications = (state=initState(), action) => {
 				resetFlags(val);
 				val.set('error', null);
 				val.set('timestamp', Date.now());
+				val.set('application', action.application);
 				val.set('applicationReviewSuccess', true);
 			})
 

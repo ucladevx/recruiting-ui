@@ -20,7 +20,6 @@ export default class ViewApplication extends React.Component {
 	}
 
 	render() {
-		console.log(this.props);
 		if (this.props.applicationGetting)
 			return <div style={{margin:'auto'}}><Loader style="dark" /></div>;
 
