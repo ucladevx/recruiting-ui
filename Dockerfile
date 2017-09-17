@@ -27,7 +27,7 @@ COPY .babelrc *.js Makefile /var/www/membership/working/
 
 # build and copy files to server root
 RUN make build && \
-    cp -rv pages/* ../static/ && \
+    cp -rv static/* ../static/ && \
     cp -rv lib/build/* ../static/build/
 
 # Copy the configuration file
