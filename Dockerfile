@@ -8,22 +8,22 @@ RUN apk add -U nginx python make g++ nodejs
 # Create directories
 #   /working is the build directory
 #   /static is the directory linked to nginx (serves static content)
-RUN mkdir -p /var/www/membership/working && \
-    mkdir -p /var/www/membership/static && \
-    mkdir -p /var/www/membership/static/build
+RUN mkdir -p /var/www/recruiting/working && \
+    mkdir -p /var/www/recruiting/static && \
+    mkdir -p /var/www/recruiting/static/build
 
 # Install the required packages to build the frontend
-WORKDIR /var/www/membership/working
-COPY *.json /var/www/membership/working/
+WORKDIR /var/www/recruiting/working
+COPY *.json /var/www/recruiting/working/
 RUN /usr/bin/node --max_semi_space_size=8 \
                   --max_old_space_size=298 \
                   --max_executable_size=248 \
                   /usr/bin/npm install
 
 # Copy the source files
-COPY pages/ /var/www/membership/working/pages/
-COPY src/ /var/www/membership/working/src/
-COPY .babelrc *.js Makefile /var/www/membership/working/
+COPY pages/ /var/www/recruiting/working/pages/
+COPY src/ /var/www/recruiting/working/src/
+COPY .babelrc *.js Makefile /var/www/recruiting/working/
 
 # build and copy files to server root
 RUN make build && \
@@ -33,7 +33,7 @@ RUN make build && \
 # Copy the configuration file
 RUN mkdir -p /run/nginx
 COPY conf/ /etc/nginx/
-WORKDIR /var/www/membership/static
+WORKDIR /var/www/recruiting/static
 
 # Run the server
 EXPOSE 80
