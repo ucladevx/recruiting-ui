@@ -61,17 +61,17 @@ export default class ViewApplication extends React.Component {
 						<p className="review">{this.props.profile.tshirt}</p><br />
 
 						<label className="input-title">LinkedIn</label><br />
-						{ this.props.profile.linkedin && <p className="review"><a href={this.props.profile.linkedin}>{this.props.profile.linkedin}</a></p> }
+						{ this.props.profile.linkedin && <p className="review"><a target="_BLANK" href={this.props.profile.linkedin}>{this.props.profile.linkedin}</a></p> }
 						{ !this.props.profile.linkedin && <p className="review">None</p> }
 						<br />
 
 						<label className="input-title">GitHub</label><br />
-						{ this.props.profile.github && <p className="review"><a href={this.props.profile.github}>{this.props.profile.github}</a></p> }
+						{ this.props.profile.github && <p className="review"><a target="_BLANK" href={this.props.profile.github}>{this.props.profile.github}</a></p> }
 						{ !this.props.profile.github && <p className="review">None</p> }
 						<br />
 
 						<label className="input-title">Personal Website</label><br />
-						{ this.props.profile.website && <p className="review"><a href={this.props.profile.website}>{this.props.profile.website}</a></p> }
+						{ this.props.profile.website && <p className="review"><a target="_BLANK" href={this.props.profile.website}>{this.props.profile.website}</a></p> }
 						{ !this.props.profile.website && <p className="review">None</p> }
 						<br />
 					</form>
