@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 export default class AppTopbar extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class AppTopbar extends React.Component {
     const body = document.body, html = document.documentElement;
     const offset = window.pageYOffset;
     const height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight) - window.innerHeight;
-    
+
     for (let i = 0; i < this.props.pages.length; i++) {
       let width = '0%';
       if (i < this.props.currentPage)
@@ -49,7 +50,7 @@ export default class AppTopbar extends React.Component {
     return (
       <div className="topbar">
         <div id="topbar-inner">
-          <div id="logo"></div>
+          <NavLink to="/dashboard"><div id="logo"></div></NavLink>
           <div id="progress-bar">
             { pages }
           </div>

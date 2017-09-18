@@ -22,9 +22,12 @@ export default class ApplicationCard extends React.Component {
           <div className="item-icon"><i className={`fa ${inProgress ? 'fa-warning' : 'fa-check'}`}></i></div>
           <div className="item-text">Application {inProgress ? 'not submitted' : 'submitted'}</div>
         </div>
-        <div className={`card-item ${(inProgress || submitted) ? 'in-progress' : 'completed'}`}>
-          <div className="item-icon"><i className={`fa ${(inProgress || submitted) ? 'fa-warning' : 'fa-check'}`}></i></div>
-          <div className="item-text">Application {(inProgress || submitted) ? 'not reviewed' : 'reviewed'}</div>
+        <div className={`card-item ${(inProgress || submitted || rejected) ? 'in-progress' : 'completed'}`}>
+          <div className="item-icon"><i className={`fa ${(inProgress || submitted || rejected) ? 'fa-warning' : 'fa-check'}`}></i></div>
+          { (inProgress || submitted) && <div className="item-text">Application not reviewed</div> }
+          { (accepted) && <div className="item-text">Application accepted!</div> }
+          { (rejected) && <div className="item-text">Feedback available</div> }
+
         </div>
         <div className="button-section">
           { rejected && <NavLink to={`/view/${id}`}><Button small text="View Feedback" /></NavLink> }

@@ -6,7 +6,7 @@ export default class Topbar extends React.Component {
 		return (
 			<div className="topbar">
 				<div id="topbar-inner">
-					<div id="logo"></div>
+					<NavLink to="/dashboard"><div id="logo"></div></NavLink>
 					{ this.props.admin &&
 						<div id="navigation">
 							<NavLink exact to="/dashboard" activeClassName="selected"><div className="navitem">Applications</div></NavLink>
