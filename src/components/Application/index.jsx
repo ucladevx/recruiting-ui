@@ -86,8 +86,9 @@ export default class Application extends React.Component {
 		});
 	}
 
-	validate() {
-		if (this.state.currentPage === PAGE_PROFILE) {
+	validate(page) {
+		const currentPage = page || this.state.currentPage;
+		if (currentPage === PAGE_PROFILE) {
 			if (!this.state.profile.firstName)
 				return 'First name cannot be empty';
 			if (!this.state.profile.lastName)
@@ -114,13 +115,13 @@ export default class Application extends React.Component {
 			if (!this.state.profile.rolePreference)
 				return 'You must select your role preference';
 		}
-		if (this.state.currentPage === PAGE_ESSAYS) {
+		if (currentPage === PAGE_ESSAYS) {
 			for (const essay of Config.essays.essays) {
 				if (!this.state.profile[essay.name] || !this.state.profile[essay.name].trim())
 					return 'You must respond to all of the essays';
 			}
 		}
-		if (this.state.currentPage === PAGE_CHALLENGES) {
+		if (currentPage === PAGE_CHALLENGES) {
 			for (const challenge of Config.challenges.challenges) {
 				if (!this.state.profile[challenge.name] || !this.state.profile[challenge.name].trim())
 					return 'You must respond to all of the challenges';
@@ -162,8 +163,20 @@ export default class Application extends React.Component {
 
 	navigateTo(e, i) {
 		e.preventDefault();
+		// validate if trying to move on
+		if (i > this.symbolToPageIndex[this.state.currentPage]) {
+			for (let j = this.symbolToPageIndex[this.state.currentPage]; j < i; j++) {
+				const error = this.validate(this.pageIndexToSymbol[j]);
+				if (error) {
+					this.setState(prev => Object.assign({}, prev, { currentPage: this.pageIndexToSymbol[j] }));
+					this.notification.show('Validation Error', error, 'error', 5000);
+					return;
+				}
+			}
+		}
+
+		this.setState(prev => Object.assign({}, prev, { currentPage: this.pageIndexToSymbol[i] }));
 		this.saveProfile();
-		return this.setState(prev => Object.assign({}, prev, { currentPage: this.pageIndexToSymbol[i] }));
 	}
 
 	handleError(props) {

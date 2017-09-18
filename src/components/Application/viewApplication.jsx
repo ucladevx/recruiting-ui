@@ -32,7 +32,7 @@ export default class ViewApplication extends React.Component {
 						<h1>Application Feedback</h1>
 						{ !notes && <p className="review">None</p> }
 						{ notes && <p className="review">{notes}</p> }
-				</div>
+					</div>
 				}
 
 				{ (!this.props.admin && !this.props.submitted) &&
