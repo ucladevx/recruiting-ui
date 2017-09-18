@@ -87,6 +87,17 @@ export default class Application extends React.Component {
 				return 'Last name cannot be empty';
 			if (!this.state.profile.major)
 				return 'Major cannot be empty';
+
+			if (this.state.profile.linkedin)
+				if (!/^https?:\/\/(?:www\.)?linkedin\.com\/in\/.+/.test(this.state.profile.linkedin))
+					return 'LinkedIn URL must be either empty or a valid profile URL';
+			if (this.state.profile.github)
+				if (!/^https?:\/\/(?:www\.)?github\.com\/.+/.test(this.state.profile.github))
+					return 'GitHub URL must be either empty or a valid profile URL';
+			if (this.state.profile.website)
+				if (!/^(?:https?:\/\/)?[^\.][\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/.test(this.state.profile.website))
+					return 'Personal website URL must be either empty or a valid URL';
+
 			if (!this.state.profile.year)
 				return 'You must select your year';
 			if (!this.state.profile.gender)

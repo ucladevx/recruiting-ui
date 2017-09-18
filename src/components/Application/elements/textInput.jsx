@@ -22,6 +22,7 @@ export default class TextInput extends React.Component {
 		return (
 			<div>
 				<label htmlFor={this.props.name} className="input-title">{this.props.title}{this.props.required && <span className="required-field">*</span>}</label><br />
+				{ this.props.desc && <p className="input-info">{this.props.desc}</p> }
 				<input type="text" name={this.props.name} value={this.state.value} onChange={this.changeHandler.bind(this)} /><br />
 			</div>
 		);

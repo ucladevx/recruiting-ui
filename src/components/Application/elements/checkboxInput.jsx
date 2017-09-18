@@ -38,7 +38,7 @@ export default class CheckboxInput extends React.Component {
 	render() {
 		return (
 			<div>
-				<label htmlFor={this.props.name} className="input-title">{this.props.title}</label><br />
+				<label htmlFor={this.props.name} className="input-title">{this.props.title}{this.props.required && <span className="required-field">*</span>}</label><br />
 				{ this.props.desc && <p className="input-info">{this.props.desc}</p> }
 
 				{ (this.props.options && this.props.options.length) &&

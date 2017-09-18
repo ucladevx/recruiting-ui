@@ -36,8 +36,9 @@ form.app-form textarea.monospace-text {
 	min-height: 300px;
 }
 
-form.app-form span.required-field {
-	color: #D32F2F;
+span.required-field {
+	color: #FF5252;
+	font-weight: 300;
 }
 
 pre.code-example {
