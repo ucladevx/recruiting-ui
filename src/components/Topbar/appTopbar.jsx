@@ -25,6 +25,10 @@ export default class AppTopbar extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.handleScroll();
+  }
+
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.handleScroll);
@@ -41,11 +45,11 @@ export default class AppTopbar extends React.Component {
     for (let i = 0; i < this.props.pages.length; i++) {
       const page = this.props.pages[i];
       const className = `dot ${i === currentPage ? 'selected' : ''} ${i <= currentPage ? 'completed' : ''}`;
-      pages.push(<div className={className} key={`dot-${i}`}><p>{page}</p></div>);
+      pages.push(<div onClick={(e) => this.props.clickDot(e, i)} className={className} key={`dot-${i}`}><p>{page}</p></div>);
       pages.push(<div className="bar" key={`bar-${i}`}><div className="bar-inner" id={`page-${i}`}></div></div>);
     }
     const className = `dot ${currentPage >= this.props.pages.length ? 'completed' : ''}`;
-    pages.push(<div className={className} key="dot-last"></div>);
+    pages.push(<div onClick={(e) => this.props.clickDot(e, this.props.pages.length)} className={className} key="dot-last"></div>);
 
     return (
       <div className="topbar">

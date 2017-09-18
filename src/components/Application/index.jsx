@@ -26,6 +26,12 @@ export default class Application extends React.Component {
 			[PAGE_CHALLENGES]: 2,
 			[PAGE_VIEW]: 3,
 		};
+		this.pageIndexToSymbol = {
+			0: PAGE_PROFILE,
+			1: PAGE_ESSAYS,
+			2: PAGE_CHALLENGES,
+			3: PAGE_VIEW,
+		};
 		this.symbolToPageTitle = {
 			[PAGE_PROFILE]: 'Profile',
 			[PAGE_ESSAYS]: 'Essays',
@@ -40,6 +46,7 @@ export default class Application extends React.Component {
 		this.getCurrentPage = this.getCurrentPage.bind(this);
 		this.handleError = this.handleError.bind(this);
 		this.saveProfile = this.saveProfile.bind(this);
+		this.navigateTo = this.navigateTo.bind(this);
 		this.setValue = this.setValue.bind(this);
 		this.continue = this.continue.bind(this);
 		this.validate = this.validate.bind(this);
@@ -153,6 +160,12 @@ export default class Application extends React.Component {
 		}
 	}
 
+	navigateTo(e, i) {
+		e.preventDefault();
+		this.saveProfile();
+		return this.setState(prev => Object.assign({}, prev, { currentPage: this.pageIndexToSymbol[i] }));
+	}
+
 	handleError(props) {
 		if ((Date.now() - props.lastAction) > 1000)
 			return;
@@ -193,7 +206,7 @@ export default class Application extends React.Component {
 		return (
 			<div id="content">
 				<Notification ref={n => this.notification = n} />
-				<Topbar application pages={this.pages} currentPage={this.symbolToPageIndex[this.state.currentPage]} />
+				<Topbar application pages={this.pages} currentPage={this.symbolToPageIndex[this.state.currentPage]} clickDot={this.navigateTo} />
 				{ this.getCurrentPage() }
 
 				{ !this.props.review &&
