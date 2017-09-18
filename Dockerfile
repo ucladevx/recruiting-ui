@@ -21,7 +21,7 @@ RUN /usr/bin/node --max_semi_space_size=8 \
                   /usr/bin/npm install
 
 # Copy the source files
-COPY pages/ /var/www/recruiting/working/pages/
+COPY static/ /var/www/recruiting/working/static/
 COPY src/ /var/www/recruiting/working/src/
 COPY .babelrc *.js Makefile /var/www/recruiting/working/
 
