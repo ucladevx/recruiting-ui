@@ -277,7 +277,6 @@ const SubmitApplication = (id) => {
 					'Content-Type': 'application/json',
 					'Authorization': `Bearer ${Storage.get('token')}`,
 				},
-				body: JSON.stringify()
 			});
 
 			const status = await response.status;
