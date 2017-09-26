@@ -1,19 +1,34 @@
 export default {
-	developerEssays: [
+	'Product Manager': [
 		{
-			name: 'q1',
-			title: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit?',
-			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis.',
+			name: 'pm_q1',
+			title: 'What characteristics do you have that would make you a stellar PM?',
+			desc: 'Maximum 200 words.',
+			required: true,
 		},
 		{
-			name: 'q2',
-			title: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit?',
-			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis.',
+			name: 'pm_q2',
+			title: 'What do you hope to learn from DevX?',
+			desc: 'Maximum 200 words.',
+			required: true,
 		},
 		{
-			name: 'q3',
-			title: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit?',
-			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis.',
+			name: 'pm_q3',
+			title: 'Do you have any ideas that you\'re interested in developing into a project for DevX?',
+			desc: 'Many of our past projects have come out of ideas or points of frustrations for our members. We develop for the UCLA community, so we want to make sure our products actually solve student needs. If you are selected as a PM, but did not provide an idea, don’t fret. Every PM will be matched to an idea they feel passionate about. Maximum 300 words.',
+			required: false,
 		},
-	]
+	],
+	'Frontend Developer': [
+
+	],
+	'Backend Developer': [
+
+	],
+	'Full Stack Developer': [
+
+	],
+	'Designer': [
+
+	],
 }

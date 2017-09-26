@@ -153,7 +153,13 @@ form label.control-label {
 	vertical-align: top;
 }
 
-form label.control-label div.checkbox {
+form div.label-group.radio-group label.control-label {
+	padding-left: 32px;
+	line-height: 26px;
+}
+
+form label.control-label div.checkbox,
+form label.control-label div.radio {
 	position: absolute;
 	top: 2px;
 	left: 0;
@@ -163,6 +169,13 @@ form label.control-label div.checkbox {
 	border: 1px solid #E6E6E6;
 }
 
+
+form label.control-label div.radio {
+	border-radius: 50%;
+	height: 20px;
+	width: 20px;
+}
+
 form label.control-label input {
 	position: absolute;
 	z-index: -1;
@@ -170,23 +183,27 @@ form label.control-label input {
 }
 
 form label.control-label:hover input ~ .checkbox,
-form label.control-label input:focus ~ .checkbox {
+form label.control-label input:focus ~ .checkbox,
+form label.control-label:hover input ~ .radio,
+form label.control-label input:focus ~ .radio {
 	background: #EEEEEE;
-	/* border: 1px solid #CCCCCC; */
 }
 
-form label.control-label input:checked ~ .checkbox {
+form label.control-label input:checked ~ .checkbox,
+form label.control-label input:checked ~ .radio {
 	background: #7986CB;
 	border: 1px solid #7986CB;
 }
 
-form label.control-label .checkbox:after {
+form label.control-label .checkbox:after,
+form label.control-label .radio:after {
 	content: '';
 	position: absolute;
 	display: none;
 }
 
-form label.control-label input:checked ~ .checkbox:after {
+form label.control-label input:checked ~ .checkbox:after,
+form label.control-label input:checked ~ .radio:after {
 	display: block;
 }
 
@@ -198,6 +215,15 @@ form label.control-label .checkbox:after {
 	border: solid #fff;
 	border-width: 0 2px 2px 0;
 	transform: rotate(45deg);
+}
+
+form label.control-label .radio:after {
+	left: 6px;
+  top: 6px;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #fff;
 }
 
 form input[type=text]:focus,
@@ -216,6 +242,11 @@ form div.label-group {
 form div.label-group label.control-label {
 	display: inline-block;
 	width: 25%;
+}
+
+form div.label-group.radio-group label.control-label {
+	display: inline-block;
+	width: 100% !important;
 }
 
 @media (max-width: 800px) {

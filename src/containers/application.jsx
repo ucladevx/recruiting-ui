@@ -29,6 +29,7 @@ class Application extends React.Component {
 }
 
 const mapStateToProps = state => {
+	console.log("new state", state);
 	return {
 		admin: state.Auth.get('isAdmin'),
 		authenticated: state.Auth.get('authenticated'),

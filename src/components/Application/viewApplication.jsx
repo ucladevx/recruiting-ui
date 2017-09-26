@@ -19,8 +19,13 @@ export default class ViewApplication extends React.Component {
 		window.scroll(0, 0);
 	}
 
+	componentWillReceiveProps(nextProps) {
+				console.log(nextProps);
+	}
+
 	render() {
-		if (this.props.applicationGetting)
+		console.log("view app props", this.props);
+		if (this.props.applicationGetting || !this.props.profile)
 			return <div style={{margin:'auto'}}><Loader style="dark" /></div>;
 
 		const notes = this.props.application.notes;
@@ -51,14 +56,22 @@ export default class ViewApplication extends React.Component {
 						<label className="input-title">Major</label><br />
 						<p className="review">{this.props.profile.major}</p><br />
 
-						<label className="input-title">Year</label><br />
-						<p className="review">{this.props.profile.year}</p><br />
+						<label className="input-title">Race</label><br />
+						<p className="review">{this.props.profile.race}</p><br />
 
 						<label className="input-title">Gender</label><br />
 						<p className="review">{this.props.profile.gender}</p><br />
 
+						<label className="input-title">Year</label><br />
+						<p className="review">{this.props.profile.year}</p><br />
+
 						<label className="input-title">T-Shirt Size</label><br />
 						<p className="review">{this.props.profile.tshirt}</p><br />
+
+						<label className="input-title">Resume Link</label><br />
+						{ this.props.profile.resume && <p className="review"><a target="_BLANK" href={this.props.profile.resume}>{this.props.profile.resume}</a></p> }
+						{ !this.props.profile.resume && <p className="review">None</p> }
+						<br />
 
 						<label className="input-title">LinkedIn</label><br />
 						{ this.props.profile.linkedin && <p className="review"><a target="_BLANK" href={this.props.profile.linkedin}>{this.props.profile.linkedin}</a></p> }
@@ -100,7 +113,7 @@ export default class ViewApplication extends React.Component {
 				<div className="card card-wide profile-card">
 					<h1>Essay Questions</h1>
 					<form className="app-form">
-					{Config.essays.essays.map(essay =>
+					{(Config.essays[this.props.profile.rolePreference] || []).map(essay =>
 						<div key={essay.name}>
 							<label className="input-title">{essay.title}</label>
 							{ this.props.profile[essay.name] && <p className="review">{this.props.profile[essay.name]}</p> }
@@ -113,7 +126,7 @@ export default class ViewApplication extends React.Component {
 				<div className="card card-wide profile-card">
 					<h1>Challenges</h1>
 					<form className="app-form">
-					{Config.challenges.challenges.map(challenge =>
+					{(Config.challenges[this.props.profile.rolePreference] || []).map(challenge =>
 						<div key={challenge.name}>
 							<label className="input-title">{challenge.title}</label><br />
 							{ this.props.profile[challenge.name] && <p className="review">{this.props.profile[challenge.name+'Language']}</p> }

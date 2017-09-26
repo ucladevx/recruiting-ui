@@ -38,6 +38,7 @@ export default class Application extends React.Component {
 			[PAGE_CHALLENGES]: 'Challenges',
 			[PAGE_VIEW]: 'Review',
 		};
+		console.log("parent", this.props);
 		this.state = {
 			currentPage: this.props.review ? PAGE_VIEW : PAGE_PROFILE,
 			profile: this.props.profile
@@ -96,6 +97,9 @@ export default class Application extends React.Component {
 			if (!this.state.profile.major)
 				return 'Major cannot be empty';
 
+			if (!/^(?:https?:\/\/)?[^\.][\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/.test(this.state.profile.resume))
+				return 'Resume Link must be a valid URL';
+
 			if (this.state.profile.linkedin)
 				if (!/^https?:\/\/(?:www\.)?linkedin\.com\/in\/.+/.test(this.state.profile.linkedin))
 					return 'LinkedIn URL must be either empty or a valid profile URL';
@@ -116,17 +120,23 @@ export default class Application extends React.Component {
 				return 'You must select your role preference';
 		}
 		if (currentPage === PAGE_ESSAYS) {
-			for (const essay of Config.essays.essays) {
-				if (!this.state.profile[essay.name] || !this.state.profile[essay.name].trim())
-					return 'You must respond to all of the essays';
+			for (const essay of (Config.essays[this.state.profile.rolePreference] || [])) {
+				if (essay.required && (!this.state.profile[essay.name] || !this.state.profile[essay.name].trim()))
+					return `You must answer '${essay.title}'`;
 			}
 		}
+
 		if (currentPage === PAGE_CHALLENGES) {
-			for (const challenge of Config.challenges.challenges) {
-				if (!this.state.profile[challenge.name] || !this.state.profile[challenge.name].trim())
-					return 'You must respond to all of the challenges';
-				if (!this.state.profile[challenge.name+'Language'])
-					return 'You must select the language for your response';
+			for (const challenge of (Config.challenges[this.state.profile.rolePreference] || [])) {
+				if (challenge.required) {
+					if (!this.state.profile[challenge.name] || !this.state.profile[challenge.name].trim())
+						return `You must answer '${challenge.title}`;
+					if (!this.state.profile[challenge.name+'Language'])
+						return `You must select the language for your response to '${challenge.title}'`;
+				}
+
+				if (this.state.profile[challenge.name] && !this.state.profile[challenge.name+'Language'])
+					return `You must select the language for your response to '${challenge.title}'`;
 			}
 		}
 		return null;
@@ -138,7 +148,8 @@ export default class Application extends React.Component {
 			this.notification.show('Validation Error', error, 'error', 5000);
 			return;
 		}
-		this.saveProfile();
+		if (!this.props.review)
+			this.saveProfile();
 		switch (this.state.currentPage) {
 			case PAGE_PROFILE:
 				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_ESSAYS }));
@@ -150,7 +161,8 @@ export default class Application extends React.Component {
 	}
 
 	back() {
-		this.saveProfile();
+		if (!this.props.review)
+			this.saveProfile();
 		switch (this.state.currentPage) {
 			case PAGE_ESSAYS:
 				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_PROFILE }));
@@ -162,6 +174,9 @@ export default class Application extends React.Component {
 	}
 
 	navigateTo(e, i) {
+		// only allow navigation if the application is in progress
+		if (this.props.review)
+			return;
 		e.preventDefault();
 		// validate if trying to move on
 		if (i > this.symbolToPageIndex[this.state.currentPage]) {
@@ -216,6 +231,7 @@ export default class Application extends React.Component {
 	}
 
 	render() {
+		// console.log("trying to ")
 		return (
 			<div id="content">
 				<Notification ref={n => this.notification = n} />

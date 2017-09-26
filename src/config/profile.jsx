@@ -10,8 +10,20 @@ export default {
 	genders: [
 		'Male',
 		'Female',
-		'Non-binary',
+		'Gender-nonconforming',
 		'Other',
+		'Decline to Disclose',
+	],
+
+	races: [
+		'Asian',
+		'Black or African American',
+		'Hispanic or Latinx',
+		'Native American or Alaska Native',
+		'Native Hawaiian or other Pacific Islander',
+		'Two or more races/Multiracial',
+		'White',
+		'Decline to Disclose',
 	],
 
 	tshirtSizes: [
@@ -25,10 +37,11 @@ export default {
 	],
 
 	rolePreferences: [
-		'Frontend Developer',
-		'Backend Developer',
-		'Full Stack Developer',
-		'Designer',
+		'Product Manager',
+		// 'Frontend Developer',
+		// 'Backend Developer',
+		// 'Full Stack Developer',
+		// 'Designer',
 	],
 
 	languages: [
