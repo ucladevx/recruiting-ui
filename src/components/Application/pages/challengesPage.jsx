@@ -20,12 +20,20 @@ export default class ProfilePage extends React.Component {
 		const challenges = Config.challenges[this.props.profile.rolePreference];
 		return (
 			<div className="cards">
-				<div className="card card-wide profile-card">
-					<h1>Coding Challenges</h1>
-					<p>The following challenge(s) will give you the opportunity to showcase your potential. We are not looking for one perfect solution or for you to be an expert in any particular language or coding style. Rather, we are looking to see how you approach and solve a particular problem. You are free to pick any object-oriented language you are comfortable with in order to craft a solution.</p>
-					<p>It is acceptable to consult any external reference to complete these challenges. However, be sure to show off your creativity and problem-solving skills when developing your solution! Completing this challenge will only add to your application, not detract from it, so please complete it to the best of your ability.</p>
-					<p>Since you selected <b>{this.props.profile.rolePreference}</b>, we've modified your challenges to better suit your skills. Fields marked <span className="required-field">*</span> are required.</p>
-				</div>
+				{ challenges.length > 0 &&
+					<div className="card card-wide profile-card">
+						<h1>Coding Challenges</h1>
+						<p>The following challenge(s) will give you the opportunity to showcase your potential. We are not looking for one perfect solution or for you to be an expert in any particular language or coding style. Rather, we are looking to see how you approach and solve a particular problem. You are free to pick any object-oriented language you are comfortable with in order to craft a solution.</p>
+						<p>It is acceptable to consult any external reference to complete these challenges. However, be sure to show off your creativity and problem-solving skills when developing your solution! Completing this challenge will only add to your application, not detract from it, so please complete it to the best of your ability.</p>
+						<p>Since you selected <b>{this.props.profile.rolePreference}</b>, we've modified your challenges to better suit your skills. Fields marked <span className="required-field">*</span> are required.</p>
+					</div>
+				}
+				{ challenges.length === 0 &&
+					<div className="card card-wide profile-card">
+						<h1>Hooray! No challenges!</h1>
+						<p>Congratulations. As a <b>{this.props.profile.rolePreference}</b>, you don't have to complete any coding challenges! You can move on.</p>
+					</div>
+				}
 				{ challenges.map(challenge =>
 					<div className="card card-wide profile-card" key={challenge.name}>
 						<form className="app-form">
@@ -37,12 +45,6 @@ export default class ProfilePage extends React.Component {
 						</form>
 					</div>
 				)}
-				{ challenges.length === 0 &&
-					<div className="card card-wide profile-card">
-						<h1>Hooray! No challenges!</h1>
-						<p>Congratulations. As a <b>{this.props.profile.rolePreference}</b>, you don't have to complete any coding challenges! You can move on.</p>
-					</div>
-				}
 			</div>
 		);
 	}
