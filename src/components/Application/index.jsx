@@ -96,7 +96,8 @@ export default class Application extends React.Component {
 				return 'Last name cannot be empty';
 			if (!this.state.profile.major)
 				return 'Major cannot be empty';
-
+			if (!this.state.profile.race)
+				return 'You must select your race.';
 			if (!/^(?:https?:\/\/)?[^\.][\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/.test(this.state.profile.resume))
 				return 'Resume Link must be a valid URL';
 
