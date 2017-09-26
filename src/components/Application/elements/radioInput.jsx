@@ -21,7 +21,6 @@ export default class RadioInput extends React.Component {
 	}
 
 	render() {
-		console.log(this.state);
 		return (
 			<div>
 				<label htmlFor={this.props.name} className="input-title">{this.props.title}{this.props.required && <span className="required-field">*</span>}</label><br />

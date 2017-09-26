@@ -38,7 +38,7 @@ export default class Application extends React.Component {
 			[PAGE_CHALLENGES]: 'Challenges',
 			[PAGE_VIEW]: 'Review',
 		};
-		console.log("parent", this.props);
+
 		this.state = {
 			currentPage: this.props.review ? PAGE_VIEW : PAGE_PROFILE,
 			profile: this.props.profile
@@ -232,7 +232,6 @@ export default class Application extends React.Component {
 	}
 
 	render() {
-		// console.log("trying to ")
 		return (
 			<div id="content">
 				<Notification ref={n => this.notification = n} />

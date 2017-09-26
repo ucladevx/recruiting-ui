@@ -49,7 +49,7 @@ export default class ProfilePage extends React.Component {
 
 				<div className="card card-wide profile-card">
 					<h1>Technical Information</h1>
-					<p>In order to create a successful team, we evaluate the skills and potential that all of our candidates have. Don't worry if you haven't heard of some of these technologies &mdash; just select the ones you have worked with. It's okay to leave a section blank or only check a couple of boxes. You'll have more opportunities to show your potential!</p>
+					<p>Everyone in DevX plays a technical role. Developers and designers drive the technical execution. They are required to have a technical background or the potential to learn quickly. Some PMs code, some do not, but they all have the expertise required to determine the feasibility of a feature or help their engineers solve technical hurdles. Rather than looking into the nitty gritty details of the code, PMs consider the bigger technical picture.</p>
 					<form className="app-form">
 						<SelectInput required name="rolePreference" title="Role Preference" originalValue={this.props.profile.rolePreference} options={Config.profile.rolePreferences} desc="Which role are you most interested in applying for?" onChange={this.props.setValue} />
 						<CheckboxInput name="languages" title="Languages" originalValue={this.props.profile.languages} options={Config.profile.languages} desc="Select all languages that you're comfortable with." onChange={this.props.setValue} />

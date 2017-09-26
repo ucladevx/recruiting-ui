@@ -19,12 +19,7 @@ export default class ViewApplication extends React.Component {
 		window.scroll(0, 0);
 	}
 
-	componentWillReceiveProps(nextProps) {
-				console.log(nextProps);
-	}
-
 	render() {
-		console.log("view app props", this.props);
 		if (this.props.applicationGetting || !this.props.profile)
 			return <div style={{margin:'auto'}}><Loader style="dark" /></div>;
 
