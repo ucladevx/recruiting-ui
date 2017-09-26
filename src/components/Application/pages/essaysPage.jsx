@@ -20,8 +20,8 @@ export default class ProfilePage extends React.Component {
 			<div className="cards">
 				<div className="card card-wide profile-card">
 					<h1>Essay Questions</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis. Maecenas eu aliquam lorem. Donec eleifend odio arcu, at fringilla purus pharetra vitae. Donec eleifend, erat sed cursus euismod, mauris magna tincidunt est, sed hendrerit sem tellus id ex. In varius ullamcorper dolor varius ultrices. In quis euismod massa, id faucibus lacus. Donec rutrum tempus mi, ac pellentesque arcu scelerisque in. Maecenas vehicula massa at neque pharetra, non semper risus fringilla. Nunc vulputate erat nec blandit pretium. Nulla ac fringilla nisi. Nam venenatis ultricies lacus, id ullamcorper neque accumsan vitae. Curabitur a odio eget arcu blandit pellentesque sit amet eu tortor.</p>
-					<p>Since you selected <b>{this.props.profile.rolePreference}</b>, we've modified your questions to better suit your preferences. Fields marked <span className="required-field">*</span> are required.</p>
+					<p>These questions will help us determine your fit for DevX. Try to keep your answers complete yet succinct. Since you selected <b>{this.props.profile.rolePreference}</b>, we've modified your questions to better suit your preferences.</p>
+					<p>Fields marked <span className="required-field">*</span> are required.</p>
 
 					<form className="app-form">
 						{ Config.essays[this.props.profile.rolePreference].map(essay => <TextAreaInput required={essay.required} originalValue={this.props.profile[essay.name]} name={essay.name} key={essay.name} title={essay.title} desc={essay.desc} onChange={this.props.setValue} />) }
