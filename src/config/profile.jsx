@@ -81,7 +81,7 @@ export default {
 
 	frontendTechnologies: [
 		'AngularJS',
-		'Boostrap',
+		'Bootstrap',
 		'CSS',
 		'Dojo',
 		'Ember.js',
