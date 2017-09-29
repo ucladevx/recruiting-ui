@@ -145,7 +145,7 @@ export default {
 
 	designTypes: [
 		'Creative Design',
-		'Communicatin Design',
+		'Communication Design',
 		'Graphic Design',
 		'Illustration',
 		'Product Design',
@@ -166,9 +166,9 @@ export default {
 		'Framer',
 		'InVision',
 		'Marvel',
-		'Origami Studios',
+		'Origami Studio',
 		'Sketch',
-		'Zelpin',
+		'Zeplin',
 		'Other',
 	]
 }
