@@ -42,13 +42,14 @@ span.required-field {
 	font-weight: 300;
 }
 
-pre.code-example {
-	background-color: #F2F2F2;
-	padding: 20px;
-	box-sizing: border-box;
+.code-example {
 	font-family: 'Roboto Monospace', 'Hack', 'Consolas', 'Courier', monospace;
-	width: 100%;
+	font-size: 0.9em;
 	max-width: 600px;
+
+	* {
+		font-family: 'Roboto Monospace', 'Hack', 'Consolas', 'Courier', monospace;
+	}
 }
 
 #content .button-section-right {

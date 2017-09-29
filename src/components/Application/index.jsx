@@ -101,6 +101,9 @@ export default class Application extends React.Component {
 			if (!/^(?:https?:\/\/)?[^\.][\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/.test(this.state.profile.resume))
 				return 'Resume Link must be a valid URL';
 
+			if (this.state.profile.rolePreference === 'Designer' && !this.state.profile.website)
+				return 'As a designer, you must submit a valid portfolio URL';
+
 			if (this.state.profile.linkedin)
 				if (!/^https?:\/\/(?:www\.)?linkedin\.com\/in\/.+/.test(this.state.profile.linkedin))
 					return 'LinkedIn URL must be either empty or a valid profile URL';

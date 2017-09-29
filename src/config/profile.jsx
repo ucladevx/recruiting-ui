@@ -38,10 +38,10 @@ export default {
 
 	rolePreferences: [
 		'Product Manager',
-		// 'Frontend Developer',
-		// 'Backend Developer',
-		// 'Full Stack Developer',
-		// 'Designer',
+		'Frontend Developer',
+		'Backend Developer',
+		'Full Stack Developer',
+		'Designer',
 	],
 
 	languages: [

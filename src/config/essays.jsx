@@ -1,3 +1,18 @@
+const devEssays = [
+	{
+		name: 'dev_q1',
+		title: 'What do you hope to learn from DevX?',
+		desc: 'Maximum 250 words.',
+		required: true,
+	},
+	{
+		name: 'dev_q2',
+		title: 'What side project are you most proud of any why?',
+		desc: 'Optional. Maximum 250 words.',
+		required: false,
+	}
+];
+
 export default {
 	'Product Manager': [
 		{
@@ -19,16 +34,15 @@ export default {
 			required: false,
 		},
 	],
-	'Frontend Developer': [
-
-	],
-	'Backend Developer': [
-
-	],
-	'Full Stack Developer': [
-
-	],
+	'Frontend Developer': devEssays,
+	'Backend Developer': devEssays,
+	'Full Stack Developer': devEssays,
 	'Designer': [
-
+		{
+			name: 'designer_q1',
+			title: 'What is your favorite product from a design perspective? Why?',
+			desc: 'Maximum 400 words.',
+			required: true,
+		}
 	],
 }

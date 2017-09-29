@@ -126,7 +126,8 @@ export default class ViewApplication extends React.Component {
 							<label className="input-title">{challenge.title}</label><br />
 							{ this.props.profile[challenge.name] && <p className="review">{this.props.profile[challenge.name+'Language']}</p> }
 							{ !this.props.profile[challenge.name] && <p className="review"><i>No response</i></p> }
-							{ this.props.profile[challenge.name] && <Highlight>{this.props.profile[challenge.name]}</Highlight> }
+							{ !challenge.written && this.props.profile[challenge.name] && <Highlight>{this.props.profile[challenge.name]}</Highlight> }
+							{ challenge.written && this.props.profile[challenge.name] && <p className="review">{this.props.profile[challenge.name]}</p> }
 						</div>
 					)}
 					</form>

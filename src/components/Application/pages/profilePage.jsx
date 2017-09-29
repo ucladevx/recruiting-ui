@@ -32,7 +32,7 @@ export default class ProfilePage extends React.Component {
 						<TextInput required name="resume" title="Resume Link" originalValue={this.props.profile.resume} onChange={this.props.setValue} desc="Please upload your resume to a service like Dropbox or Google Drive and copy its link here. Make sure that the file is public and the link works without signing in." />
 						<TextInput name="linkedin" title="LinkedIn" originalValue={this.props.profile.linkedin} onChange={this.props.setValue} desc="Optional. If specified, it must be a valid LinkedIn profile URL." />
 						<TextInput name="github" title="Github" originalValue={this.props.profile.github} onChange={this.props.setValue} desc="Optional. If specified, it must be a valid Github profile URL." />
-						<TextInput name="website" title="Personal Website" originalValue={this.props.profile.website} onChange={this.props.setValue} desc="Optional. If specified, it must be a valid URL." />
+						<TextInput required={ this.props.profile.rolePreference === 'Designer' } name="website" title="Personal Website/Portfolio" originalValue={this.props.profile.website} onChange={this.props.setValue} desc="Required if you are applying for a designer role. If specified, it must be a valid URL." />
 					</form>
 				</div>
 

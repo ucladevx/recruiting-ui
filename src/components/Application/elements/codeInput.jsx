@@ -1,4 +1,5 @@
 import React from 'react';
+import Highlight from 'react-highlight';
 
 export default class CodeInput extends React.Component {
 	constructor(props) {
@@ -19,9 +20,11 @@ export default class CodeInput extends React.Component {
 	}
 
 	render() {
+//			{ this.props.example && <pre className="code-example" dangerouslySetInnerHTML={ {__html: this.props.example} }></pre> }
+
 		return (
 			<div>
-				{ this.props.example && <pre className="code-example" dangerouslySetInnerHTML={ {__html: this.props.example} }></pre> }
+				{ this.props.example && <div className="code-example"><Highlight>{this.props.example}</Highlight></div> }
 				<textarea name={this.props.name} value={this.state.value} onChange={this.changeHandler.bind(this)} className="monospace-text" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false"></textarea>
 			</div>
 		);
