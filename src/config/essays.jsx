@@ -7,7 +7,7 @@ const devEssays = [
 	},
 	{
 		name: 'dev_q2',
-		title: 'What side project are you most proud of any why?',
+		title: 'What side project are you most proud of and why?',
 		desc: 'Optional. Maximum 250 words.',
 		required: false,
 	}

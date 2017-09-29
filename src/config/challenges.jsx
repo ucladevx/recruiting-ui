@@ -516,12 +516,24 @@ button:hover {
 </body>
 </html>`
   	},
+
   	{
-  		name: 'fullstack_code5',
-  		title: 'From Design to Deploy',
-  		desc: 'You are tasked with create a todo list web application. Describe as clearly as possible how you would design this product. Include the features, UI/UX design, stack architecture, frontend and backend design/implementation, and deployment methods. List some pros and cons of your design.',
-  		written: true,
-  	}
+			name: 'frontend_code2',
+			title: 'Breaking it Down',
+			written: true,
+			desc: `Breaking down the view into "components,"" can help you visualize how to start structuring your website. Using <a target="_BLANK" href="https://www.youtube.com">this sample website</a>, briefly list out the main 5 components you see on the page (for example, the navigation/search bar) and choose 2 of them to bullet out in detail. This can include how you would go about structuring their position on the page as well as anything noteworthy about its internal composition. The first sample component is written out below as an example:<br /><br />
+Navbar<br />
+- Structure on the page: position fixed, top: 0 to make it stick to the top<br />
+- Internal composition:<br />
+&nbsp;&nbsp;- All immediate children display inline-block OR position flex on parent navbar<br />
+&nbsp;&nbsp;- Search bar has % width for responsiveness, expands to full nav width on mobile view`,
+  	},
+  	// {
+  	// 	name: 'fullstack_code5',
+  	// 	title: 'From Design to Deploy',
+  	// 	desc: 'You are tasked with create a todo list web application. Describe as clearly as possible how you would design this product. Include the features, UI/UX design, stack architecture, frontend and backend design/implementation, and deployment methods. List some pros and cons of your design.',
+  	// 	written: true,
+  	// }
 	],
 	'Designer': [
   	{
