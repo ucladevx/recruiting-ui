@@ -15,8 +15,7 @@ export default class ProfilePage extends React.Component {
 
 	changeHandler(e) {
 		const { name, value } = e.target;
-		this.props.onChange(name, value);
-		this.setState(prev => Object.assign({}, prev, { value }));
+		this.props.setValue(name, value);
 	}
 
 	componentDidMount() {
