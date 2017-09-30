@@ -118,7 +118,7 @@ export default class ViewApplication extends React.Component {
 					</form>
 				</div>
 
-				<div className="card card-wide profile-card">
+				{ /* <div className="card card-wide profile-card">
 					<h1>Challenges</h1>
 					<form className="app-form">
 					{(Config.challenges[this.props.profile.rolePreference] || []).map(challenge =>
@@ -131,7 +131,7 @@ export default class ViewApplication extends React.Component {
 						</div>
 					)}
 					</form>
-				</div>
+				</div> */ }
 			</div>
 		);
 	}

@@ -19,23 +19,40 @@ export default class Application extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.pages = ['Profile', 'Essays', 'Challenges'];
+		// this.pages = ['Profile', 'Essays', 'Challenges'];
+		// this.symbolToPageIndex = {
+		// 	[PAGE_PROFILE]: 0,
+		// 	[PAGE_ESSAYS]: 1,
+		// 	[PAGE_CHALLENGES]: 2,
+		// 	[PAGE_VIEW]: 3,
+		// };
+		// this.pageIndexToSymbol = {
+		// 	0: PAGE_PROFILE,
+		// 	1: PAGE_ESSAYS,
+		// 	2: PAGE_CHALLENGES,
+		// 	3: PAGE_VIEW,
+		// };
+		// this.symbolToPageTitle = {
+		// 	[PAGE_PROFILE]: 'Profile',
+		// 	[PAGE_ESSAYS]: 'Essays',
+		// 	[PAGE_CHALLENGES]: 'Challenges',
+		// 	[PAGE_VIEW]: 'Review',
+		// };
+
+		this.pages = ['Profile', 'Essays'];
 		this.symbolToPageIndex = {
 			[PAGE_PROFILE]: 0,
 			[PAGE_ESSAYS]: 1,
-			[PAGE_CHALLENGES]: 2,
-			[PAGE_VIEW]: 3,
+			[PAGE_VIEW]: 2,
 		};
 		this.pageIndexToSymbol = {
 			0: PAGE_PROFILE,
 			1: PAGE_ESSAYS,
-			2: PAGE_CHALLENGES,
-			3: PAGE_VIEW,
+			2: PAGE_VIEW,
 		};
 		this.symbolToPageTitle = {
 			[PAGE_PROFILE]: 'Profile',
 			[PAGE_ESSAYS]: 'Essays',
-			[PAGE_CHALLENGES]: 'Challenges',
 			[PAGE_VIEW]: 'Review',
 		};
 
@@ -135,11 +152,11 @@ export default class Application extends React.Component {
 				if (challenge.required) {
 					if (!this.state.profile[challenge.name] || !this.state.profile[challenge.name].trim())
 						return `You must answer '${challenge.title}`;
-					if (!this.state.profile[challenge.name+'Language'])
+					if (!challenge.written && !this.state.profile[challenge.name+'Language'])
 						return `You must select the language for your response to '${challenge.title}'`;
 				}
 
-				if (this.state.profile[challenge.name] && !this.state.profile[challenge.name+'Language'])
+				if (!challenge.written && this.state.profile[challenge.name] && !this.state.profile[challenge.name+'Language'])
 					return `You must select the language for your response to '${challenge.title}'`;
 			}
 		}
@@ -158,8 +175,8 @@ export default class Application extends React.Component {
 			case PAGE_PROFILE:
 				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_ESSAYS }));
 			case PAGE_ESSAYS:
-				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_CHALLENGES }));
-			case PAGE_CHALLENGES:
+				// return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_CHALLENGES }));
+			// case PAGE_CHALLENGES:
 				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_VIEW }));
 		}
 	}
@@ -170,10 +187,11 @@ export default class Application extends React.Component {
 		switch (this.state.currentPage) {
 			case PAGE_ESSAYS:
 				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_PROFILE }));
-			case PAGE_CHALLENGES:
-				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_ESSAYS }));
+			// case PAGE_CHALLENGES:
 			case PAGE_VIEW:
-				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_CHALLENGES }));
+				return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_ESSAYS }));
+			// case PAGE_VIEW:
+				// return this.setState(prev => Object.assign({}, prev, { currentPage: PAGE_CHALLENGES }));
 		}
 	}
 
