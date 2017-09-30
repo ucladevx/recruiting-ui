@@ -38,7 +38,7 @@ export default class ViewApplication extends React.Component {
 				{ (!this.props.admin && !this.props.submitted) &&
 					<div className="card card-wide profile-card">
 						<h1>Review & Submit</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis. Maecenas eu aliquam lorem. Donec eleifend odio arcu, at fringilla purus pharetra vitae. Donec eleifend, erat sed cursus euismod, mauris magna tincidunt est, sed hendrerit sem tellus id ex. In varius ullamcorper dolor varius ultrices. In quis euismod massa, id faucibus lacus. Donec rutrum tempus mi, ac pellentesque arcu scelerisque in. Maecenas vehicula massa at neque pharetra, non semper risus fringilla. Nunc vulputate erat nec blandit pretium. Nulla ac fringilla nisi. Nam venenatis ultricies lacus, id ullamcorper neque accumsan vitae. Curabitur a odio eget arcu blandit pellentesque sit amet eu tortor.</p>
+						<p>Make sure all of the information here is correct. You can go back and revise it if it isn't. If it is, submit the application and you'll hear back within a couple of days!</p>
 					</div>
 				}
 
