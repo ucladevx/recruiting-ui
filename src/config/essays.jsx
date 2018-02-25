@@ -41,7 +41,7 @@ export default {
 	'Designer': [
 		{
 			name: 'designer_q1',
-			title: 'Are you a specialist, generalist or novice designer?"
+			title: 'Are you a specialist, generalist or novice designer?',
 			desc: 'Specialist: You\'re a designer that focuses in a specific field, such as visual design, interaction/UX design, user research, illustration, etc. Although you\'re interested in learning about other design disciplines, your skillful expertise mainly lies in your familiar territory. *********** Generalist: You\'re a designer that hops from discipline to discipline, whether you\'re creating marketing graphics, screen mockups, or user flows. Although you don\'t spend a lot of time honing a specific craft, you find yourself learning things on the fly to solve problems. *********** Novice: You\'re extremely passionate about learning more about design and the design industry, but you don\'t have enough experience to define yourself as either a generalist or specialist. (Being a novice isn\'t bad! We\'re looking for individuals who want to learn more, especially those who are interested in a career in design in tech.)',
 			required: true,
 		},
