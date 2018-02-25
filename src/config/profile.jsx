@@ -41,6 +41,7 @@ export default {
 		'Frontend Developer',
 		'Backend Developer',
 		'Full Stack Developer',
+		'Mobile Developer',
 		'Designer',
 	],
 
