@@ -33,6 +33,12 @@ export default {
 			desc: 'Feel free to describe any kind of idea, UCLA specific or even broader implications. If you don\'t have an idea, don\'t fret as many of our PM\'s come in without an idea and can either chose a project from a backlog, or work with us to contact external organizations/communities to help provide consultancy. We are just looking for what makes you tick, and what kind of ideas you want to see work. Maximum 300 words.',
 			required: false,
 		},
+		{
+			name: 'pm_q4',
+			title: 'How will you validate your idea?',
+			desc: 'Answer this only if you had an idea you described earlier. Try to focus on how you would, as a PM, go about creating your product. Maximum 300 words.',
+			required: false,
+		},
 	],
 	'Frontend Developer': devEssays,
 	'Backend Developer': devEssays,
@@ -47,7 +53,7 @@ export default {
 		},
 		{
 			name: 'designer_q2',
-			title: 'If you said "Specialist" in the last question, please describe your field/discipline."
+			title: 'If you said "Specialist" in the last question, please describe your field/discipline.',
 			desc: 'Examples: "Visual Design", "Interaction Design", "Illustration", "User Research"',
 			required: false,
 		},
