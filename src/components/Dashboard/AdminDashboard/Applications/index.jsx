@@ -32,6 +32,7 @@ export default class Applications extends React.Component {
 	render() {
 		const pendingApplications = [];
 		const acceptedApplications = [];
+		const pendingInterviewApps = [];
 		const rejectedApplications = [];
 		const applicationsByDate = {};
 		const applicationsByYear = {};
@@ -43,6 +44,9 @@ export default class Applications extends React.Component {
 			switch (application.status) {
 				case 'SUBMITTED':
 					pendingApplications.push(application);
+					break;
+				case 'SCHEDULE_INTERVIEW':
+					pendingInterviewApps.push(application);
 					break;
 				case 'ACCEPTED':
 					acceptedApplications.push(application);
@@ -77,7 +81,7 @@ export default class Applications extends React.Component {
 			applicationsByDate[date]++;
 		}
 
-		const hasApplications = (pendingApplications.length > 0 || acceptedApplications.length > 0 || rejectedApplications.length > 0);
+		const hasApplications = (pendingApplications.length > 0 || acceptedApplications.length > 0 || pendingInterviewApps.length > 0 || rejectedApplications.length > 0);
 
 		return (
 			<div id="content">
@@ -102,6 +106,11 @@ export default class Applications extends React.Component {
 							title="Pending Applications"
 							history={this.props.history}
 							applications={pendingApplications} />
+
+						<ApplicationList
+							title="Pending Interview"
+							history={this.props.history}
+							applications={pendingInterviewApps} />
 
 						<ApplicationList
 							title="Accepted Applications"

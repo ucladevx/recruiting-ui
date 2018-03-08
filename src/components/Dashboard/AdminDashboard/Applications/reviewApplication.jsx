@@ -21,6 +21,7 @@ export default class ReviewApplication extends React.Component {
 		this.reviewApplication = this.reviewApplication.bind(this);
 		this.rejectApplication = this.rejectApplication.bind(this);
 		this.acceptApplication = this.acceptApplication.bind(this);
+		this.acceptForInterview = this.acceptForInterview.bind(this);
 	}
 
 	reviewApplication() {
@@ -42,6 +43,10 @@ export default class ReviewApplication extends React.Component {
 			notes: this.state.notes,
 			rating: this.state.rating,
 		});
+	}
+
+	acceptForInterview() {
+		this.props.acceptForInterview(this.props.application.id);
 	}
 
 	hideApplication(e) {
@@ -115,6 +120,7 @@ export default class ReviewApplication extends React.Component {
 							<Button text="Discard" onClick={this.hideApplication} />
 							<Button text="Reject" style="red" onClick={this.rejectApplication} />
 							<Button text="Accept" style="green" onClick={this.acceptApplication} />
+							<Button text="Accept for Interview" style="green" onClick={this.acceptForInterview} />
 						</div>
 					}
 				</div>

@@ -335,6 +335,11 @@ const AcceptApplication = (id, application) => {
 	return ReviewApplication(id, applicationInfo);
 }
 
+const AcceptForInterview = (id) => {
+	const applicationInfo = { status: 'SCHEDULE_INTERVIEW' };
+	return ReviewApplication(id, applicationInfo);
+}
+
 const RejectApplication = (id, application) => {
 	const applicationInfo = Object.assign({}, application, { status: 'REJECTED' });
 	return ReviewApplication(id, applicationInfo);
@@ -481,5 +486,5 @@ const Applications = (state=initState(), action) => {
 export {
 	Applications, GetApplications, GetApplication,
 	CreateApplication, UpdateApplicationProfile, SubmitApplication,
-	ReviewApplication, AcceptApplication, RejectApplication,
+	ReviewApplication, AcceptApplication, AcceptForInterview, RejectApplication,
 }

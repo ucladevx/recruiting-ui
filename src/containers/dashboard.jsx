@@ -83,6 +83,9 @@ const mapDispatchToProps = dispatch => {
 		acceptApplication: (id, application) => {
 			dispatch(Action.AcceptApplication(id, application));
 		},
+		acceptForInterview: (id) => {
+			dispatch(Action.AcceptForInterview(id));
+		},
 		rejectApplication: (id, application) => {
 			dispatch(Action.RejectApplication(id, application));
 		},
