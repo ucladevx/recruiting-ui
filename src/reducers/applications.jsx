@@ -85,7 +85,7 @@ const resetFlags = val => {
 		'applicationReviewFailure',
 		'applicationSubmitting',
 		'applicationSubmitSuccess',
-		'applicationSubmitFailure'
+		'applicationSubmitFailure',
 		'schedulingInterview',
 		'schedulingInterviewSuccess',
 		'schedulingInterviewFailure',
