@@ -16,7 +16,7 @@ import Register from 'containers/register';
 import Dashboard from 'containers/dashboard';
 import Application from 'containers/application';
 import requireAuth from 'containers/requireAuth';
-import Schedule from 'containers/schedule';
+import Schedule from 'containers/schedule'
 
 /**
  * WARNING: begin hack

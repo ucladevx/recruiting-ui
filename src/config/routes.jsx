@@ -14,5 +14,6 @@ export default {
 		update: id => `/app/api/v1/application/${id}`,
 		submit: id => `/app/api/v1/application/${id}/submit`,
 		review: id => `/app/api/v1/application/${id}/review`,
+		schedule: id => `/app/api/v1/application/${id}/schedule`,
 	}
 }

@@ -32,6 +32,10 @@ const REVIEW_APPLICATION_INIT = Symbol();
 const REVIEW_APPLICATION_SUCCESS = Symbol();
 const REVIEW_APPLICATION_FAILURE = Symbol();
 
+const SCHEDULE_INTERVIEW_INIT = Symbol();
+const SCHEDULE_INTERVIEW_SUCCESS = Symbol();
+const SCHEDULE_INTERVIEW_FAILURE = Symbol();
+
 const initState = () => {
 	return Immutable.fromJS({
 		error: null,
@@ -58,6 +62,10 @@ const initState = () => {
 		applicationSubmitting: false,
 		applicationSubmitSuccess: false,
 		applicationSubmitFailure: false,
+
+		schedulingInterview: false,
+		schedulingInterviewSuccess: false,
+		schedulingInterviewFailure: false,
 	});
 }
 
@@ -78,6 +86,9 @@ const resetFlags = val => {
 		'applicationSubmitting',
 		'applicationSubmitSuccess',
 		'applicationSubmitFailure'
+		'schedulingInterview',
+		'schedulingInterviewSuccess',
+		'schedulingInterviewFailure',
 	];
 	flags.forEach(flag => val.set(flag, false));
 }
@@ -126,6 +137,12 @@ class State {
 		return {
 			type         : error ? REVIEW_APPLICATION_FAILURE : REVIEW_APPLICATION_SUCCESS,
 			application  : error ? {} : application,
+			error        : error || undefined,
+		};
+	}
+	static ScheduleInterview(error) {
+		return {
+			type         : error ? SCHEDULE_INTERVIEW_FAILURE : SCHEDULE_INTERVIEW_SUCCESS,
 			error        : error || undefined,
 		};
 	}
@@ -297,6 +314,39 @@ const SubmitApplication = (id) => {
 	};
 }
 
+const ScheduleInterview = (id, times) => {
+	return async (dispatch) => {
+		dispatch(State.InitAction(SCHEDULE_INTERVIEW_INIT));
+
+		try {
+			const response = await fetch(Config.apiHost + Config.routes.application.schedule(id), {
+				method: 'PUT',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${Storage.get('token')}`,
+				},
+				body: JSON.stringify({ availability: times })
+			});
+
+			const status = await response.status;
+			const data = await response.json();
+
+			if (status === 401)
+				return dispatch(LogoutUser());
+
+			if (!data)
+				throw new Error('Empty response from server');
+			if (data.error)
+				throw new Error(data.error.message);
+
+			dispatch(State.ScheduleInterview(null));
+		} catch (err) {
+			dispatch(State.ScheduleInterview(err.message));
+		}
+	};
+}
+
 const ReviewApplication = (id, application) => {
 	return async (dispatch) => {
 		dispatch(State.InitAction(REVIEW_APPLICATION_INIT));
@@ -385,6 +435,12 @@ const Applications = (state=initState(), action) => {
 				val.set('error', null);
 				val.set('applicationReviewing', true);
 			});
+		case SCHEDULE_INTERVIEW_INIT:
+			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', null);
+				val.set('schedulingInterview', true);
+			});
 
 		/**
 		 * Failure actions
@@ -424,6 +480,13 @@ const Applications = (state=initState(), action) => {
 				val.set('error', action.error);
 				val.set('timestamp', Date.now());
 				val.set('applicationReviewFailure', true);
+			})
+		case SCHEDULE_INTERVIEW_FAILURE:
+			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', action.error);
+				val.set('timestamp', Date.now());
+				val.set('schedulingInterviewFailure', true);
 			})
 
 		/**
@@ -473,6 +536,13 @@ const Applications = (state=initState(), action) => {
 				val.set('timestamp', Date.now());
 				val.set('application', action.application);
 				val.set('applicationReviewSuccess', true);
+			})
+		case SCHEDULE_INTERVIEW_SUCCESS:
+			return state.withMutations(val => {
+				resetFlags(val);
+				val.set('error', null);
+				val.set('timestamp', Date.now());
+				val.set('schedulingInterviewSuccess', true);
 			})
 
 		/**
