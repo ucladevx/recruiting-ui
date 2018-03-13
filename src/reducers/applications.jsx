@@ -315,6 +315,8 @@ const SubmitApplication = (id) => {
 }
 
 const ScheduleInterview = (id, times) => {
+	console.log("SCHED_INTERVIEW id:\n", id);
+	console.log("SCHED_INTERVIEW times:\n", JSON.stringify({ availability: times}));
 	return async (dispatch) => {
 		dispatch(State.InitAction(SCHEDULE_INTERVIEW_INIT));
 
@@ -331,6 +333,9 @@ const ScheduleInterview = (id, times) => {
 
 			const status = await response.status;
 			const data = await response.json();
+
+			console.log("STATUS:", status);
+			console.log("DATA:", data);
 
 			if (status === 401)
 				return dispatch(LogoutUser());
@@ -557,4 +562,5 @@ export {
 	Applications, GetApplications, GetApplication,
 	CreateApplication, UpdateApplicationProfile, SubmitApplication,
 	ReviewApplication, AcceptApplication, AcceptForInterview, RejectApplication,
+	ScheduleInterview
 }

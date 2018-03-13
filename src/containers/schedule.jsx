@@ -12,18 +12,31 @@ import Button from 'components/Button';
 class Schedule extends React.Component {
 	constructor(props) {
 		super(props);
+
+    this.scheduleInterview = this.scheduleInterview.bind(this);
 	}
 
 	componentWillMount() {
 	}
 
+  scheduleInterview() {
+    let a = new Date(1520931727000);
+    let b = new Date(1523610127000);
+    let c = new Date(1526202127000);
+    // TODO: Actually gather checkform data and build a real Date() array
+    let chosenTimes = [a, b, c];
+    this.props.scheduleInterview(this.props.match.params.id, chosenTimes);
+  }
+
+
 
   render() {
+    // BEGIN HACK - generate checkboxes
     let times = [];
     for(let i = 0; i < profile.interviewTimes.length; i++) {
-      times.push(<p>{profile.interviewTimes[i]}</p>);
-      times.push(<input type="checkbox" value={profile.interviewTimes[i]}/>);
+      times.push(<p><input type="checkbox" value={profile.interviewTimes[i]}/>{profile.interviewTimes[i]}</p>);
     }
+    // END HACK
 
     return <div id="content">
 			<Topbar />
@@ -35,15 +48,34 @@ class Schedule extends React.Component {
       <div className="card card-wide profile-card">
         <form className="app-form">
           <label className="input-title">Interview Times</label><br />
-          {times}
+          {/* TODO: I'd really like to be able to use the CheckboxInput component instead */}
           <CheckboxInput name="times" title="Monday" options={profile.interviewTimes} originalValue={[]} onClick={profile.interviewTimes} review />
+
+          {/* HACK */}
+          {times}
         </form>
       </div>
 
-      <Button text="Submit" style="green" />
+      <Button text="Submit" style="green" onClick={this.scheduleInterview}/>
 
     </div>;
   }
 }
 
-export default Schedule
+const mapStateToProps = state => {
+  return {
+    schedulingInterview: state.Applications.get('scheduleInterview'),
+    schedulingInterviewSuccess: state.Applications.get('schedulingInterviewSuccess'),
+    schedulingInterviewFailure: state.Applications.get('schedulingInterviewFailure')
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    scheduleInterview: (id, times) => {
+      dispatch(Action.ScheduleInterview(id, times));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Schedule);

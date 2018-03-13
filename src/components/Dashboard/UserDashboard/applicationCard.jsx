@@ -8,7 +8,8 @@ export default class ApplicationCard extends React.Component {
     const { seasonName, status, id } = this.props.application;
     const inProgress = status === 'IN_PROGRESS';
     const submitted = status === 'SUBMITTED';
-    const scheduleInterview = status ==='SCHEDULE_INTERVIEW';
+    const scheduleInterview = status === 'SCHEDULE_INTERVIEW';
+    const pendingInterview = status === 'PENDING_INTERVIEW';
     const rejected = status === 'REJECTED';
     const accepted = status === 'ACCEPTED';
 
@@ -28,7 +29,8 @@ export default class ApplicationCard extends React.Component {
           { (inProgress || submitted) && <div className="item-text">Application not reviewed</div> }
           { (accepted) && <div className="item-text">Application accepted!</div> }
           { (rejected) && <div className="item-text">Feedback available</div> }
-          { (scheduleInterview) && <div className="item-text">Schedule your interview</div>}
+          { (scheduleInterview) && <div className="item-text">Interview not scheduled</div>}
+          { (pendingInterview) && <div className="item-text">Interview scheduled!</div>}
 
         </div>
         <div className="button-section">
@@ -36,7 +38,7 @@ export default class ApplicationCard extends React.Component {
           { accepted && <NavLink to={`/view/${id}`}><Button small text="View Feedback" /></NavLink> }
           { submitted && <NavLink to={`/view/${id}`}><Button small text="View Application" /></NavLink> }
           { inProgress && <NavLink to={`/application/${id}`}><Button small text="Continue Application" /></NavLink> }
-          { scheduleInterview && <NavLink to={`/schedule/${id}`}><Button small text="Schedule Interview" /></NavLink>}
+          { scheduleInterview && <NavLink {...this.props} to={`/schedule/${id}`}><Button small text="Schedule Interview" /></NavLink>}
         </div>
       </div>
     );
