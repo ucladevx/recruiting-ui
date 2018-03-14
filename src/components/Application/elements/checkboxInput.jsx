@@ -46,7 +46,7 @@ export default class CheckboxInput extends React.Component {
 					{ this.props.options.map(option =>
 						<label className="control-label" key={option}>
 							{option}
-							<input type="checkbox" name={option} value={option} checked={this.state.checked.indexOf(option) !== -1} onChange={this.changeHandler.bind(this)} disabled={this.props.review}/>
+							<input type="checkbox" name={option} value={option} checked={this.state.checked.indexOf(option) !== -1} onChange={this.changeHandler.bind(this)}/>
 							<div className="checkbox"></div>
 						</label>
 					)}

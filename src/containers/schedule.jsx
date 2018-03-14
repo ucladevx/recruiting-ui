@@ -9,6 +9,8 @@ import CheckboxInput from 'components/Application/elements/checkboxInput';
 import profile from 'config/profile';
 import Button from 'components/Button';
 
+import './schedule_style.scss'
+
 class Schedule extends React.Component {
 	constructor(props) {
 		super(props);
@@ -17,12 +19,21 @@ class Schedule extends React.Component {
 	componentWillMount() {
 	}
 
+  saveTimes() {
+    
+
+  }
 
   render() {
     let times = [];
     for(let i = 0; i < profile.interviewTimes.length; i++) {
-      times.push(<p>{profile.interviewTimes[i]}</p>);
-      times.push(<input type="checkbox" value={profile.interviewTimes[i]}/>);
+      times.push(<div>
+        <p>{profile.interviewTimes[i]}</p>
+        <label className="container">
+          <input type="checkbox" value={profile.interviewTimes[i]}/>
+          <span className="checkmark"></span>
+        </label>
+        </div>);
     }
 
     return <div id="content">
@@ -30,17 +41,18 @@ class Schedule extends React.Component {
       <h1>Schedule Interview</h1>
       <h3>Please select what times you are available for an interview.</h3>
       <p>We've decided to make the interview mostly behavioral. We may ask minor technical questions, but the majority of it will be focused on your passion for the club as well as past experiences, so don't worry about practicing leet code/hacker rank questions! Make sure to come prepared to talk about your resume, internships, and projects.</p>
-      <p>Interviews will be appproximately 20 mins with 15 mins being the interview and 5 mins being some time for you to ask us questions. Interviews will take place online through Google Hangouts. The invites will be sent to you approximately 10 mins before the interview.</p>
+      <p>Interviews will be approximately 20 mins with 15 mins being the interview and 5 mins being some time for you to ask us questions; interviews will take place online through Google Hangouts. The invites will be sent to you approximately 10 mins before the interview.</p>
 
       <div className="card card-wide profile-card">
         <form className="app-form">
           <label className="input-title">Interview Times</label><br />
-          {times}
-          <CheckboxInput name="times" title="Monday" options={profile.interviewTimes} originalValue={[]} onClick={profile.interviewTimes} review />
+          <div class="column">
+            {times} 
+          </div>
         </form>
       </div>
 
-      <Button text="Submit" style="green" />
+      <Button text="Submit" style="green" onClick = {this.saveTimes} />
 
     </div>;
   }
