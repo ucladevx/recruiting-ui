@@ -119,7 +119,7 @@ export default class ReviewApplication extends React.Component {
 							<Button text="Save" onClick={this.reviewApplication} />
 							<Button text="Discard" onClick={this.hideApplication} />
 							<Button text="Reject" style="red" onClick={this.rejectApplication} />
-							<Button text="Accept" style="green" onClick={this.acceptApplication} />
+							{/*<Button text="Accept" style="green" onClick={this.acceptApplication} />*/}
 							<Button text="Accept for Interview" style="green" onClick={this.acceptForInterview} />
 						</div>
 					}
