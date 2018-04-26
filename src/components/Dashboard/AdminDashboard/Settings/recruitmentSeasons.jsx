@@ -21,7 +21,7 @@ export default class RecruitmentSeasons extends React.Component {
 				<h1>Recruitment Seasons</h1>
 				<Button text="Create Season" />
 				{
-
+					
 				}
 
 				{(!this.props.seasons || this.props.seasons.length === 0) &&

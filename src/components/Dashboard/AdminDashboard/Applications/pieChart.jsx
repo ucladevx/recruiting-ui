@@ -7,7 +7,7 @@ export default class PieChart extends React.Component {
 		const data = {
 			datasets: [{
 				data: keys.map(key => this.props.data[key]),
-				backgroundColor: ['#80D8FF', '#B9F6CA', '#FF9E80', '#FFE57F', '#FF80AB', '#B388FF'],
+				backgroundColor: ['#95a5db', '#41485e', '#020522', '#fce388', '#f9cc33', '#ea9e31'],
 			}],
 			labels: keys
 		};
