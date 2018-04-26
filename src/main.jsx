@@ -16,7 +16,7 @@ import Register from 'containers/register';
 import Dashboard from 'containers/dashboard';
 import Application from 'containers/application';
 import requireAuth from 'containers/requireAuth';
-import Schedule from 'containers/schedule'
+import Scheduler from 'containers/scheduler'
 
 /**
  * WARNING: begin hack
@@ -44,7 +44,7 @@ class App extends React.Component {
 						<Route path="/dashboard" component={requireAuth(Dashboard)} />
 						<Route path="/review/:id" component={requireAuth(Dashboard)} />
 						<Route path="/view/:id" component={requireAuth(Application)} />
-						<Route path="/schedule/:id" component={requireAuth(Schedule)} />
+						<Route path="/schedule/:id" component={requireAuth(Scheduler)} />
 						<Route path="/application/:id" component={requireAuth(Application)} />
 						<Redirect to="/login" />
 					</Switch>
