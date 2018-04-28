@@ -11,15 +11,9 @@ export default class Scheduler extends React.Component {
   }
   render() {
     return (
-      <div className="cards">
-        <div className="card card-wide profile-card">
-          <h1>Schedule an Interview</h1>
-          <p>Congratulations on making it to this phase of the DevX interview process! In this next phase, you will be meeting with a few current DevX members to further discuss you qualifications. Please let us know when you are free below!</p>
-          <form className="app-form">
-            <CheckboxInput name="availability" originalValue={this.props.availability} title="Availability" onChange={this.props.setValue} desc="Please mark the times you would be available for a 30-minutes interview." options={Config.profile.interviewTimes}/>
-          </form>
-        </div>
-      </div>
+        <form className="app-form">
+          <CheckboxInput name={this.props.day} originalValue={this.props.availability} title={this.props.day} onChange={this.props.setValue} desc="Please mark the times you would be available for a 30-minutes interview." options={Config.schedule.interviewTimes}/>
+        </form>
     );
   }
 }
