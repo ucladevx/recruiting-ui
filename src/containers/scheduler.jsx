@@ -6,6 +6,7 @@ import Topbar from 'components/Topbar';
 import Button from 'components/Button';
 import Config from 'config';
 import Notification from 'components/Notification';
+import {replace} from 'react-router-redux';
 
 function getDayName(dateStr) {
   let d = new Date(dateStr);
@@ -47,6 +48,10 @@ class Scheduler extends React.Component {
     this.submit = this.submit.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
+
   submit() {
     let monday = convertToDateArray(Config.schedule.interviewDays[0], this.state.Monday);
     let tuesday = convertToDateArray(Config.schedule.interviewDays[1], this.state.Tuesday);
@@ -57,6 +62,7 @@ class Scheduler extends React.Component {
     /* TODO: still need to transition back to home page, notification, and disengage schedule interview button */
     this.notification.show("Interview availability updated", "Interview availability save successfully", 'success', 3000);
     this.props.scheduleInterview(this.props.match.params.id, final);
+    this.props.redirectHome();
   }
 
   setValue(key, value) {
@@ -104,6 +110,9 @@ const mapDispatchToProps = dispatch => {
   return {
     scheduleInterview: (id, times) => {
       dispatch(Action.ScheduleInterview(id, times));
+    },
+    redirectHome: () => {
+      dispatch(replace('/dashboard'));
     }
   }
 }
