@@ -112,7 +112,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(Action.ScheduleInterview(id, times));
     },
     redirectHome: () => {
-      dispatch(replace('/dashboard'));
+      dispatch(replace('/'));
     }
   }
 }

@@ -91,6 +91,7 @@ export default class ReviewApplication extends React.Component {
 
 	render() {
 		let application = this.props.application;
+		console.log(application);
 		if (!application.profile)
 			application = { profile:{} };
 
@@ -101,6 +102,7 @@ export default class ReviewApplication extends React.Component {
 					<Notification ref={n => this.notification = n} />
 					<ViewApplication admin profile={application.profile} {...this.props} />
 					<hr />
+
 					{ !this.props.applicationGetting &&
 						<div className="cards">
 							<div className="card card-wide profile-card">
@@ -119,8 +121,8 @@ export default class ReviewApplication extends React.Component {
 							<Button text="Save" onClick={this.reviewApplication} />
 							<Button text="Discard" onClick={this.hideApplication} />
 							<Button text="Reject" style="red" onClick={this.rejectApplication} />
-							{/*<Button text="Accept" style="green" onClick={this.acceptApplication} />*/}
-							<Button text="Accept for Interview" style="green" onClick={this.acceptForInterview} />
+							{application.status === "SUBMITTED" && <Button text="Accept for Interview" style="green" onClick={this.acceptForInterview} />}
+							{application.status === "PENDING_INTERVIEW" && <Button text="Accept" style="green" onClick={this.acceptApplication} />}
 						</div>
 					}
 				</div>

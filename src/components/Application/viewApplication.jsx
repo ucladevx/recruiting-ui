@@ -118,6 +118,20 @@ export default class ViewApplication extends React.Component {
 					</form>
 				</div>
 
+				{ this.props.application.availability && this.props.application.status === "PENDING_INTERVIEW" &&
+					<div className="cards">
+						<div className="card card-wide profile-cards">
+							<h1>Availability</h1>
+							{
+								this.props.application.availability.map((date, index) => {
+									let d = new Date(date);
+									return <h4>{d.toDateString() + " " + d.toLocaleTimeString()}</h4>
+								})
+							}
+						</div>
+					</div>
+				}
+
 				{ /* <div className="card card-wide profile-card">
 					<h1>Challenges</h1>
 					<form className="app-form">
