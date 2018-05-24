@@ -13,6 +13,7 @@ export default class ReviewApplication extends React.Component {
 		this.state = {
 			notes: this.props.application.notes || '',
 			rating: this.props.application.rating || 0,
+			graderReview: this.props.application.graderReview || [],
 		};
 
 		this.setValue = this.setValue.bind(this);
@@ -102,6 +103,20 @@ export default class ReviewApplication extends React.Component {
 					<Notification ref={n => this.notification = n} />
 					<ViewApplication admin profile={application.profile} {...this.props} />
 					<hr />
+
+					{ !this.props.applicationGetting && this.state.graderReview.length > 0 &&
+						this.state.graderReview.map((review, i) => {
+							<div className="cards">
+								<div className="card card-wide profile-card">
+									<h1>{review.graderName}'s review</h1>
+									<p>{review.graderNotes}</p>
+									<p>Technical Experience: {review.technicalExperience}</p>
+									<p>Potential to Collaborate: {review.potential}</p>
+									<p>Execution: {review.execution}</p>
+								</div>
+							</div>
+						})
+					}
 
 					{ !this.props.applicationGetting &&
 						<div className="cards">
