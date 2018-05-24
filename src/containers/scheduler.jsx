@@ -96,7 +96,7 @@ class Scheduler extends React.Component {
       </div>
     );
   }
-}
+ }
 
 const mapStateToProps = state => {
   return {

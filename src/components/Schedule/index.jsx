@@ -12,8 +12,11 @@ export default class Scheduler extends React.Component {
   render() {
     return (
         <form className="app-form">
-          <CheckboxInput name={this.props.day} originalValue={this.props.availability} title={this.props.day} onChange={this.props.setValue} desc="Please mark the times you would be available for a 30-minutes interview." options={Config.schedule.interviewTimes}/>
+          <CheckboxInput name={this.props.day} originalValue={this.props.availability} title={this.props.day} onChange={this.props.setValue} desc="Please mark the times you would be available for a 30-minute interview." options={Config.schedule.interviewTimes}/>
         </form>
     );
   }
+ 
 }
+
+

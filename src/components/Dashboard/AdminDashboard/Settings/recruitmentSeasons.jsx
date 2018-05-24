@@ -19,9 +19,8 @@ export default class RecruitmentSeasons extends React.Component {
 		return (
 			<div>
 				<h1>Recruitment Seasons</h1>
-				<Button text="Create Season" />
+				<Button text="Create Season" onClick={this.props.createSeason} id="create-btn" />
 				{
-					
 				}
 
 				{(!this.props.seasons || this.props.seasons.length === 0) &&
