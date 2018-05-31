@@ -91,10 +91,30 @@ export default class ReviewApplication extends React.Component {
 	}
 
 	setValue(name, value) {
-		console.log(name, value);
 		this.setState(prev => {
 			const newState = Object.assign({}, prev);
 			newState[name] = value;
+			return newState;
+		})
+	}
+	setTE = () => {
+		this.setState(prev => {
+			const newState = Object.assign({}, prev);
+			newState.technicalExperience = value;
+			return newState;
+		})
+	}
+	setPTC = () => {
+		this.setState(prev => {
+			const newState = Object.assign({}, prev);
+			newState.potentialToCollab = value;
+			return newState;
+		})
+	}
+	setEXEC = () => {
+		this.setState(prev => {
+			const newState = Object.assign({}, prev);
+			newState.execution = value;
 			return newState;
 		})
 	}
@@ -169,41 +189,37 @@ export default class ReviewApplication extends React.Component {
 							<div className="card card-wide profile-card">
 								<h1>New Grader Review</h1>
 								<div>
-								<form>
-								  <label>
-									<TextAreaInput name="graderName" title="Grader Name:" onChange={this.setValue} />
-								  </label>
-								</form>
-							</div>
-								<div>
-								<h5>Technical Experience: </h5>
-								<p>1 - Did not make a reasonable attempt at the challenge.
-								<br/>2 - May or may not have passed the challenge but if they did pass had a very naive solution; no framework skills.
-								<br/>3 - Designed a suboptimal but reasonable solution to the coding challenge; may have some grasp on relevant frameworks.
-								<br/>4 - Satisfactorily passed the coding challenge; doesn't know many useful frameworks; not as web facing as desired.
-								<br/>5 - Excelled in the coding challenge; knows popular frameworks, technologies and even software infrastructure skills like Docker.</p>
+									<form>
+										<label>
+											<TextAreaInput name="graderName" title="Grader Name:" onChange={this.setValue} />
+										</label>
+									</form>
 								</div>
-								<div>
-								<h5>Potential to Collaborate: </h5>
-								<p>1 - Obvious bad attitude; automatically disqualified.
-								<br/>2 - Could work with others, but shyness inhibits communications or does not collaborate.
-								<br/>3 - No experience with teams, but has the desired abilities and soft skills to contribute.
-								<br/>4 - Has successfully worked on one or more teams in the past.
-								<br/>5 - Has successfull led teams in the past; works well with wide variety of people.
-
-								</p>
-							</div>
 								<form className="app-form">
 									<TextAreaInput originalValue={this.state.notes} name="notes" title="Publically Visible Notes" onChange={this.setValue} /><br />
 									{/* <RatingInput originalValue={this.state.rating} name="tecnical exp" title="Technical Experience" onChange={this.setValue} /> */}
 								</form>
 								<form className="app-form">
-									<RatingInput originalValue={this.state.technicalExperience} name="technicalExperience" title="Technical Experience" onChange={this.setValue} />
+									<h5>Technical Experience: </h5>
+									<p>1 - Did not make a reasonable attempt at the challenge.
+									<br/>2 - May or may not have passed the challenge but if they did pass had a very naive solution; no framework skills.
+									<br/>3 - Designed a suboptimal but reasonable solution to the coding challenge; may have some grasp on relevant frameworks.
+									<br/>4 - Satisfactorily passed the coding challenge; doesn't know many useful frameworks; not as web facing as desired.
+									<br/>5 - Excelled in the coding challenge; knows popular frameworks, technologies and even software infrastructure skills like Docker.
+									</p>
+									<RatingInput originalValue={this.state.technicalExperience} name="technicalExperience" title="Technical Experience" onChange={this.setTE} />
 									<TextAreaInput originalValue={this.state.teNotes} name="teNotes" title="Technical Experience Notes" onChange={this.setValue} /><br />
 								</form>
 								<form className="app-form">
-									<RatingInput originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Potential to Collaborate" onChange={this.setValue} />
-									<TextAreaInput originalValue={this.state.notes} name="ptcNotes" title="Potential to Collaborate Notes" onChange={this.setValue} /><br />
+									<h5>Potential to Collaborate: </h5>
+									<p>1 - Obvious bad attitude; automatically disqualified.
+									<br/>2 - Could work with others, but shyness inhibits communications or does not collaborate.
+									<br/>3 - No experience with teams, but has the desired abilities and soft skills to contribute.
+									<br/>4 - Has successfully worked on one or more teams in the past.
+									<br/>5 - Has successfull led teams in the past; works well with wide variety of people.
+									</p>
+									<RatingInput originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Potential to Collaborate" onChange={this.setPTC} />
+									<TextAreaInput originalValue={this.state.ptcNotes} name="ptcNotes" title="Potential to Collaborate Notes" onChange={this.setValue} /><br />
 								</form>
 								<div>
 									<h5>Execution: </h5>
@@ -215,8 +231,8 @@ export default class ReviewApplication extends React.Component {
 									</p>
 								</div>
 								<form className="app-form">
-									<RatingInput originalValue={this.state.execution} name="execution" title="Execution " onChange={this.setValue} />
-									<TextAreaInput originalValue={this.state.notes} name="notes" title="Execution Notes" onChange={this.setValue} /><br />
+									<RatingInput originalValue={this.state.execution} name="execution" title="Execution " onChange={this.setEXEC} />
+									<TextAreaInput originalValue={this.state.execNotes} name="notes" title="Execution Notes" onChange={this.setValue} /><br />
 								</form>
 							</div>
 						</div>
