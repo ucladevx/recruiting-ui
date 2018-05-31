@@ -207,8 +207,8 @@ export default class ReviewApplication extends React.Component {
 									<br/>4 - Satisfactorily passed the coding challenge; doesn't know many useful frameworks; not as web facing as desired.
 									<br/>5 - Excelled in the coding challenge; knows popular frameworks, technologies and even software infrastructure skills like Docker.
 									</p>
-									<RatingInput originalValue={this.state.technicalExperience} name="technicalExperience" title="Technical Experience" onChange={this.setTE} />
-									<TextAreaInput originalValue={this.state.teNotes} name="teNotes" title="Technical Experience Notes" onChange={this.setValue} /><br />
+									<RatingInput originalValue={this.state.technicalExperience} name="technicalExperience" title="Technical Experience" onChange={this.setValue} />
+									<TextAreaInput originalValue={this.state.teNotes} name="teNotes" title="Technical Experience Notes" onChange={this.setTE} /><br />
 								</form>
 								<form className="app-form">
 									<h5>Potential to Collaborate: </h5>
@@ -218,8 +218,8 @@ export default class ReviewApplication extends React.Component {
 									<br/>4 - Has successfully worked on one or more teams in the past.
 									<br/>5 - Has successfull led teams in the past; works well with wide variety of people.
 									</p>
-									<RatingInput originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Potential to Collaborate" onChange={this.setPTC} />
-									<TextAreaInput originalValue={this.state.ptcNotes} name="ptcNotes" title="Potential to Collaborate Notes" onChange={this.setValue} /><br />
+									<RatingInput originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Potential to Collaborate" onChange={this.setValue} />
+									<TextAreaInput originalValue={this.state.ptcNotes} name="ptcNotes" title="Potential to Collaborate Notes" onChange={this.setPTC} /><br />
 								</form>
 								<div>
 									<h5>Execution: </h5>
@@ -231,8 +231,8 @@ export default class ReviewApplication extends React.Component {
 									</p>
 								</div>
 								<form className="app-form">
-									<RatingInput originalValue={this.state.execution} name="execution" title="Execution " onChange={this.setEXEC} />
-									<TextAreaInput originalValue={this.state.execNotes} name="notes" title="Execution Notes" onChange={this.setValue} /><br />
+									<RatingInput originalValue={this.state.execution} name="execution" title="Execution " onChange={this.setValue} />
+									<TextAreaInput originalValue={this.state.execNotes} name="notes" title="Execution Notes" onChange={this.setEXEC} /><br />
 								</form>
 							</div>
 						</div>
