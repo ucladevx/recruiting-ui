@@ -25,6 +25,9 @@ export default class ReviewApplication extends React.Component {
 			technicalExperience: 0,
 			potentialToCollab: 0,
 			execution: 0,
+			teNotes: "",
+			ptcNotes: "",
+			execNotes: "",
 		};
 
 		this.setValue = this.setValue.bind(this);
@@ -160,23 +163,31 @@ export default class ReviewApplication extends React.Component {
 
 								</p>
 							</div>
-							<div>
-								<h5>Execution: </h5>
-								<p>1 - Obvious cues of poor execution: late to interview, lazy preparation, no finished projects on GitHub.
-								<br/>2 - Almost no start-to-finish projects on GitHub.
-								<br/>3 - Incomplete projects and/or pieces of code on GitHub.
-								<br/>4 - Many successful projects as showcased on resume and GitHub; have deployed live products.
-								<br/>5 - Have not only successful projects and live products, members of the board and/or PMs can vouch for them.
-								</p>
-							</div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis. Maecenas eu aliquam lorem. Donec eleifend odio arcu, at fringilla purus pharetra vitae. Donec eleifend, erat sed cursus euismod, mauris magna tincidunt est, sed hendrerit sem tellus id ex. In varius ullamcorper dolor varius ultrices. In quis euismod massa, id faucibus lacus. Donec rutrum tempus mi, ac pellentesque arcu scelerisque in. Maecenas vehicula massa at neque pharetra, non semper risus fringilla. Nunc vulputate erat nec blandit pretium. Nulla ac fringilla nisi. Nam venenatis ultricies lacus, id ullamcorper neque accumsan vitae. Curabitur a odio eget arcu blandit pellentesque sit amet eu tortor.</p>
 								<form className="app-form">
 									<TextAreaInput originalValue={this.state.notes} name="notes" title="Publically Visible Notes" onChange={this.setValue} /><br />
 									{/* <RatingInput originalValue={this.state.rating} name="tecnical exp" title="Technical Experience" onChange={this.setValue} /> */}
 								</form>
-								<RatingInput originalValue={this.state.technicalExperience} name="technicalExperience" title="Technical Experience" onChange={this.setValue} />
-								<RatingInput originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Potential to Collaborate" onChange={this.setValue} />
-								<RatingInput originalValue={this.state.execution} name="execution" title="Execution" onChange={this.setValue} />
+								<form className="app-form">
+									<RatingInput originalValue={this.state.technicalExperience} name="technicalExperience" title="Technical Experience" onChange={this.setValue} />
+									<TextAreaInput originalValue={this.state.teNotes} name="teNotes" title="Technical Experience Notes" onChange={this.setValue} /><br />
+								</form>
+								<form className="app-form">
+									<RatingInput originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Potential to Collaborate" onChange={this.setValue} />
+									<TextAreaInput originalValue={this.state.notes} name="ptcNotes" title="Potential to Collaborate Notes" onChange={this.setValue} /><br />
+								</form>
+								<div>
+									<h5>Execution: </h5>
+									<p>1 - Obvious cues of poor execution: late to interview, lazy preparation, no finished projects on GitHub.
+									<br/>2 - Almost no start-to-finish projects on GitHub.
+									<br/>3 - Incomplete projects and/or pieces of code on GitHub.
+									<br/>4 - Many successful projects as showcased on resume and GitHub; have deployed live products.
+									<br/>5 - Have not only successful projects and live products, members of the board and/or PMs can vouch for them.
+									</p>
+								</div>
+								<form className="app-form">
+									<RatingInput originalValue={this.state.execution} name="execution" title="Execution " onChange={this.setValue} />
+									<TextAreaInput originalValue={this.state.notes} name="notes" title="Execution Notes" onChange={this.setValue} /><br />
+								</form>
 							</div>
 						</div>
 					}
