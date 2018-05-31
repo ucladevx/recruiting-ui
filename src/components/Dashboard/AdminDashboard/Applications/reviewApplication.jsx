@@ -14,13 +14,13 @@ export default class ReviewApplication extends React.Component {
 			notes: this.props.application.notes || '',
 			graderReviews: this.props.application.graderReviews || [{ 	
 				graderName: "Keiana",
-				generalNotes: "This is a test application!",
+				generalNotes: "This is a test application! Overall (Ram): Seems to have a majority of his knowledge coming from just coursework, would have to learn about web applications and the components that go into architecting one. Internship seemed to provide him with some real-world web service experience but was hard to tell. Dont think we would do well as a lone senior dev on a team but I think he would do well working alongside a more seasoned one, and he seemed like he was able to learn fast",
 				technicalExperience: 5,
-				teNotes: "technical Experience",
+				teNotes: "Technical team experience: compiled a wiki of documentation, communicated constantly with teammates and updated the wiki. \nPicking up a new language/framework: during his internship, didn't know much about web applications. Learned through his intern manager, drawing things on whiteboard, asking questions, googling. Took two weeks to fully grasp the architecture",
 				potentialToCollab: 5,
-				ptcNotes: "potential to collab",
+				ptcNotes: "How he resolves conflicts: In his internship he had a few conflicts: for example there was a background process that he suggested writing in C, while others said shell script. How he would build an online chess game: Manage game states through a tree, start with the root being the initial game state and then branching off with valid moves (not sure where he is going with this, doesn't seem the best idea but whateves)",
 				execution: 5,
-				execNotes: "execution",
+				execNotes: "How would he actually implement: Front end component that allows users to actually select moves and board positions. Back end that manages a db and keeps tracks of the users moves, allows them to go backgwards. (Didn't seem too familiar with this procss, or with real-time communication. But hey)",
 			}],
 			technicalExperience: 0,
 			potentialToCollab: 0,
@@ -146,9 +146,18 @@ export default class ReviewApplication extends React.Component {
 									<div className="card card-wide profile-card">
 										<h1>{review.graderName}'s Review</h1>
 										<p>{review.generalNotes}</p>
-										<p>Technical Experience: {review.technicalExperience}</p>
-										<p>Potential to Collaborate: {review.potentialToCollab}</p>
-										<p>Execution: {review.execution}</p>
+										<div>
+											<p><b>Technical Experience:</b> {review.technicalExperience}
+											<br/>{review.teNotes}</p>
+										</div>
+										<div>
+											<p><b>Potential to Collaborate:</b> {review.potentialToCollab}
+											<br/>{review.ptcNotes}</p>
+										</div>
+										<div>
+											<p><b>Execution:</b> {review.execution}
+											<br/>{review.execNotes}</p>
+										</div>
 									</div>
 								</div>
 							);

@@ -43,7 +43,7 @@ export default class UserDashboard extends React.Component {
 				<div id="content">
 					<Notification ref={n => this.notification = n} />
 					<h1>Welcome to the DevX Recruitment Portal!</h1>
-					<p>Have you ever felt that all you were learning at UCLA was theory, with little opportunities to build out practical applications? DevX is dedicated to solving that very problem! Build out real-world projects to help tackle pressing problems frustrating the UCLA community, grow your technical skills by pairing up with experienced students, and build a network that lasts beyond graduation.</p>
+					<p>Have you ever felt that all you were learning at UCLA was theory, with little opportunities to build out practical applications? DevX is dedicated to solving that very problem! Build out real-world projects to help tackle pressing problems frust the UCLA community, grow your technical skills by pairing up with experienced students, and build a network that lasts beyond graduation.</p>
 					<p>Click "Create application" to begin a new application for the upcoming quarter, or find and continue an existing application below.</p>
 					<Button text="Create Application" onClick={this.props.createApplication} id="create-btn" />
 					<p><b>What positions can you apply for?</b></p>
