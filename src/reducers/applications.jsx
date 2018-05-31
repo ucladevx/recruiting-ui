@@ -355,6 +355,7 @@ const ScheduleInterview = (id, times) => {
 const ReviewApplication = (id, application) => {
 	return async (dispatch) => {
 		dispatch(State.InitAction(REVIEW_APPLICATION_INIT));
+		console.log(application);
 
 		try {
 			const response = await fetch(Config.apiHost + Config.routes.application.review(id), {

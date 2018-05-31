@@ -5,6 +5,7 @@ import Notification from 'components/Notification';
 import ReviewTopbar from 'components/Topbar/reviewTopbar';
 import ViewApplication from 'components/Application/viewApplication';
 import TextAreaInput from 'components/Application/elements/textAreaInput';
+import TextInput from 'components/Application/elements/textInput';
 import RatingInput from './ratingInput';
 
 export default class ReviewApplication extends React.Component {
@@ -21,11 +22,22 @@ export default class ReviewApplication extends React.Component {
 				ptcNotes: "How he resolves conflicts: In his internship he had a few conflicts: for example there was a background process that he suggested writing in C, while others said shell script. How he would build an online chess game: Manage game states through a tree, start with the root being the initial game state and then branching off with valid moves (not sure where he is going with this, doesn't seem the best idea but whateves)",
 				execution: 5,
 				execNotes: "How would he actually implement: Front end component that allows users to actually select moves and board positions. Back end that manages a db and keeps tracks of the users moves, allows them to go backgwards. (Didn't seem too familiar with this procss, or with real-time communication. But hey)",
+			}, {
+				graderName: "Destin",
+				generalNotes: "This is a test application! Overall (Ram): Seems to have a majority of his knowledge coming from just coursework, would have to learn about web applications and the components that go into architecting one. Internship seemed to provide him with some real-world web service experience but was hard to tell. Dont think we would do well as a lone senior dev on a team but I think he would do well working alongside a more seasoned one, and he seemed like he was able to learn fast",
+				technicalExperience: 4,
+				teNotes: "Technical team experience: compiled a wiki of documentation, communicated constantly with teammates and updated the wiki. \nPicking up a new language/framework: during his internship, didn't know much about web applications. Learned through his intern manager, drawing things on whiteboard, asking questions, googling. Took two weeks to fully grasp the architecture",
+				potentialToCollab: 4,
+				ptcNotes: "How he resolves conflicts: In his internship he had a few conflicts: for example there was a background process that he suggested writing in C, while others said shell script. How he would build an online chess game: Manage game states through a tree, start with the root being the initial game state and then branching off with valid moves (not sure where he is going with this, doesn't seem the best idea but whateves)",
+				execution: 3,
+				execNotes: "How would he actually implement: Front end component that allows users to actually select moves and board positions. Back end that manages a db and keeps tracks of the users moves, allows them to go backgwards. (Didn't seem too familiar with this procss, or with real-time communication. But hey)",
 			}],
+			graderName: "",
+			generalNotes: "",
 			technicalExperience: 0,
 			potentialToCollab: 0,
 			execution: 0,
-			teNotes: "",
+			teNotes: "HWLLLO WROLD",
 			ptcNotes: "",
 			execNotes: "",
 		};
@@ -44,6 +56,7 @@ export default class ReviewApplication extends React.Component {
 			// notes: this.state.notes,
 			// rating: this.state.rating,
 			notes: this.state.notes,
+			generalNotes: this.state.generalNotes,
 			technicalExperience: this.state.technicalExperience,
 			potentialToCollab: this.state.potentialToCollab,
 			execution: this.state.execution,
@@ -58,6 +71,7 @@ export default class ReviewApplication extends React.Component {
 			// notes: this.state.notes,
 			// rating: this.state.rating,
 			notes: this.state.notes,
+			generalNotes: this.state.generalNotes,
 			technicalExperience: this.state.technicalExperience,
 			potentialToCollab: this.state.potentialToCollab,
 			execution: this.state.execution,
@@ -72,6 +86,7 @@ export default class ReviewApplication extends React.Component {
 			// notes: this.state.notes,
 			// rating: this.state.rating,
 			notes: this.state.notes,
+			generalNotes: this.state.generalNotes,
 			technicalExperience: this.state.technicalExperience,
 			potentialToCollab: this.state.potentialToCollab,
 			execution: this.state.execution,
@@ -165,7 +180,10 @@ export default class ReviewApplication extends React.Component {
 								<div className="cards">
 									<div className="card card-wide profile-card">
 										<h1>{review.graderName}'s Review</h1>
-										<p>{review.generalNotes}</p>
+										<div>
+											<p><b>Private Notes:</b>
+											<br/>{review.generalNotes}</p>
+										</div>
 										<div>
 											<p><b>Technical Experience:</b> {review.technicalExperience}
 											<br/>{review.teNotes}</p>
@@ -189,16 +207,10 @@ export default class ReviewApplication extends React.Component {
 							<div className="card card-wide profile-card">
 								<h1>New Grader Review</h1>
 								<div>
-									<form>
-										<label>
-											<TextAreaInput name="graderName" title="Grader Name:" onChange={this.setValue} />
-										</label>
+									<form className="app-form">
+										<TextInput originalValue={this.state.graderName} name="graderName" title="Grader Name:" onChange={this.setValue} />
 									</form>
 								</div>
-								<form className="app-form">
-									<TextAreaInput originalValue={this.state.notes} name="notes" title="Publically Visible Notes" onChange={this.setValue} /><br />
-									{/* <RatingInput originalValue={this.state.rating} name="tecnical exp" title="Technical Experience" onChange={this.setValue} /> */}
-								</form>
 								<form className="app-form">
 									<h5>Technical Experience: </h5>
 									<p>1 - Did not make a reasonable attempt at the challenge.
@@ -207,8 +219,8 @@ export default class ReviewApplication extends React.Component {
 									<br/>4 - Satisfactorily passed the coding challenge; doesn't know many useful frameworks; not as web facing as desired.
 									<br/>5 - Excelled in the coding challenge; knows popular frameworks, technologies and even software infrastructure skills like Docker.
 									</p>
-									<RatingInput originalValue={this.state.technicalExperience} name="technicalExperience" title="Technical Experience" onChange={this.setValue} />
-									<TextAreaInput originalValue={this.state.teNotes} name="teNotes" title="Technical Experience Notes" onChange={this.setTE} /><br />
+									<RatingInput originalValue={this.state.technicalExperience} name="technicalExperience" title="Technical Experience" onChange={this.setTE} />
+									<TextAreaInput originalValue={this.state.teNotes} name="teNotes" title="Technical Experience Notes" onChange={this.setValue} />
 								</form>
 								<form className="app-form">
 									<h5>Potential to Collaborate: </h5>
@@ -218,8 +230,8 @@ export default class ReviewApplication extends React.Component {
 									<br/>4 - Has successfully worked on one or more teams in the past.
 									<br/>5 - Has successfull led teams in the past; works well with wide variety of people.
 									</p>
-									<RatingInput originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Potential to Collaborate" onChange={this.setValue} />
-									<TextAreaInput originalValue={this.state.ptcNotes} name="ptcNotes" title="Potential to Collaborate Notes" onChange={this.setPTC} /><br />
+									<RatingInput originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Potential to Collaborate" onChange={this.setPTC} />
+									<TextAreaInput originalValue={this.state.ptcNotes} name="ptcNotes" title="Potential to Collaborate Notes" onChange={this.setValue} />
 								</form>
 								<div>
 									<h5>Execution: </h5>
@@ -231,8 +243,13 @@ export default class ReviewApplication extends React.Component {
 									</p>
 								</div>
 								<form className="app-form">
-									<RatingInput originalValue={this.state.execution} name="execution" title="Execution " onChange={this.setValue} />
-									<TextAreaInput originalValue={this.state.execNotes} name="notes" title="Execution Notes" onChange={this.setEXEC} /><br />
+									<RatingInput originalValue={this.state.execution} name="execution" title="Execution " onChange={this.setEXEC} />
+									<TextAreaInput originalValue={this.state.execNotes} name="execNotes" title="Execution Notes" onChange={this.setValue} />
+								</form>
+								<form className="app-form">
+									<TextAreaInput originalValue={this.state.generalNotes} name="generalNotes" title="Private Notes" onChange={this.setValue} />
+									<TextAreaInput originalValue={this.state.notes} name="notes" title="Public Notes" onChange={this.setValue} />
+									{/* <RatingInput originalValue={this.state.rating} name="tecnical exp" title="Technical Experience" onChange={this.setValue} /> */}
 								</form>
 							</div>
 						</div>
