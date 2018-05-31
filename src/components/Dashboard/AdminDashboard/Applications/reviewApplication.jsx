@@ -12,14 +12,19 @@ export default class ReviewApplication extends React.Component {
 		super(props);
 		this.state = {
 			notes: this.props.application.notes || '',
-			rating: this.props.application.rating || 0,
-			graderReview: this.props.application.graderReview || [
-					{ graderName: "Keiana",
-						graderNotes: "This is a test application!",
-						technicalExperience: 5,
-						potential: 5,
-						execution: 5,}
-				],
+			graderReviews: this.props.application.graderReviews || [{ 	
+				graderName: "Keiana",
+				generalNotes: "This is a test application!",
+				technicalExperience: 5,
+				teNotes: "technical Experience",
+				potentialToCollab: 5,
+				ptcNotes: "potential to collab",
+				execution: 5,
+				execNotes: "execution",
+			}],
+			technicalExperience: 0,
+			potentialToCollab: 0,
+			execution: 0,
 		};
 
 		this.setValue = this.setValue.bind(this);
@@ -62,6 +67,7 @@ export default class ReviewApplication extends React.Component {
 	}
 
 	setValue(name, value) {
+		console.log(name, value);
 		this.setState(prev => {
 			const newState = Object.assign({}, prev);
 			newState[name] = value;
@@ -89,7 +95,7 @@ export default class ReviewApplication extends React.Component {
 			this.setState(prev => {
 				const newState = Object.assign({}, prev);
 				newState.notes = nextProps.application.notes;
-				newState.rating = nextProps.application.rating;
+				// newState.rating = nextProps.application.rating;
 				newState.applicationId = nextProps.application.id;
 				return newState;
 			});
@@ -98,10 +104,8 @@ export default class ReviewApplication extends React.Component {
 
 	render() {
 		let application = this.props.application;
-		console.log(application);
 		if (!application.profile)
 			application = { profile:{} };
-		console.log('LENGTH', this.state.graderReview.length);
 
 		return (
 			<div className="view-application">
@@ -111,15 +115,15 @@ export default class ReviewApplication extends React.Component {
 					<ViewApplication admin profile={application.profile} {...this.props} />
 					<hr />
 
-					{ !this.props.applicationGetting && this.state.graderReview.length > 0 &&
-						this.state.graderReview.map((review, i) => {
+					{ !this.props.applicationGetting && this.state.graderReviews.length > 0 &&
+						this.state.graderReviews.map((review, i) => {
 							return(
 								<div className="cards">
 									<div className="card card-wide profile-card">
 										<h1>{review.graderName}'s Review</h1>
-										<p>{review.graderNotes}</p>
+										<p>{review.generalNotes}</p>
 										<p>Technical Experience: {review.technicalExperience}</p>
-										<p>Potential to Collaborate: {review.potential}</p>
+										<p>Potential to Collaborate: {review.potentialToCollab}</p>
 										<p>Execution: {review.execution}</p>
 									</div>
 								</div>
@@ -130,12 +134,11 @@ export default class ReviewApplication extends React.Component {
 					{ !this.props.applicationGetting &&
 						<div className="cards">
 							<div className="card card-wide profile-card">
-								<h1>Grader Review</h1>
+								<h1>New Grader Review</h1>
 								<div>
 								<form>
 								  <label>
-								    Name:
-								    <input type="text" name="name" default="have to add this to GraderObject"/>
+									<TextAreaInput name="graderName" title="Grader Name:" onChange={this.setValue} />
 								  </label>
 								</form>
 							</div>
@@ -168,9 +171,12 @@ export default class ReviewApplication extends React.Component {
 							</div>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices faucibus nisl eget feugiat. Integer condimentum enim accumsan lorem commodo, vitae luctus nibh convallis. Maecenas eu aliquam lorem. Donec eleifend odio arcu, at fringilla purus pharetra vitae. Donec eleifend, erat sed cursus euismod, mauris magna tincidunt est, sed hendrerit sem tellus id ex. In varius ullamcorper dolor varius ultrices. In quis euismod massa, id faucibus lacus. Donec rutrum tempus mi, ac pellentesque arcu scelerisque in. Maecenas vehicula massa at neque pharetra, non semper risus fringilla. Nunc vulputate erat nec blandit pretium. Nulla ac fringilla nisi. Nam venenatis ultricies lacus, id ullamcorper neque accumsan vitae. Curabitur a odio eget arcu blandit pellentesque sit amet eu tortor.</p>
 								<form className="app-form">
-									<TextAreaInput originalValue={this.state.notes} name="notes" title="Notes" onChange={this.setValue} /><br />
-									<RatingInput originalValue={this.state.rating} name="rating" title="Rating" onChange={this.setValue} />
+									<TextAreaInput originalValue={this.state.notes} name="notes" title="Publically Visible Notes" onChange={this.setValue} /><br />
+									{/* <RatingInput originalValue={this.state.rating} name="tecnical exp" title="Technical Experience" onChange={this.setValue} /> */}
 								</form>
+								<RatingInput originalValue={this.state.technicalExperience} name="technicalExperience" title="Technical Experience" onChange={this.setValue} />
+								<RatingInput originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Potential to Collaborate" onChange={this.setValue} />
+								<RatingInput originalValue={this.state.execution} name="execution" title="Execution" onChange={this.setValue} />
 							</div>
 						</div>
 					}
