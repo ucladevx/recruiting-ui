@@ -41,22 +41,43 @@ export default class ReviewApplication extends React.Component {
 
 	reviewApplication() {
 		this.props.reviewApplication(this.props.application.id, {
+			// notes: this.state.notes,
+			// rating: this.state.rating,
 			notes: this.state.notes,
-			rating: this.state.rating,
+			technicalExperience: this.state.technicalExperience,
+			potentialToCollab: this.state.potentialToCollab,
+			execution: this.state.execution,
+			teNotes: this.state.teNotes,
+			ptcNotes: this.state.ptcNotes,
+			execNotes: this.state.execNotes,
 		});
 	}
 
 	rejectApplication() {
 		this.props.rejectApplication(this.props.application.id, {
+			// notes: this.state.notes,
+			// rating: this.state.rating,
 			notes: this.state.notes,
-			rating: this.state.rating,
+			technicalExperience: this.state.technicalExperience,
+			potentialToCollab: this.state.potentialToCollab,
+			execution: this.state.execution,
+			teNotes: this.state.teNotes,
+			ptcNotes: this.state.ptcNotes,
+			execNotes: this.state.execNotes,
 		});
 	}
 
 	acceptApplication() {
 		this.props.acceptApplication(this.props.application.id, {
+			// notes: this.state.notes,
+			// rating: this.state.rating,
 			notes: this.state.notes,
-			rating: this.state.rating,
+			technicalExperience: this.state.technicalExperience,
+			potentialToCollab: this.state.potentialToCollab,
+			execution: this.state.execution,
+			teNotes: this.state.teNotes,
+			ptcNotes: this.state.ptcNotes,
+			execNotes: this.state.execNotes,
 		});
 	}
 
