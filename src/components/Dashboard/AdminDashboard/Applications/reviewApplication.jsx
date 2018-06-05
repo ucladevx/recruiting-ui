@@ -55,6 +55,7 @@ export default class ReviewApplication extends React.Component {
 		this.props.reviewApplication(this.props.application.id, {
 			// notes: this.state.notes,
 			// rating: this.state.rating,
+			graderName: this.state.graderName,
 			notes: this.state.notes,
 			generalNotes: this.state.generalNotes,
 			technicalExperience: this.state.technicalExperience,
@@ -70,6 +71,7 @@ export default class ReviewApplication extends React.Component {
 		this.props.rejectApplication(this.props.application.id, {
 			// notes: this.state.notes,
 			// rating: this.state.rating,
+			graderName: this.state.graderName,
 			notes: this.state.notes,
 			generalNotes: this.state.generalNotes,
 			technicalExperience: this.state.technicalExperience,
@@ -85,6 +87,7 @@ export default class ReviewApplication extends React.Component {
 		this.props.acceptApplication(this.props.application.id, {
 			// notes: this.state.notes,
 			// rating: this.state.rating,
+			graderName: this.state.graderName,
 			notes: this.state.notes,
 			generalNotes: this.state.generalNotes,
 			technicalExperience: this.state.technicalExperience,
