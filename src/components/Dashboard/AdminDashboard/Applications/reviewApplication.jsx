@@ -185,7 +185,7 @@ export default class ReviewApplication extends React.Component {
 									<br/>5 - Excelled in the coding challenge; knows popular frameworks, technologies and even software infrastructure skills like Docker.
 									</p>
 									{/* <RatingInput originalValue={this.state.technicalExperience} name="technicalExperience" title="Technical Experience" onChange={this.setValue} /> */}
-									<ButtonRating originalValue={this.state.technicalExperience} name="technicalExperience" title="Technical Experience" onChange={this.setValue}/>
+									<ButtonRating originalValue={this.state.technicalExperience} name="technicalExperience" title="Score" onChange={this.setValue}/>
 									<TextAreaInput originalValue={this.state.teNotes} name="teNotes" title="Technical Experience Notes" onChange={this.setValue} />
 								</form>
 								<form className="app-form">
@@ -197,7 +197,7 @@ export default class ReviewApplication extends React.Component {
 									<br/>5 - Has successfull led teams in the past; works well with wide variety of people.
 									</p>
 									{/* <RatingInput originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Potential to Collaborate" onChange={this.setValue} /> */}
-									<ButtonRating originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Potential to Collaborate" onChange={this.setValue}/>
+									<ButtonRating originalValue={this.state.potentialToCollab} name="potentialToCollab" title="Score" onChange={this.setValue}/>
 									<TextAreaInput originalValue={this.state.ptcNotes} name="ptcNotes" title="Potential to Collaborate Notes" onChange={this.setValue} />
 								</form>
 								<div>
@@ -211,10 +211,10 @@ export default class ReviewApplication extends React.Component {
 								</div>
 								<form className="app-form">
 									{/* <RatingInput originalValue={this.state.execution} name="execution" title="Execution " onChange={this.setValue} /> */}
-									<ButtonRating originalValue={this.state.execution} name="execution" title="Execution" onChange={this.setValue}/>
+									<ButtonRating originalValue={this.state.execution} name="execution" title="Score" onChange={this.setValue}/>
 									<TextAreaInput originalValue={this.state.execNotes} name="execNotes" title="Execution Notes" onChange={this.setValue} />
 								</form>
-								<form className="app-form">
+								<form className="app-form" style={{display: 'inline'}}>
 									<TextAreaInput originalValue={this.state.generalNotes} name="generalNotes" title="Private Notes" onChange={this.setValue} />
 									<TextAreaInput originalValue={this.state.notes} name="notes" title="Public Notes" onChange={this.setValue} />
 									{/* <RatingInput originalValue={this.state.rating} name="tecnical exp" title="Technical Experience" onChange={this.setValue} /> */}

@@ -8,7 +8,7 @@ export default class ButtonRating extends React.Component {
         }
     }
     increment = () => {
-        // this.setState({rating: 
+        // this.setState({rating:
         this.props.onChange(this.props.name, this.state.rating == 5 ? 0 : this.state.rating + 1);
     }
     decrement = () => {
@@ -22,9 +22,13 @@ export default class ButtonRating extends React.Component {
         return(
             <div>
 				<label className="input-title" htmlFor={this.props.name}>{this.props.title}</label><br />
-                <h3>{this.state.rating}</h3>
-                <h3 onClick={this.increment}>+</h3>
-                <h3 onClick={this.decrement}>-</h3>
+                <div>
+                <h3></h3>
+                <h3 style={{display: 'inline', marginRight:'50px' }}>{this.state.rating}</h3>
+                <img src= "/images/plus.png" style={{display: 'inline-flex', marginRight:'20px' }} onClick={this.increment}/>
+                <img src= "/images/minus.png" style={{display: 'inline-flex'}} onClick={this.decrement}/>
+                <h1> </h1>
+              </div>
             </div>
         );
     }
